@@ -16,6 +16,8 @@ public class GameManagerScript : MonoBehaviour
 
     public Transform[] feldpos;
 
+    public GameObject cornPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,21 @@ public class GameManagerScript : MonoBehaviour
         }
         Mults[0].text = "Multiplier: " + multiplier[0];
         Mults[1].text = "Multiplier: " + multiplier[1];
+
+        float scaling = 0.25f;
+        float tempCorn = 1;
+        for(int i = 0; i<4; i++) {
+            tempCorn = corn[i];
+            while (tempCorn > 21) {
+                scaling += 0.5f;
+                tempCorn -= 20;
+            }
+            cornPrefab.transform.localScale *= Mathf.Min(scaling, 2);
+            for(int j = 0; j<tempCorn; j++) {
+                Instantiate(cornPrefab,feldpos[i].position+new Vector3(Random.Range(-2f,2f), Random.Range(-1f,1f), 1), Quaternion.identity);
+            }
+            cornPrefab.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     
