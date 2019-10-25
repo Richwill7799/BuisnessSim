@@ -59,15 +59,16 @@ public class GameManagerScript : MonoBehaviour
         float tempCorn = 1;
         for(int i = 0; i<4; i++) {
             tempCorn = corn[i];
-            while (tempCorn > 21) {
+            while (tempCorn > 11) {
                 scaling += 0.5f;
-                tempCorn -= 20;
+                tempCorn /= 10;
             }
             cornPrefab.transform.localScale *= Mathf.Min(scaling, 2);
             for(int j = 0; j<tempCorn; j++) {
                 Instantiate(cornPrefab,feldpos[i].position+new Vector3(Random.Range(-2f,2f), Random.Range(-1f,1f), 1), Quaternion.identity);
             }
             cornPrefab.transform.localScale = new Vector3(1, 1, 1);
+            scaling = 0.25f;
         }
     }
 
