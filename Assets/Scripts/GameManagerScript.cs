@@ -7,7 +7,7 @@ public class GameManagerScript : MonoBehaviour
 {
 
     float[] corn;
-    int[] multiplier;
+    float[] multiplier;
     int year;
 
     public Text[] Scores;
@@ -23,7 +23,7 @@ public class GameManagerScript : MonoBehaviour
     {
         corn = new float[4] {1,1,1,1 };
         
-        multiplier = new int[2];
+        multiplier = new float[2];
     }
 
     // Update is called once per frame
@@ -35,10 +35,10 @@ public class GameManagerScript : MonoBehaviour
             Year.text = "Year " + year;
         }
     }
-
+    //TODO de hardcode after demo ?
     private void PassYear() {
-        multiplier[0] = (int)Random.Range(1, 5);
-        multiplier[1] = (int)Random.Range(1, 5);
+        multiplier[0] = Random.Range(0.001f , 3.0f);
+        multiplier[1] = Random.Range(0.001f , 3.0f);
 
         corn[0] = corn[0] * multiplier[0];
         
