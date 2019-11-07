@@ -22,10 +22,10 @@ public class Simulation : MonoBehaviour
     {
         year = 0;
         countFarmers = 4; //TODO: this should be editable for the user at the beginning via input field, MIN: 4, MAX: ?   
-        instantiateHashSets();
+        InstantiateLists();
     }
 
-    private void instantiateHashSets()
+    private void InstantiateLists()
     {
         //first fields, second farmers with fields
 
