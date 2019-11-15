@@ -4,7 +4,7 @@ Created on Sun Nov 10 14:10:24 2019
 
 @author: sakob
 """
-import sys, Field
+import Field
 
 class Farmer():
     __field = Field.Field(0) #his own field
