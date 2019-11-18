@@ -5,7 +5,8 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Diagnostics;
+using System;
 
 public class Simulation : MonoBehaviour
 {
@@ -89,7 +90,7 @@ public class Simulation : MonoBehaviour
         //Debug 
         foreach (Farmer f in farmers)
         {
-            Debug.Log(f.name + ": " + f.GetField().GetHarvest());
+            UnityEngine.Debug.Log(f.name + ": " + f.GetField().GetHarvest());
         }
 
         ValueTransferToPython(); //todo for everyone who wants this  xD
@@ -112,7 +113,7 @@ public class Simulation : MonoBehaviour
     {
         foreach (int variant in variants)
         {
-            float multiplier = Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
+            float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
             foreach (Field field in fields)
             {
                 if (field.GetVariant() == variant)
@@ -149,6 +150,35 @@ public class Simulation : MonoBehaviour
                 //insert all harvest into the file
                 writer.WriteLine(h);
             }
+
+        //do the python script call
+        run_cmd(@"C:\ProgramData\Anaconda3\python.exe", "CreateGraph.py");
+        VisualizeGraph();
+    }
+
+    private void VisualizeGraph()
+    {
+        //get the graph picture and update it in game (=
+    }
+
+   //this is not working properly yet =(
+    private void run_cmd(string cmd, string args)
+    {
+        ProcessStartInfo start = new ProcessStartInfo
+        {
+            FileName = Path.Combine(cmd),//cmd is full path to python.exe
+            Arguments = Path.Combine(args),//args is path to .py file and any cmd line args
+            UseShellExecute = false,
+            RedirectStandardOutput = true
+        };
+        using (Process process = Process.Start(start))
+        {
+            using (StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                Console.Write(result);
+            }
+        }
     }
 }
 //TODO: add again the corn visualization
