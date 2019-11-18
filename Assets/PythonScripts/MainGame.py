@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import Simulation, Field, Farmer, pygame, sys, pylab
+import Simulation, Field, Farmer, pygame, sys, pylab, matplotlib
 from pygame.locals import *
 matplotlib.use("Agg")
 import matplotlib.backends.backend_agg as agg
@@ -9,13 +9,14 @@ import matplotlib.backends.backend_agg as agg
 #1. Handles events.
 #2. Updates the game state.
 #3. Draws the game state to the screen
-
+fpsClock = pygame.time.Clock() 
+FPS = 40
  # set up the colors
-BLACK = ( 0, 0, 0)
+BLACK = (  0,   0,   0)
 WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = ( 0, 255, 0)
-BLUE = ( 0, 0, 255)
+RED   = (255,   0,   0)
+GREEN = (  0, 255,   0)
+BLUE  = (  0,   0, 255)
 
 #Graph example
 fig = pylab.figure(figsize=[4, 4], dpi=100,)  # 100 dots per inch, so the resulting buffer is 400x400 pixel
@@ -31,13 +32,18 @@ DISPLAYSURF = pygame.display.set_mode((1000, 1000), DOUBLEBUF)
 DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption('FarmersFable')
 pygame.draw.rect(DISPLAYSURF, RED, (500, 500, 100, 50)) #examplefield (?)
+field = pygame.image.load('Field_normal.png')
+#fontObj = pygame.font.Font('freesansbold.ttf', 32)
+#textSurfaceObj = fontObj.render('Hello world!', True, GREEN, BLUE) #blue is background, green is font color
+#textRectObj = textSurfaceObj.get_rect()
+#textRectObj.center = (200, 150)
 
 screen = pygame.display.get_surface()
 size = canvas.get_width_height()
 
 #put the graph-image onto the game screen
-surf = pygame.image.fromstring(raw_data, size, "RGB")
-screen.blit(surf, (0,0)) #draw one image onto another, blits() draws many images onto another
+graph = pygame.image.fromstring(raw_data, size, "RGB")
+
 pygame.display.flip()
           #flip() -> This will update the contents of the entire display. If your display
           # mode is using the flags pygame.HWSURFACE and pygame.DOUBLEBUF, this
@@ -51,7 +57,10 @@ countfarmer = 4    #doto this is user input
 x = Simulation.Simulation(countfarmer)
 
 while True: # main game loop
-     
+    
+    
+    screen.blit(graph, (0,0)) #draw one image onto another, blits() draws many images onto another
+    screen.blit(field,(0,0))
     for event in pygame.event.get():
         if event.type == KEYDOWN:  
             if event.key == pygame.K_SPACE:
@@ -61,3 +70,4 @@ while True: # main game loop
             pygame.quit() #deactivate pygame library
             sys.exit() #terminates the program
     pygame.display.update()
+    fpsClock.tick(FPS) #this ensures that the game doesnt run too fast
