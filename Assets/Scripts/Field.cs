@@ -14,6 +14,8 @@ public class Field : MonoBehaviour
     private float multiplier; //changes every year
     private int variant;
 
+    public List<float> allHarvest = new List<float>();
+
     public Field(int variant)
     {
         harvest = 0;
@@ -32,6 +34,7 @@ public class Field : MonoBehaviour
         {
             harvest *= multiplier;
         }
+        allHarvest.Add(harvest);
     }
 
     public float GetHarvest()

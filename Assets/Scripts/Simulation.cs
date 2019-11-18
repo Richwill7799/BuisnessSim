@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +15,7 @@ public class Simulation : MonoBehaviour
     private List<Field> fields = new List<Field>();
     private List<Farmer> farmers = new List<Farmer>();
     private List<int> variants = new List<int>();
-
+    private List<float> allCollabHarvest = new List<float>();
     //public variables
     public Text Year;
 
@@ -90,7 +92,7 @@ public class Simulation : MonoBehaviour
             Debug.Log(f.name + ": " + f.GetField().GetHarvest());
         }
 
-        Visualisierung(); //todo for everyone who wants this  xD
+        ValueTransferToPython(); //todo for everyone who wants this  xD
     }
 
     private void Collaboration()
@@ -103,6 +105,7 @@ public class Simulation : MonoBehaviour
         float collabHarvest = (harvestF + harvestCollabF) / 2;
         fa.GetField().SetHarvest(collabHarvest); // set the harvest now to tzhe half of the collab harvest
         fa.GetCollabFarmer().GetField().SetHarvest(collabHarvest); // set the harvest now to tzhe half of the collab harvest
+        allCollabHarvest.Add(collabHarvest);
     }
 
     private void SetMultiplier() //set the multiplier for each variant of field, bc each field with equal variant has the same multiplier
@@ -120,35 +123,59 @@ public class Simulation : MonoBehaviour
         }
     }
 
-    private void Visualisierung()
+    private void ValueTransferToPython()
     {
-        //TODO: add again the corn visualization
-
-        //Debug.Log("Corn: " + corn[0] + " | " + corn[1] + " | " + corn[2] + " | " + corn[3] + " with multipliers: " + multiplier[0] + " | " + multiplier[1]);
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    Scores[i].text = "Score " + (i + 1) + ": " + corn[i];
-        //}
-        //Mults[0].text = "Multiplier: " + multiplier[0];
-        //Mults[1].text = "Multiplier: " + multiplier[1];
-
-        //float scaling = 0.25f;
-        //float tempCorn = 1;
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    tempCorn = corn[i];
-        //    while (tempCorn > 11)
-        //    {
-        //        scaling += 0.5f;
-        //        tempCorn /= 10;
-        //    }
-        //    cornPrefab.transform.localScale *= Mathf.Min(scaling, 2);
-        //    for (int j = 0; j < tempCorn; j++)
-        //    {
-        //        Instantiate(cornPrefab, feldpos[i].position + new Vector3(Random.Range(-2f, 2f), Random.Range(-1f, 1f), 1), Quaternion.identity);
-        //    }
-        //    cornPrefab.transform.localScale = new Vector3(1, 1, 1);
-        //    scaling = 0.25f;
-        //}
+        foreach (Farmer f in farmers)
+        {
+            if (f.HasNoCollabFarmer()) //get all farmers who doesn't collab
+            {
+                //create new textfile with name of farmer as name
+                string fileName = f.name + ".txt";
+                using (StreamWriter writer = new StreamWriter(fileName, false)) //delete existing files and safe a new one
+                {
+                    foreach (float h in f.GetField().allHarvest)
+                    {
+                        //insert all harvest into the file
+                        writer.WriteLine(h);
+                    }
+                }
+            }
+        }
+        //create new textfield for the collabHarvest -> TODO edit it for multiple collabFarmers, or userinput collab farmers to change the collab (?)
+        string fileNamee = "collabFarmers.txt";
+        using (StreamWriter writer = new StreamWriter(fileNamee, false)) //delete existing files and safe a new one
+            foreach (float h in allCollabHarvest)
+            {
+                //insert all harvest into the file
+                writer.WriteLine(h);
+            }
     }
 }
+//TODO: add again the corn visualization
+
+//Debug.Log("Corn: " + corn[0] + " | " + corn[1] + " | " + corn[2] + " | " + corn[3] + " with multipliers: " + multiplier[0] + " | " + multiplier[1]);
+//for (int i = 0; i < 4; i++)
+//{
+//    Scores[i].text = "Score " + (i + 1) + ": " + corn[i];
+//}
+//Mults[0].text = "Multiplier: " + multiplier[0];
+//Mults[1].text = "Multiplier: " + multiplier[1];
+
+//float scaling = 0.25f;
+//float tempCorn = 1;
+//for (int i = 0; i < 4; i++)
+//{
+//    tempCorn = corn[i];
+//    while (tempCorn > 11)
+//    {
+//        scaling += 0.5f;
+//        tempCorn /= 10;
+//    }
+//    cornPrefab.transform.localScale *= Mathf.Min(scaling, 2);
+//    for (int j = 0; j < tempCorn; j++)
+//    {
+//        Instantiate(cornPrefab, feldpos[i].position + new Vector3(Random.Range(-2f, 2f), Random.Range(-1f, 1f), 1), Quaternion.identity);
+//    }
+//    cornPrefab.transform.localScale = new Vector3(1, 1, 1);
+//    scaling = 0.25f;
+//}
