@@ -19,6 +19,7 @@ public class Simulation : MonoBehaviour
     private List<float> allCollabHarvest = new List<float>();
     //public variables
     public Text Year;
+    public Transform Graph;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class Simulation : MonoBehaviour
         year = 0;
         countFarmers = 4; //TODO: this should be editable for the user at the beginning via input field, MIN: 4, MAX: ?   
         InstantiateLists();
+        Graph = GetComponent<Transform>();
     }
 
     private void InstantiateLists()
@@ -71,9 +73,13 @@ public class Simulation : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            PassYear();
-            year++;
-            Year.text = "Year " + year;
+            for (int i = 0; i < 10; i++)
+            {
+                PassYear();
+                year++;
+                Year.text = "Year " + year;
+            }
+            ValueTransferToPython();
         }
     }
 
@@ -93,7 +99,7 @@ public class Simulation : MonoBehaviour
             UnityEngine.Debug.Log(f.name + ": " + f.GetField().GetHarvest());
         }
 
-        ValueTransferToPython(); //todo for everyone who wants this  xD
+        
     }
 
     private void Collaboration()
@@ -153,15 +159,16 @@ public class Simulation : MonoBehaviour
 
         //do the python script call
         run_cmd(@"C:\ProgramData\Anaconda3\python.exe", "CreateGraph.py");
-        VisualizeGraph();
+        //VisualizeGraph();
     }
 
     private void VisualizeGraph()
     {
         //get the graph picture and update it in game (=
+        //this not necessary at moment, but improvement is wanted due to it's loading so long
     }
 
-   //this is not working properly yet =(
+
     private void run_cmd(string cmd, string args)
     {
         ProcessStartInfo start = new ProcessStartInfo
@@ -171,14 +178,7 @@ public class Simulation : MonoBehaviour
             UseShellExecute = false,
             RedirectStandardOutput = true
         };
-        using (Process process = Process.Start(start))
-        {
-            using (StreamReader reader = process.StandardOutput)
-            {
-                string result = reader.ReadToEnd();
-                Console.Write(result);
-            }
-        }
+        Process process = Process.Start(start);
     }
 }
 //TODO: add again the corn visualization
