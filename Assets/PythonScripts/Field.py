@@ -10,7 +10,9 @@ class Field():
     __startValue = 0
     __multiplier = 0 #'changes every year'
     __variant = 0
-
+    
+    allHarvest = []
+    
     def __init__(self, variant):
         self.__harvest = 0
         self.__startValue = 0
@@ -22,6 +24,7 @@ class Field():
             self.__harvest = self.__startValue * self.__multiplier 
         else:    
             self.__harvest *= self.__multiplier
+        self.allHarvest.append(self.__harvest)
             
     def GetHarvest(self):
         return self.__harvest
