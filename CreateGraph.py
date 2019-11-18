@@ -21,7 +21,8 @@ for filename in glob.glob('C:/Users/sakob/Documents/BuisnessSimulation/*.txt'): 
         yValues.append(yValue)
         xValue += 1
     plt.plot(xValues, yValues)
-    filenames.append(filename)
+    base = os.path.basename(filename)
+    filenames.append(os.path.splitext(base)[0])
 plt.legend(filenames)
 plt.savefig("C:/Users/sakob/Documents/BuisnessSimulation/Assets/graph.png")
 #print("Current working dir : %s" % os.getcwd())

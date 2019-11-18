@@ -17,9 +17,10 @@ public class Simulation : MonoBehaviour
     private List<Farmer> farmers = new List<Farmer>();
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
+
     //public variables
     public Text Year;
-    public Transform Graph;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,6 @@ public class Simulation : MonoBehaviour
         year = 0;
         countFarmers = 4; //TODO: this should be editable for the user at the beginning via input field, MIN: 4, MAX: ?   
         InstantiateLists();
-        Graph = GetComponent<Transform>();
     }
 
     private void InstantiateLists()
@@ -99,7 +99,7 @@ public class Simulation : MonoBehaviour
             UnityEngine.Debug.Log(f.name + ": " + f.GetField().GetHarvest());
         }
 
-        
+
     }
 
     private void Collaboration()
@@ -167,7 +167,6 @@ public class Simulation : MonoBehaviour
         //get the graph picture and update it in game (=
         //this not necessary at moment, but improvement is wanted due to it's loading so long
     }
-
 
     private void run_cmd(string cmd, string args)
     {
