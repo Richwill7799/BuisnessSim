@@ -5,11 +5,8 @@ Created on Sat Nov  9 13:01:35 2019
 @author: sarah
 """
 
-import pygame, sys, Field, Farmer, random, matplotlib, pylab
+import pygame, Field, Farmer, random
 from pygame.locals import *
-
-matplotlib.use("Agg")
-import matplotlib.backends.backend_agg as agg
 
 class Simulation():
     pygame.init()
@@ -31,9 +28,9 @@ class Simulation():
     #//public variables
     #public Text Year;
     
-    def __init__(self):
+    def __init__(self, countfarmer):
         self.__year = 0
-        self.__countFarmers = 4 #//TODO: this should be editable for the user at the beginning via input field, MIN: 4, MAX: ?   
+        self.__countFarmers = countfarmer #//TODO: this should be editable for the user at the beginning via input field, MIN: 4, MAX: ?   
         print('startmethod')
         self.__InstantiateLists()
         
@@ -74,7 +71,7 @@ class Simulation():
                 break; #this has to be rewrited, maybe with a lambda statement       
     
     def PassYear(self):
-        self.SetMultiplier() #set multiplier each year - to be edited with weather ect
+        self.__SetMultiplier() #set multiplier each year - to be edited with weather ect
         for field in self.__fields:
             field.SimulateField()
     
@@ -96,50 +93,10 @@ class Simulation():
         fa.GetField().SetHarvest(collabHarvest) #set the harvest now to tzhe half of the collab harvest
         fa.GetCollabFarmer().GetField().SetHarvest(collabHarvest) # set the harvest now to tzhe half of the collab harvest
     
-    def SetMultiplier(self): #set the multiplier for each variant of field, bc each field with equal variant has the same multiplier
+    def __SetMultiplier(self): #set the multiplier for each variant of field, bc each field with equal variant has the same multiplier
         for variant in self.__variants:
             multiplier = random.uniform(0.6, 1.5)#TODO #changed the range from 0.001f/3.0f to this
             for field in self.__fields:
                 if (field.GetVariant() == variant):
                     field.SetMultiplier(multiplier)
                 
-    
-  
-#This is the main game loop! here to do stuff ***** THIS IS NOT ANYMORE THE CLASS SIMULATION
-
-fig = pylab.figure(figsize=[4, 4], dpi=100,)  # 100 dots per inch, so the resulting buffer is 400x400 pixel
-ax = fig.gca() #get current axes
-ax.plot([1, 2, 4]) #plot([x1, x2, x3], [y1, y2, y3])
-
-canvas = agg.FigureCanvasAgg(fig) #get the fiqure as an rgb string and convert it to an array for rendering
-canvas.draw()
-renderer = canvas.get_renderer()
-raw_data = renderer.tostring_rgb()
-
-DISPLAYSURF = pygame.display.set_mode((1000, 1000), DOUBLEBUF)
-pygame.display.set_caption('FarmersFable')
-
-screen = pygame.display.get_surface()
-size = canvas.get_width_height()
-
-surf = pygame.image.fromstring(raw_data, size, "RGB")
-screen.blit(surf, (0,0)) #draw one image onto another, blits() draws many images onto another
-pygame.display.flip()
-          #flip() -> This will update the contents of the entire display. If your display
-          # mode is using the flags pygame.HWSURFACE and pygame.DOUBLEBUF, this
-          # will wait for a vertical retrace and swap the surfaces. If you are
-          # using a different type of display mode, it will simply update the
-          # entire contents of the surface.
-          # 
-x = Simulation()
-
-while True: # main game loop
-     
-    for event in pygame.event.get():
-        if event.type == KEYDOWN:  
-            if event.key == pygame.K_SPACE:
-                #print('space pressed')
-                x.PassYear()
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()

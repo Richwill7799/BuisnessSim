@@ -2,7 +2,7 @@
 """
 Created on Sun Nov 10 14:10:24 2019
 
-@author: sakob
+@author: sarah
 """
 import Field
 

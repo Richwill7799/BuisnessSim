@@ -2,7 +2,7 @@
 """
 Created on Sun Nov 10 14:09:55 2019
 
-@author: sakob
+@author: sarah
 """
 
 class Field():
