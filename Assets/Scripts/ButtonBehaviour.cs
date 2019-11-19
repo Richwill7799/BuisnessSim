@@ -6,20 +6,6 @@ using UnityEngine.UI;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    public static Button button;
-
-    // Start is called before the first frame update
-    public void Start()
-    {
-        /*Button click = button.GetComponent<Button>();
-        click.onClick.AddListener(StartLoad);
-        click.onClick.AddListener(PrototypeLoad);
-        click.onClick.AddListener(Load);
-        click.onClick.AddListener(StartLoad);
-        click.onClick.AddListener(StartLoad);*/
-    }
-
-
     public void StartLoad()
     {
         SceneManager.LoadScene(0);
