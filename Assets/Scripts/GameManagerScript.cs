@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class GameManagerScript : MonoBehaviour
             PassYear();
             year++;
             Year.text = "Year " + year;
+        }
+        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            /*Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex+1);*/
+            SceneManager.LoadScene("Analysis");
         }
     }
     //TODO de hardcode after demo ?
