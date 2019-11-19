@@ -158,7 +158,7 @@ public class Simulation : MonoBehaviour
             }
 
         //do the python script call
-        run_cmd(@"C:\ProgramData\Anaconda3\python.exe", "CreateGraph.py");
+        Run_cmd(@"..\..\..\python.exe", "CreateGraph.py");
         //VisualizeGraph();
     }
 
@@ -168,7 +168,7 @@ public class Simulation : MonoBehaviour
         //this not necessary at moment, but improvement is wanted due to it's loading so long
     }
 
-    private void run_cmd(string cmd, string args)
+    private void Run_cmd(string cmd, string args)
     {
         ProcessStartInfo start = new ProcessStartInfo
         {
