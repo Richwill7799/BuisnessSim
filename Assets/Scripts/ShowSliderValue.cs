@@ -7,6 +7,7 @@ public class ShowSliderValue : MonoBehaviour
     public Slider sliderUI;
     private Text textSliderValue;
 
+
     void Start()
     {
         textSliderValue = GetComponent<Text>();
@@ -21,4 +22,6 @@ public class ShowSliderValue : MonoBehaviour
         string sliderMessage = "" + sliderUI.value;
         textSliderValue.text = sliderMessage;
     }
+
+    public int GetValue() { return (int)sliderUI.value; }
 }
