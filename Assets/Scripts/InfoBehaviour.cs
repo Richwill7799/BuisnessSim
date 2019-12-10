@@ -28,7 +28,7 @@ public class InfoBehaviour : MonoBehaviour
         Button x = GameObject.Find("Button").GetComponent<Button>();
 
         //Button does not get disabled
-        //x.enabled = false;
+        x.enabled = false;
         text.enabled = false;
         field.enabled = false;
     }
