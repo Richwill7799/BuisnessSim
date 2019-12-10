@@ -11,6 +11,10 @@ public class HandleInput : MonoBehaviour
 
     private int numFarmers;
     private int years;
+    private int currentVariant = 2; // or 1 if 0 is valide
+
+    private List<Field> fields = new List<Field>();
+    private List<Farmer> farmers = new List<Farmer>();
 
     public void StartWithData() 
     {
