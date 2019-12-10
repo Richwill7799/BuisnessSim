@@ -7,7 +7,11 @@ import matplotlib.pyplot as plt
 
 filenames = []
 
-for filename in glob.glob('C:/Users/sakob/Documents/BuisnessSimulation/*.txt'): #get every file that's has .txt in the folder
+#script = os.path.realpath(__file__)  
+dirname, filename = os.path.split(os.path.abspath(__file__))
+#print(dirname)
+#print(filename)
+for filename in glob.glob(dirname + '\*.txt'): #get every file that's has .txt in the folder
     xValue = 1;
     file = open(filename)
     fileInput = file.read().splitlines()
@@ -24,6 +28,6 @@ for filename in glob.glob('C:/Users/sakob/Documents/BuisnessSimulation/*.txt'): 
     base = os.path.basename(filename)
     filenames.append(os.path.splitext(base)[0])
 plt.legend(filenames)
-plt.savefig("C:/Users/sakob/Documents/BuisnessSimulation/Assets/graph.png")
+plt.savefig(dirname + '/graph.png')
 #print("Current working dir : %s" % os.getcwd())
 #print("end")
