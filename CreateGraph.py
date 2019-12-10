@@ -28,7 +28,7 @@ for filename in glob.glob(dirname + '\*.txt'): #get every file that's has .txt i
     base = os.path.basename(filename)
     filenames.append(os.path.splitext(base)[0])
 plt.legend(filenames)
-print(dirname)
+#print(dirname)
 plt.savefig(dirname + '\Assets\graph.png')
 #print("Current working dir : %s" % os.getcwd())
 #print("end")
