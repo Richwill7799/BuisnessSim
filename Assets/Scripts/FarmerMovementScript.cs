@@ -10,19 +10,22 @@ public class FarmerMovementScript : MonoBehaviour
 
     public float minWaitTime, maxWaitTime;
 
+    //TODO delete after it all works, debug
+    public Transform helper;
+
     private Vector3 goal;
     private float walkUntil;
 
     private float waitEndTime;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rigidbody2d;
 
     // Start is called before the first frame update
     void Start()
     {
         waitEndTime = 0f;
-        rigidbody = GetComponent<Rigidbody2D>();
-        pickGoal();
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        pickGoal(false);
     }
 
     // Update is called once per frame
@@ -38,33 +41,41 @@ public class FarmerMovementScript : MonoBehaviour
             float progress = speed*Time.deltaTime/Vector3.Distance(goal,transform.position);
             
             //move farmer
-            rigidbody.MovePosition(Vector3.Lerp(transform.position,goal,progress));
+            rigidbody2d.MovePosition(Vector3.Lerp(transform.position,transform.position +goal,progress));
             
             //check if farmer is done with movement
             if(walkUntil<Time.time){
                 waitEndTime = Time.time+Random.Range(minWaitTime, maxWaitTime);
-                pickGoal();
+                pickGoal(true);
             }
         }
+
+        //TODO delete later, debug
+        helper.position = goal+transform.position;
     }
 
-    private void pickGoal(){
+    private void pickGoal(bool waiting){
         //pick a new goal direction at random and determine how long to walk
-        float x = Random.Range(0f,1f);
+        float x = Random.Range(-1f,1f);
         float y = Mathf.Cos(x*(Mathf.PI/2));
+        if (Random.Range(0f, 1f) < 0.5f)
+            y *= -1f;
         goal = new Vector3(x,y,0);
-        walkUntil = Time.time + Random.Range(minDistance,maxDistance);
+        if (waiting) 
+            walkUntil = waitEndTime + Random.Range(minDistance,maxDistance);
+        else 
+            walkUntil = Time.time + Random.Range(minDistance,maxDistance);
     }
 
     public void OnTriggerStay2D(Collider2D other){
         //continue changing direction if others stay too close
-        goal -= other.transform.position*(1/Vector3.Distance(other.transform.position,transform.position))*Time.deltaTime*dodgeSpeed;
+        goal -= (other.transform.position-transform.position)*(1/Vector3.Distance(other.transform.position,transform.position))*Time.deltaTime*dodgeSpeed;
     }
 
     public void OnTriggerEnter2D(Collider2D other){
         //change direction when another farmer comes too close
-        pickGoal();
-        goal += transform.position + other.transform.position;
+        pickGoal(false);
+        goal -= other.transform.position - transform.position;
         goal = Vector3.Normalize(goal);
     }
 }
