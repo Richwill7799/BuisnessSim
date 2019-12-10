@@ -29,8 +29,8 @@ public class Simulation : MonoBehaviour
         GameObject gameObject = GameObject.Find("SceneInfoObj");
 
         //store user Input in year & countFarmers
-        year = gameObject.GetComponent<HandleInput>().years;
-        countFarmers = gameObject.GetComponent<HandleInput>().numFarmers; ; //TODO:  MIN: 4, MAX: ?   
+        year = gameObject.GetComponent<HandleInput>().getYears();
+        countFarmers = gameObject.GetComponent<HandleInput>().getNumFarmers() ; //TODO:  MIN: 4, MAX: ?   
 
         if (countFarmers < 4)
         {
