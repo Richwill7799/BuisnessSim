@@ -9,8 +9,8 @@ public class HandleInput : MonoBehaviour
     public InputField inputFarmers;
     public Slider yearSlider;
 
-    public int numFarmers;
-    public int years;
+    private int numFarmers;
+    private int years;
 
     public void StartWithData() 
     {
@@ -20,5 +20,14 @@ public class HandleInput : MonoBehaviour
 
         // TODO load scene x
 
+    }
+
+    public int getNumFarmers() {
+        return numFarmers;
+    }
+
+    public int getYears() 
+    {
+        return years;
     }
 }
