@@ -34,4 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/TextMesh Pro/
+*.meta
 *.txt
+python - Verknüpfung.lnk

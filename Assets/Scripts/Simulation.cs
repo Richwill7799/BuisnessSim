@@ -172,7 +172,7 @@ public class Simulation : MonoBehaviour
             }
 
         //do the python script call
-        Run_cmd(@"..\..\..\python.exe", "CreateGraph.py");
+        Run_cmd(@"python.exe", "CreateGraph.py");
         //VisualizeGraph();
     }
 
