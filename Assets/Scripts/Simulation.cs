@@ -46,14 +46,18 @@ public class Simulation : MonoBehaviour
 
         //instantiate a field and it's variant
         int variant = 0;
-        for (int i = 0; i < countFarmers / 2; i++)
+
+
+        for (int i = 0; i < countFarmers / 2; i++) // only 2*n farmers
         {//each field
-            for (int j = 0; j < countFarmers / 2; j++)
+           
+            for (int j = 0; j < 2; j++)
             {//each variant of a field, in this case two different variants, this can be extended in future
                 Field field = new Field(variant);
                 fields.Add(field);
                 variants.Add(variant);
             }
+           
             variant += 1;
         }
 
