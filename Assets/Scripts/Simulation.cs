@@ -25,8 +25,18 @@ public class Simulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        year = 0;
-        countFarmers = 4; //TODO: this should be editable for the user at the beginning via input field, MIN: 4, MAX: ?   
+        
+        GameObject gameObject = GameObject.Find("SceneInfoObj");
+
+        //store user Input in year & countFarmers
+        year = gameObject.GetComponent<HandleInput>().years;
+        countFarmers = gameObject.GetComponent<HandleInput>().numFarmers; ; //TODO:  MIN: 4, MAX: ?   
+
+        if (countFarmers < 4)
+        {
+            countFarmers = 4;      // allways min. 4 farmers
+        }
+
         InstantiateLists();
     }
 

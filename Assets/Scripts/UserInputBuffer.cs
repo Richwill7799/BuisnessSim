@@ -6,6 +6,8 @@ public class UserInputBuffer : MonoBehaviour
 {
     private int countFarmers = 0;
     private int simulationRun = 0;
+
+
     
 
     public void ClickStartButton()
