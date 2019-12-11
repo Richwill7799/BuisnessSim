@@ -19,7 +19,7 @@ public class HandleInput : MonoBehaviour
     private int teamCount = 2;
     private int currentVariant = 2; // or 1 if 0 is valide
     private int bauernname = 1;
-
+    private int farmerCount = 4;
 
     private int offsetDown = 35;
     private int firstOffset = 35;
@@ -59,12 +59,16 @@ public class HandleInput : MonoBehaviour
         //farmer 3 (187.7 , 104.76 , 0)
         //farmer 4 (329.2 , 104.76 , 0)
 
+        farmerCount++;
         Button temp = Instantiate(buttonPrefab, new Vector3(187.7f, 104.76f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
+        temp.GetComponentInChildren<Text>().text = "Farmer"+farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
+        farmerCount++;
         temp = Instantiate(buttonPrefab, new Vector3(329.2f, 107.76f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
+        temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         offsetDown += firstOffset;
@@ -122,7 +126,7 @@ public class HandleInput : MonoBehaviour
         numFarmers = numFarmers - 2;
 
         addButton.GetComponent<Button>().interactable = true;
-
+        farmerCount = farmerCount - 2;
     }
 
     public int ChangeTeam()
