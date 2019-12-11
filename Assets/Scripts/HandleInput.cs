@@ -9,7 +9,7 @@ public class HandleInput : MonoBehaviour
     public InputField inputFarmers;
     public Slider yearSlider;
 
-    private int numFarmers;
+    private int numFarmers = 4;
     private int years;
     private int currentVariant = 2; // or 1 if 0 is valide
     private int bauernname = 1;
@@ -28,7 +28,7 @@ public class HandleInput : MonoBehaviour
 
     }
 
-    public void StartWithData() 
+    public void StartWithData()  // start simulation
     {
         // assign values from input 
         numFarmers = int.Parse(inputFarmers.text);
@@ -42,6 +42,7 @@ public class HandleInput : MonoBehaviour
     public void AddFarmers()
     {
         // TODO: Correct Position
+        
         Button temp = Instantiate(sinFarmPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         buttons.Add(temp);
         
@@ -68,11 +69,18 @@ public class HandleInput : MonoBehaviour
             bauernname++;
         }
 
+        numFarmers = numFarmers + 2;
+
+        // activate dlete Button
         
     }
 
     public void DeleteFarmers() 
     {
+        if (numFarmers == 6) // farmers.Count == 6
+        {
+            //TODO disable delete Button
+        }
 
         Destroy(buttons[buttons.Count]);
         buttons.Remove(buttons[buttons.Count]);
@@ -80,9 +88,23 @@ public class HandleInput : MonoBehaviour
         Destroy(buttons[buttons.Count]);
         buttons.Remove(buttons[buttons.Count]);
 
-        //TODO chnage offset
+        //TODO change offset
 
+       
 
+        numFarmers = numFarmers - 2;
+
+    }
+
+    public int ChangeTeam() 
+    {
+        // onClick change teamnum +1
+        return 0;
+    }
+
+    public void randomTeams() 
+    {
+        // random valid team Values
     }
 
     public int getNumFarmers() {
