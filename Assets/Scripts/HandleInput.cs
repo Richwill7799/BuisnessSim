@@ -21,6 +21,8 @@ public class HandleInput : MonoBehaviour
     private int bauernname = 1;
 
 
+    private int offsetDown = 35;
+    private int firstOffset = 35;
 
     private List<Field> fields = new List<Field>();
     private List<Farmer> farmers = new List<Farmer>();
@@ -54,15 +56,18 @@ public class HandleInput : MonoBehaviour
     public void AddFarmers()
     {
         // TODO: Correct Position
+        //farmer 3 (187.7 , 104.76 , 0)
+        //farmer 4 (329.2 , 104.76 , 0)
 
-        Button temp = Instantiate(buttonPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Button temp = Instantiate(buttonPrefab, new Vector3(187.7f, 104.76f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
         temp.transform.SetParent(canvas.transform, false);
 
-        temp = Instantiate(buttonPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        temp = Instantiate(buttonPrefab, new Vector3(329.2f, 107.76f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
         temp.transform.SetParent(canvas.transform, false);
 
+        offsetDown += firstOffset;
 
         //create 2 fields each time Add is pressed
         for (int j = 0; j < 2; j++)
@@ -111,7 +116,7 @@ public class HandleInput : MonoBehaviour
         Destroy(bufferB.gameObject);
 
         //TODO change offset
-
+        offsetDown -= firstOffset;
 
 
         numFarmers = numFarmers - 2;
