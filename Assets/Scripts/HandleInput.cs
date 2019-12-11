@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class HandleInput : MonoBehaviour
 {
+    //public variables
     public Button coopFarmPrefab;
     public Button sinFarmPrefab;
     public InputField inputFarmers;
     public Slider yearSlider;
 
+    //private Variables
     private int numFarmers = 4;
     private int years;
     private int teamCount = 2;
@@ -28,8 +30,8 @@ public class HandleInput : MonoBehaviour
     public void Start()
     {
 
-        addButton = GameObject.Find("Add");
-        deleteButton = GameObject.Find("Delete");
+        addButton = GameObject.Find("AddButton");
+        deleteButton = GameObject.Find("DeleteButton");
 
         addButton.GetComponent<Button>().interactable = true;
         deleteButton.GetComponent<Button>().interactable = false;
