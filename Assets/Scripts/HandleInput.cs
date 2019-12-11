@@ -7,7 +7,6 @@ public class HandleInput : MonoBehaviour
 {
     public Button coopFarmPrefab;
     public Button sinFarmPrefab;
-    //public Button deleteButton;
     public InputField inputFarmers;
     public Slider yearSlider;
 
@@ -23,11 +22,14 @@ public class HandleInput : MonoBehaviour
     private List<Farmer> farmers = new List<Farmer>();
     private List<Button> buttons = new List<Button>();
 
-    GameObject addButton = GameObject.Find("Add");
-    GameObject deleteButton = GameObject.Find("Delete");
+    private GameObject addButton;
+    private GameObject deleteButton;
 
     public void Start()
     {
+
+        addButton = GameObject.Find("Add");
+        deleteButton = GameObject.Find("Delete");
 
         addButton.GetComponent<Button>().interactable = true;
         deleteButton.GetComponent<Button>().interactable = false;
@@ -78,6 +80,7 @@ public class HandleInput : MonoBehaviour
         }
 
         numFarmers = numFarmers + 2;
+        currentVariant++;
 
         deleteButton.GetComponent<Button>().interactable = true;
 
@@ -92,12 +95,13 @@ public class HandleInput : MonoBehaviour
 
     public void DeleteFarmers() 
     {
-        if (numFarmers == 6) // farmers.Count == 6
+        if (numFarmers == 6) // farmers.Count == 6 ,; if there are only 4 farmers the delete button should be disabled
         {
-            //TODO disable delete Button
             deleteButton.GetComponent<Button>().interactable = false;
         }
 
+
+        // buttons.Count or Count - 1?
         Destroy(buttons[buttons.Count]);
         buttons.Remove(buttons[buttons.Count]);
 
@@ -109,6 +113,7 @@ public class HandleInput : MonoBehaviour
        
 
         numFarmers = numFarmers - 2;
+        currentVariant--;
 
         addButton.GetComponent<Button>().interactable = true;
      
