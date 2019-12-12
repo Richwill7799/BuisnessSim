@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HandleInput : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class HandleInput : MonoBehaviour
     private int numFarmers = 4;
     private int years;
     private int teamCount = 2;
-    private int currentVariant = 0; 
+    private int currentVariant = 0;
     private int bauernname = 1;
     private int farmerCount = 4;
     private int offsetDown = 35;
@@ -55,7 +56,7 @@ public class HandleInput : MonoBehaviour
                 bauernname++;
 
             }
-            
+
         }
 
         Debug.Log("FamresCount:" + farmers.Count + "    fields:" + fields.Count);
@@ -65,11 +66,10 @@ public class HandleInput : MonoBehaviour
     public void StartWithData()  // start simulation
     {
         // assign values from input 
-        
+
         years = (int)yearSlider.value;
 
-        // TODO load scene x
-
+        SceneManager.LoadScene(1);
     }
 
     // if AddButton is pressed
@@ -84,7 +84,7 @@ public class HandleInput : MonoBehaviour
 
         Button temp = Instantiate(sinFarmPrefab, new Vector3(187.7f, 104.76f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
-        temp.GetComponentInChildren<Text>().text = "Farmer"+farmerCount;
+        temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         farmerCount++;
@@ -96,12 +96,12 @@ public class HandleInput : MonoBehaviour
         offsetDown += firstOffset;
 
         //create 2 fields each time Add is pressed
-      
+
         for (int j = 0; j < 2; j++)
         {
             Field field = new Field(currentVariant); //Must be 3 first time 
             fields.Add(field);
-            
+
             //create 2 farmers each time Add is pressed
             Farmer farmer = new Farmer(field, 1, "bauer" + bauernname);
             farmers.Add(farmer);
@@ -110,7 +110,7 @@ public class HandleInput : MonoBehaviour
         }
 
         Debug.Log("FamresCount:" + farmers.Count + "    fields:" + fields.Count);
-        
+
         numFarmers = numFarmers + 2;
 
         deleteButton.GetComponent<Button>().interactable = true;
@@ -146,11 +146,11 @@ public class HandleInput : MonoBehaviour
         numFarmers = numFarmers - 2;
         currentVariant--;
         farmerCount = farmerCount - 2;
-    
+
         // Debug.Log("DELETEvar" + currentVariant);
-        
+
         addButton.GetComponent<Button>().interactable = true;
-       
+
     }
 
     public int ChangeTeam()
