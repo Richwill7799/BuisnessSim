@@ -69,7 +69,7 @@ public class HandleInput : MonoBehaviour
         temp.transform.SetParent(canvas.transform, false);
 
         farmerCount++;
-        temp = Instantiate(coopFarmPrefab, new Vector3(329.2f, 107.76f - offsetDown, 0), Quaternion.identity);
+        temp = Instantiate(coopFarmPrefab, new Vector3(329.2f, 104.76f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
         temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
@@ -81,18 +81,12 @@ public class HandleInput : MonoBehaviour
         {
             Field field = new Field(currentVariant);
             fields.Add(field);
-            //variants.Add(variant);
 
-        }
-
-        currentVariant++;
-
-        //create 2 farmers each time Add is pressed
-        foreach (Field field in fields)
-        {
+            //create 2 farmers each time Add is pressed
             Farmer farmer = new Farmer(field, 1, "bauer" + bauernname);
             farmers.Add(farmer);
             bauernname++;
+
         }
 
         numFarmers = numFarmers + 2;
@@ -115,30 +109,23 @@ public class HandleInput : MonoBehaviour
             deleteButton.GetComponent<Button>().interactable = false;
         }
 
-
-
-        // buttons.Count or Count - 1?
-        Destroy(buttons[buttons.Count]);
-        buttons.Remove(buttons[buttons.Count]);
-
-        /*Button bufferB = buttons[buttons.Count - 1];
-        buttons.Remove(bufferB);
-        Destroy(bufferB.gameObject);
-
-
-        bufferB = buttons[buttons.Count - 1];
-        buttons.Remove(bufferB);
-        Destroy(bufferB.gameObject);*/
-
-        //TODO change offset
+        for (int i = 0; i < 2; i++)
+        {
+            //Remove button in scene & List
+            Destroy(buttons[buttons.Count - 1].gameObject);
+            buttons.Remove(buttons[buttons.Count - 1]);
+            farmers.Remove(farmers[farmers.Count - 1]); // First remove Farmer that his field
+            fields.Remove(fields[fields.Count - 1]);
+        }
+        
+        //adjust vaiables
         offsetDown -= firstOffset;
-
-
         numFarmers = numFarmers - 2;
         currentVariant--;
+        farmerCount = farmerCount - 2;
 
         addButton.GetComponent<Button>().interactable = true;
-        farmerCount = farmerCount - 2;
+       
     }
 
     public int ChangeTeam()
