@@ -9,7 +9,6 @@ public class HandleInput : MonoBehaviour
     //public variables
     public Button coopFarmPrefab;
     public Button sinFarmPrefab;
-    public InputField inputFarmers;
 
     public Slider yearSlider;
     public Canvas canvas;
