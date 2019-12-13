@@ -13,8 +13,8 @@ public class Simulation : MonoBehaviour
     //private variables
     private int year;
     private int countFarmers;
-    private List<Field> fields = new List<Field>();
-    private List<Farmer> farmers = new List<Farmer>();
+    private List<Field> fields;
+    private List<Farmer> farmers;
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
 
@@ -27,9 +27,12 @@ public class Simulation : MonoBehaviour
     {
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         year = userInput.GetComponent<HandleInput>().getYears();
+        fields = gameObject.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
 
+
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
+
     }
 
     // Update is called once per frame
