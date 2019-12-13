@@ -26,7 +26,7 @@ public class Simulation : MonoBehaviour
     void Start()
     {
         
-        GameObject gameObject = GameObject.Find("SceneInfoObj");
+        GameObject gameObject = GameObject.FindGameObjectWithTag("Information");
 
         //store user Input in year & countFarmers
         year = gameObject.GetComponent<HandleInput>().getYears();

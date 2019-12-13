@@ -28,6 +28,7 @@ public class HandleInput : MonoBehaviour
     private List<Field> fields = new List<Field>();
     private List<Farmer> farmers = new List<Farmer>();
     private List<Button> buttons = new List<Button>();
+    
 
     //GameObjects
     private GameObject addButton;
@@ -59,7 +60,7 @@ public class HandleInput : MonoBehaviour
 
         }
 
-        Debug.Log("FamresCount:" + farmers.Count + "    fields:" + fields.Count);
+        Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
 
     }
 
@@ -68,10 +69,20 @@ public class HandleInput : MonoBehaviour
         // assign values from input 
 
         years = (int)yearSlider.value;
+        JoinFarmers();
 
         SceneManager.LoadScene(1);
     }
+    private void JoinFarmers()
+    {
+        foreach (Button button in buttons)
+        {
+            if (button.GetComponent<StartGroupFarmers>().isInTeam) {
 
+            }
+
+        }
+    }
     // if AddButton is pressed
     public void AddFarmers()
     {
@@ -153,6 +164,7 @@ public class HandleInput : MonoBehaviour
 
     }
 
+
     public int ChangeTeam()
     {
         // onClick change teamnum +1
@@ -178,5 +190,6 @@ public class HandleInput : MonoBehaviour
     public List<Field> GetFields() { return fields; }
     public List<Farmer> GetFarmers() { return farmers; }
     public List<Button> GetButtons() { return buttons; }
+
 
 }

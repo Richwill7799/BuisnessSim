@@ -7,7 +7,7 @@ using UnityEngine;
 public class Farmer : MonoBehaviour
 {
     private Field field; //his own field
-    private Farmer collabFarmer;
+    private List<Farmer> collabFarmer;
     public string name;
 
     public Farmer(Field field, int startValue, string name)
@@ -18,7 +18,7 @@ public class Farmer : MonoBehaviour
         this.name = name;
     }
 
-    public Farmer GetCollabFarmer()
+    public List<Farmer> GetCollabFarmer()
     {
         return collabFarmer;
     }
@@ -28,7 +28,7 @@ public class Farmer : MonoBehaviour
     }
     public void SetCollabFarmer(Farmer farmer)
     {
-        collabFarmer = farmer;
+        collabFarmer.Add(farmer);
     }
 
     public bool HasNoCollabFarmer()
