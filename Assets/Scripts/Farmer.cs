@@ -7,14 +7,13 @@ using UnityEngine;
 public class Farmer : MonoBehaviour
 {
     private Field field; //his own field
-    private List<Farmer> collabFarmer;
+    private List<Farmer> collabFarmer = new List<Farmer>();
     public string name;
 
     public Farmer(Field field, int startValue, string name)
     {
         this.field = field;
         this.field.SetStartValue(startValue);
-        collabFarmer = null;
         this.name = name;
     }
 
@@ -33,6 +32,6 @@ public class Farmer : MonoBehaviour
 
     public bool HasNoCollabFarmer()
     {
-        return collabFarmer is null;
+        return collabFarmer.Count == 0;
     }
 }
