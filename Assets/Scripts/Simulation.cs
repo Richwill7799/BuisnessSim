@@ -25,66 +25,16 @@ public class Simulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        GameObject gameObject = GameObject.FindGameObjectWithTag("Information");
-
-        //store user Input in year & countFarmers
-        year = gameObject.GetComponent<HandleInput>().getYears();
-        countFarmers = gameObject.GetComponent<HandleInput>().getNumFarmers() ; //TODO:  MIN: 4, MAX: ?   
- 
+        GameObject userInput = GameObject.FindGameObjectWithTag("Information");
+        year = userInput.GetComponent<HandleInput>().getYears();
         fields = gameObject.GetComponent<HandleInput>().GetFields();
-        farmers = gameObject.GetComponent<HandleInput>().GetFarmers();
+        farmers = userInput.GetComponent<HandleInput>().GetFarmers();
 
-        if (countFarmers < 4)
-        {
-            countFarmers = 4;      // allways min. 4 farmers
-        }
 
-        InstantiateLists();
+        countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
+
     }
 
-    private void InstantiateLists()
-    {
-        //first fields, second farmers with fields
-
-        //instantiate a field and it's variant
-        int variant = 0;
-
-
-        for (int i = 0; i < countFarmers / 2; i++) // only 2*n farmers
-        {//each field
-           
-            for (int j = 0; j < 2; j++)
-            {//each variant of a field, in this case two different variants, this can be extended in future
-                Field field = new Field(variant);
-                fields.Add(field);
-                variants.Add(variant);
-            }
-           
-            variant += 1;
-        }
-
-        //insantiate for each field a farmer, with startvalue as 1 kg
-        int bauernname = 1;
-        foreach (Field field in fields)
-        {
-            Farmer farmer = new Farmer(field, 1, "bauer" + bauernname);
-            farmers.Add(farmer);
-            bauernname++;
-        }
-
-        //instantiate the CollabFarmers - FIRST VERSION only two collab. farmers - TODO this should be done by the User in future
-        Farmer f = farmers[0];
-        for (int i = 1; i < farmers.Count; i++)
-        {
-            if (f.GetField().GetVariant() != farmers[i].GetField().GetVariant())
-            {
-                f.SetCollabFarmer(farmers[i]);
-                farmers[i].SetCollabFarmer(f);
-                break; //this is absolutely not wanted, this has to be rewrited!!!!**************
-            }
-        }
-    }
     // Update is called once per frame
     void Update()
     {
@@ -103,9 +53,9 @@ public class Simulation : MonoBehaviour
     private void PassYear()
     {
         SetMultiplier(); //set multiplier each year - to be edited with weather ect
-        foreach (Field field in fields)
+        foreach (Farmer farmer in farmers)
         {
-            field.SimulateField();
+            farmer.GetField().SimulateField();
         }
 
         Collaboration();
@@ -125,23 +75,33 @@ public class Simulation : MonoBehaviour
         Farmer fa = farmers.First(x => !x.HasNoCollabFarmer()); //this should find in any case a farmer. if not, the simulation is corrupt xD
         //get the collab farmer
         float harvestF = fa.GetField().GetHarvest();
-        float harvestCollabF = fa.GetCollabFarmer().GetField().GetHarvest();
-        float collabHarvest = (harvestF + harvestCollabF) / 2;
-        fa.GetField().SetHarvest(collabHarvest); // set the harvest now to tzhe half of the collab harvest
-        fa.GetCollabFarmer().GetField().SetHarvest(collabHarvest); // set the harvest now to tzhe half of the collab harvest
+        int allFarmers = fa.GetCollabFarmer().Count + 1; //+1 bc we have the first bauer
+        float collabHarvest = 0;
+        foreach (Farmer collabF in fa.GetCollabFarmer())
+        {
+            collabHarvest += collabF.GetField().GetHarvest();
+        }
+        collabHarvest = (harvestF + collabHarvest) / allFarmers;
+
+        fa.GetField().SetHarvest(collabHarvest); // set the harvest now to the half of the collab harvest
+        foreach (Farmer collabF in fa.GetCollabFarmer())// set the harvest now to the half of the collab harvest
+        {
+            collabF.GetField().SetHarvest(collabHarvest);
+        }
+        // set the harvest now to tzhe half of the collab harvest
         allCollabHarvest.Add(collabHarvest);
     }
 
     private void SetMultiplier() //set the multiplier for each variant of field, bc each field with equal variant has the same multiplier
     {
-        foreach (int variant in variants)
+        for (int v = 0; v < farmers.Count() / 2; v++)
         {
             float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
-            foreach (Field field in fields)
+            foreach (Farmer farmer in farmers)
             {
-                if (field.GetVariant() == variant)
+                if (farmer.GetField().GetVariant() == v)
                 {
-                    field.SetMultiplier(multiplier);
+                    farmer.GetField().SetMultiplier(multiplier);
                 }
             }
         }

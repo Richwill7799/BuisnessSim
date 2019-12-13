@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class HandleInput : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class HandleInput : MonoBehaviour
     private List<Field> fields = new List<Field>();
     private List<Farmer> farmers = new List<Farmer>();
     private List<Button> buttons = new List<Button>();
-    
+
+    private List<Farmer> collabFarmer = new List<Farmer>();
 
     //GameObjects
     private GameObject addButton;
@@ -36,6 +38,8 @@ public class HandleInput : MonoBehaviour
 
     public void Start()
     {
+        buttons.Add(GameObject.Find("FirstFB").GetComponent<Button>());
+        buttons.Add(GameObject.Find("SecondFB").GetComponent<Button>());
         addButton = GameObject.FindGameObjectWithTag("Add");
         deleteButton = GameObject.FindGameObjectWithTag("Delete");
 
@@ -52,7 +56,7 @@ public class HandleInput : MonoBehaviour
                 Field field = new Field(currentVariant);
                 fields.Add(field);
 
-                Farmer farmer = new Farmer(field, 1, "bauer" + bauernname);
+                Farmer farmer = new Farmer(field, 1, "Farmer" + bauernname);
                 farmers.Add(farmer);
                 bauernname++;
 
@@ -77,10 +81,26 @@ public class HandleInput : MonoBehaviour
     {
         foreach (Button button in buttons)
         {
-            if (button.GetComponent<StartGroupFarmers>().isInTeam) {
-
+            if (button.tag == "CoopButton")
+            {
+                if (button.GetComponent<StartGroupFarmers>().isInTeam)
+                {
+                    string text = button.GetComponentInChildren<Text>().text;
+                    //get the farmer, which name's ending is the same as the button [so farmer5(button) == farmer5 (name)]
+                    //I check the number in the End, to avoid Rechschreibfehler oder abweichende namen
+                    collabFarmer.Add(farmers.First(x => x.name[x.name.Length - 1].Equals(text[text.Length - 1])));
+                }
             }
-
+        }
+        foreach (Farmer farmer in collabFarmer)
+        {
+            foreach (Farmer collabFarmer in collabFarmer)
+            {
+                if (!farmer.name.Equals(collabFarmer.name))
+                {
+                    farmer.SetCollabFarmer(collabFarmer);
+                }
+            }
         }
     }
     // if AddButton is pressed
@@ -114,13 +134,13 @@ public class HandleInput : MonoBehaviour
             fields.Add(field);
 
             //create 2 farmers each time Add is pressed
-            Farmer farmer = new Farmer(field, 1, "bauer" + bauernname);
+            Farmer farmer = new Farmer(field, 1, "Farmer" + bauernname);
             farmers.Add(farmer);
             bauernname++;
 
         }
 
-        Debug.Log("FamresCount:" + farmers.Count + "    fields:" + fields.Count);
+        Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
 
         numFarmers = numFarmers + 2;
 
@@ -150,7 +170,7 @@ public class HandleInput : MonoBehaviour
             fields.Remove(fields[fields.Count - 1]);
         }
 
-        Debug.Log("FamresCount:" + farmers.Count + "    fields:" + fields.Count);
+        Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
 
         //adjust vaiables
         offsetDown -= firstOffset;
