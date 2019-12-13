@@ -27,7 +27,7 @@ public class Simulation : MonoBehaviour
     {
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         year = userInput.GetComponent<HandleInput>().getYears();
-        fields = gameObject.GetComponent<HandleInput>().GetFields();
+        fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
 
 
