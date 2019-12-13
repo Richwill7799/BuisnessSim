@@ -13,8 +13,8 @@ public class Simulation : MonoBehaviour
     //private variables
     private int year;
     private int countFarmers;
-    private List<Field> fields = new List<Field>();
-    private List<Farmer> farmers = new List<Farmer>();
+    private List<Field> fields;
+    private List<Farmer> farmers;
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
 
@@ -31,6 +31,9 @@ public class Simulation : MonoBehaviour
         //store user Input in year & countFarmers
         year = gameObject.GetComponent<HandleInput>().getYears();
         countFarmers = gameObject.GetComponent<HandleInput>().getNumFarmers() ; //TODO:  MIN: 4, MAX: ?   
+ 
+        fields = gameObject.GetComponent<HandleInput>().GetFields();
+        farmers = gameObject.GetComponent<HandleInput>().GetFarmers();
 
         if (countFarmers < 4)
         {
