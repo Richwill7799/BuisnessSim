@@ -94,6 +94,7 @@ public class Simulation : MonoBehaviour
         for (int v = 0; v < farmers.Count() / 2; v++)
         {
             float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
+            UnityEngine.Debug.Log(multiplier);
             foreach (Farmer farmer in farmers)
             {
                 if (farmer.GetField().GetVariant() == v)
