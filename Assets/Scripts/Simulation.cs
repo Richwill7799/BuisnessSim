@@ -50,9 +50,9 @@ public class Simulation : MonoBehaviour
     private void PassYear()
     {
         SetMultiplier(); //set multiplier each year - to be edited with weather ect
-        foreach (Field field in fields)
+        foreach (Farmer farmer in farmers)
         {
-            field.SimulateField();
+            farmer.GetField().SimulateField();
         }
 
         Collaboration();
@@ -94,11 +94,11 @@ public class Simulation : MonoBehaviour
         for (int v = 0; v < farmers.Count() / 2; v++)
         {
             float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
-            foreach (Field field in fields)
+            foreach (Farmer farmer in farmers)
             {
-                if (field.GetVariant() == v)
+                if (farmer.GetField().GetVariant() == v)
                 {
-                    field.SetMultiplier(multiplier);
+                    farmer.GetField().SetMultiplier(multiplier);
                 }
             }
         }
