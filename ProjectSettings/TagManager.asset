@@ -8,6 +8,9 @@ TagManager:
   - Delete
   - Information
   - CoopButton
+  - 1in
+  - 1out
+  - 1
   layers:
   - Default
   - TransparentFX

@@ -49,12 +49,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f200be737269143a59345140924585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   dodgeSpeed: 1
   minDistance: 3
   maxDistance: 10
   minWaitTime: 3
   maxWaitTime: 7
+  team: 0
+  teamTransform: {fileID: 0}
+  radius: 0
   helper: {fileID: 1279413412657782150}
 --- !u!50 &3487213267363305593
 Rigidbody2D:
