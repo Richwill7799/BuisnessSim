@@ -11,6 +11,7 @@ TagManager:
   - 1in
   - 1out
   - 1
+  - Wall
   layers:
   - Default
   - TransparentFX

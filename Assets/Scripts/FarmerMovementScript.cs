@@ -77,11 +77,11 @@ public class FarmerMovementScript : MonoBehaviour
         if (Random.Range(0f, 1f) < 0.5f)
             y *= -1f;
         goal = new Vector3(x,y,0);
-        if (team!=0&&towardsTeam) {
+        if (team!=0&&towardsTeam) { //Team handling
             goal += teamTransform.position - transform.position;
             goal = Vector3.Normalize(goal);
         }
-        if (waiting) 
+        if (waiting) //walktime
             walkUntil = waitEndTime + Random.Range(minDistance,maxDistance);
         else 
             walkUntil = Time.time + Random.Range(minDistance,maxDistance);
@@ -90,6 +90,11 @@ public class FarmerMovementScript : MonoBehaviour
     public void OnTriggerStay2D(Collider2D other){
         //return if the collider is of the own team
         if (team != 0 && (other.gameObject.tag.Equals(team + "in") || other.gameObject.tag.Equals(team + "out")||other.gameObject.tag.Equals(team.ToString()))) {
+            return;
+        }
+
+        if (other.tag.Equals("Wall")) {
+            goal += (dodgeSpeed)*(1/transform.position.magnitude)*Time.deltaTime*(-transform.position);
             return;
         }
         //continue changing direction if others stay too close
@@ -106,9 +111,14 @@ public class FarmerMovementScript : MonoBehaviour
         if (team != 0 && (other.gameObject.tag.Equals(team + "out")||other.gameObject.tag.Equals(team.ToString())))
             return;
 
+    
         //change direction when another farmer comes too close
         pickGoal(false);
-        goal -= other.transform.position - transform.position;
+        if (other.gameObject.tag.Equals("Wall")) {
+            goal -= transform.position/10;
+        }
+        else 
+            goal -= other.transform.position - transform.position;
         goal = Vector3.Normalize(goal);
         
     }
