@@ -5,6 +5,7 @@ using UnityEngine;
 public class FarmerClickBehaviour : MonoBehaviour
 {
     private bool clicked;
+    public GameObject field;
 
     // Start is called before the first frame update
     void Start()
@@ -14,14 +15,19 @@ public class FarmerClickBehaviour : MonoBehaviour
     }
 
     void OnMouseDown()
-    {
-        if (clicked)
+    {   
+        if (field.activeSelf)
         {
-            clicked = false;
+            //How to get enable from EmptyGameObject
+            //field.enable = false;
+            field.SetActive(false);
+
         }
         else
         {
-            clicked = true;
+            //How to get enable from EmptyGameObject
+            //field.enable = false;
+            field.SetActive(true);
         }
     }
 
@@ -31,12 +37,12 @@ public class FarmerClickBehaviour : MonoBehaviour
         
     }
 
-    void OnGUI()
+    /*void OnGUI()
     {
         if (clicked)
         {
             //GUI.DrawTexture(new Rect(10, 10, 100, 90), Texture ???);
             GUI.Box(new Rect(10, 10, 100, 90), "Field");
         }
-    }
+    }*/
 }

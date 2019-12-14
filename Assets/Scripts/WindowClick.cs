@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class WindowClick : MonoBehaviour
 {
-    private bool clicked;
- 
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        if(Input.GetKeyDown("k"))
-        {
-            if(clicked)
-            {
-                clicked = false;
-            }  
-            else
-            {
-                clicked = true;
-            }
-        }
+
     }
 
-    void OnGUI()
+    // Update is called once per frame
+    void Update()
     {
-        if(clicked)
-        {
-            //GUI.DrawTexture(new Rect(10, 10, 100, 90), Texture ???);
-            GUI.Box(new Rect(10, 10, 100, 90), "Field");
-        }
+
+    }
+
+    public void RemoveWindow()
+    {
+        this.gameObject.SetActive(false);
     }
 }
