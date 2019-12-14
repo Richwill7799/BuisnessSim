@@ -19,6 +19,9 @@ public class Simulation : MonoBehaviour
     private List<float> allCollabHarvest = new List<float>();
     private List<Transform> walkingFarmers = new List<Transform>();
 
+    private int weatherCount;
+    private SortedList<int, List<float>> variantenMultiplList = new SortedList<int, List<float>>();
+
     //public variables
     public Text Year;
     public Transform farmerPrefab;
@@ -36,11 +39,27 @@ public class Simulation : MonoBehaviour
 
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
 
-        
+
+        weatherCount = 5; //todo: This has to be specified in the next meeting :)
+        //instatiate list for weather graph
+        int variant = countFarmers / 2;
+        for (int i = 1; i <= variant; i++)
+        {
+            List<float> weather = new List<float>();
+            for (int j = 0; j < weatherCount; j++)
+            {
+                weather.Add(0);
+            }
+            variantenMultiplList.Add(i, weather);
+            //UnityEngine.Debug.Log(i);
+        }
+
         //Moving Bois creation
-        for (int i = 0; i < farmers.Count; i++) {
-            walkingFarmers.Insert(i,Instantiate(farmerPrefab,new Vector3(0,0),Quaternion.identity).transform);
-            if (!farmers[i].HasNoCollabFarmer()) {
+        for (int i = 0; i < farmers.Count; i++)
+        {
+            walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(0, 0), Quaternion.identity).transform);
+            if (!farmers[i].HasNoCollabFarmer())
+            {
                 walkingFarmers[i].tag = "1";
                 walkingFarmers[i].GetComponent<FarmerMovementScript>().team = 1;
                 walkingFarmers[i].GetComponent<FarmerMovementScript>().teamTransform = teamZone;
@@ -108,7 +127,7 @@ public class Simulation : MonoBehaviour
 
     private void SetMultiplier() //set the multiplier for each variant of field, bc each field with equal variant has the same multiplier
     {
-        for (int v = 0; v < farmers.Count() / 2; v++)
+        for (int v = 1; v <= farmers.Count() / 2; v++)
         {
             float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
             UnityEngine.Debug.Log(multiplier);
@@ -119,6 +138,9 @@ public class Simulation : MonoBehaviour
                     farmer.GetField().SetMultiplier(multiplier);
                 }
             }
+            //TODO SARAH: Map die multiplier auf 0-1 im abstand von weatherCount
+            //je nach bereich dann [v][0,...,1] += multiplier rechnen
+            variantenMultiplList[v][0] += multiplier;
         }
     }
 
