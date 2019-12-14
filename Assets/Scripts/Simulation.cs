@@ -17,9 +17,12 @@ public class Simulation : MonoBehaviour
     private List<Farmer> farmers;
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
+    private List<Transform> walkingFarmers = new List<Transform>();
 
     //public variables
     public Text Year;
+    public Transform farmerPrefab;
+    public Transform teamZone;
 
 
     // Start is called before the first frame update
@@ -33,6 +36,17 @@ public class Simulation : MonoBehaviour
 
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
 
+        
+        //Moving Bois creation
+        for (int i = 0; i < farmers.Count; i++) {
+            walkingFarmers.Insert(i,Instantiate(farmerPrefab,new Vector3(0,0),Quaternion.identity).transform);
+            if (!farmers[i].HasNoCollabFarmer()) {
+                walkingFarmers[i].tag = "1";
+                walkingFarmers[i].GetComponent<FarmerMovementScript>().team = 1;
+                walkingFarmers[i].GetComponent<FarmerMovementScript>().teamTransform = teamZone;
+                walkingFarmers[i].GetComponent<FarmerMovementScript>().SetTowardsTeam(true);
+            }
+        }
     }
 
     // Update is called once per frame

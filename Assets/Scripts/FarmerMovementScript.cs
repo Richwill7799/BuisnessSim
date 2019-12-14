@@ -38,6 +38,10 @@ public class FarmerMovementScript : MonoBehaviour
         
     }
 
+    public void SetTowardsTeam(bool towardsTeamNew){
+        towardsTeam = towardsTeamNew;
+    }
+
     // Update is called once per frame
     void Update()
     {
