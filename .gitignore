@@ -35,6 +35,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Assets/TextMesh Pro/
-*.meta
 *.txt
 python - Verknüpfung.lnk
+.idea/
