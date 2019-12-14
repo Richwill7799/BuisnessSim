@@ -24,12 +24,12 @@ public class InfoBehaviour : MonoBehaviour
     public void FieldClick()
     {
         Image field = GameObject.Find("Field").GetComponent<Image>();
-        Text text = GameObject.Find("Stats").GetComponent<Text>();
-        Button x = GameObject.Find("Button").GetComponent<Button>();
+        //Text text = GameObject.Find("Stats").GetComponent<Text>();
+        //Button x = GameObject.Find("Button").GetComponent<Button>();
 
         //Button does not get disabled
-        x.enabled = false;
-        text.enabled = false;
+        //x.enabled = false;
+        //text.enabled = false;
         field.enabled = false;
     }
 
