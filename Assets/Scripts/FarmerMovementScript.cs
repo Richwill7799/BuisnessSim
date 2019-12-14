@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FarmerMovementScript : MonoBehaviour
 {
@@ -10,6 +12,11 @@ public class FarmerMovementScript : MonoBehaviour
 
     public float minWaitTime, maxWaitTime;
 
+    public int team; //0 for no team, >=1 for a team
+    public Transform teamTransform;
+    public int radius;
+    
+
     //TODO delete after it all works, debug
     public Transform helper;
 
@@ -18,6 +25,8 @@ public class FarmerMovementScript : MonoBehaviour
 
     private float waitEndTime;
 
+    private bool towardsTeam;
+    
     private Rigidbody2D rigidbody2d;
 
     // Start is called before the first frame update
@@ -26,6 +35,7 @@ public class FarmerMovementScript : MonoBehaviour
         waitEndTime = 0f;
         rigidbody2d = GetComponent<Rigidbody2D>();
         pickGoal(false);
+        
     }
 
     // Update is called once per frame
@@ -33,12 +43,18 @@ public class FarmerMovementScript : MonoBehaviour
     {
         
         if(Time.time >waitEndTime){
+            
+            //team direction if the team is too far away
+            if (team!=0&&towardsTeam) {
+                goal += (dodgeSpeed)*(1/Vector3.Distance(teamTransform.position,transform.position))*Time.deltaTime*(teamTransform.position-transform.position);
+            }
+            
             //keep goaldirection normalized
             if(Vector3.Distance(goal, transform.position)>1f||Vector3.Distance(goal,transform.position)<1f)
                 goal = Vector3.Normalize(goal);
 
             //calculate progress in movement
-            float progress = speed*Time.deltaTime/Vector3.Distance(goal,transform.position);
+            float progress = speed*Time.deltaTime/Vector3.Distance(transform.position+goal,transform.position);
             
             //move farmer
             rigidbody2d.MovePosition(Vector3.Lerp(transform.position,transform.position +goal,progress));
@@ -61,6 +77,10 @@ public class FarmerMovementScript : MonoBehaviour
         if (Random.Range(0f, 1f) < 0.5f)
             y *= -1f;
         goal = new Vector3(x,y,0);
+        if (team!=0&&towardsTeam) {
+            goal += teamTransform.position - transform.position;
+            goal = Vector3.Normalize(goal);
+        }
         if (waiting) 
             walkUntil = waitEndTime + Random.Range(minDistance,maxDistance);
         else 
@@ -68,14 +88,44 @@ public class FarmerMovementScript : MonoBehaviour
     }
 
     public void OnTriggerStay2D(Collider2D other){
+        //return if the collider is of the own team
+        if (team != 0 && (other.gameObject.tag.Equals(team + "in") || other.gameObject.tag.Equals(team + "out")||other.gameObject.tag.Equals(team.ToString()))) {
+            return;
+        }
         //continue changing direction if others stay too close
-        goal -= (other.transform.position-transform.position)*(1/Vector3.Distance(other.transform.position,transform.position))*Time.deltaTime*dodgeSpeed;
+        goal -= (dodgeSpeed)*(1/Vector3.Distance(other.transform.position,transform.position))*Time.deltaTime*(other.transform.position-transform.position);
     }
 
     public void OnTriggerEnter2D(Collider2D other){
+        //return if the collider is of the own team
+        if (team != 0 && other.gameObject.tag.Equals(team + "in") ) {
+            towardsTeam = false;
+            return;
+        }
+
+        if (team != 0 && (other.gameObject.tag.Equals(team + "out")||other.gameObject.tag.Equals(team.ToString())))
+            return;
+
         //change direction when another farmer comes too close
         pickGoal(false);
         goal -= other.transform.position - transform.position;
         goal = Vector3.Normalize(goal);
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D other){
+        if (team == 0)
+            return;
+        if (other.gameObject.tag.Equals(team + "out")) {
+            //left team zone, reorient
+            pickGoal(false);
+            goal += other.transform.position - transform.position;
+            goal = Vector3.Normalize(goal);
+        }
+
+        if (other.gameObject.tag.Equals(team + "in")) {
+            //approaching team zone end, soft direction change
+            towardsTeam = true;
+        }
     }
 }
