@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Add
+  - Delete
+  - Information
+  - CoopButton
   layers:
   - Default
   - TransparentFX
