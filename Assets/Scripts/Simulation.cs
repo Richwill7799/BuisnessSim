@@ -205,7 +205,7 @@ public class Simulation : MonoBehaviour
                 writer.WriteLine("");
             }
         }
-
+        Run_cmd(@"python.exe", "CreateSpider.py");
 
         //File.WriteAllText(Environment.CurrentDirectory + "\\json", text);
         //UnityEngine.Debug.Log(variantenMultiplList);
