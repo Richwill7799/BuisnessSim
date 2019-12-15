@@ -129,7 +129,7 @@ public class Simulation : MonoBehaviour
     {
         for (int v = 1; v <= farmers.Count() / 2; v++)
         {
-            float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range from 0.001f/3.0f to this
+            float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range 
             UnityEngine.Debug.Log(multiplier);
             foreach (Farmer farmer in farmers)
             {
@@ -138,10 +138,36 @@ public class Simulation : MonoBehaviour
                     farmer.GetField().SetMultiplier(multiplier);
                 }
             }
-            //TODO SARAH: Map die multiplier auf 0-1 im abstand von weatherCount
+            //Map die multiplier auf 0-1 im abstand von weatherCount
+            float normalizedValue = multiplier / 1.5f;
             //je nach bereich dann [v][0,...,1] += multiplier rechnen
-            variantenMultiplList[v][0] += multiplier;
+            if (normalizedValue >= 0 && normalizedValue <= 0.20f)
+            {
+                variantenMultiplList[v][0]++;
+            }
+            else if (normalizedValue >= 0.21f && normalizedValue <= 0.40f)
+            {
+                variantenMultiplList[v][1]++;
+            }
+            else if (normalizedValue >= 0.41f && normalizedValue <= 0.60f)
+            {
+                variantenMultiplList[v][2]++;
+            }
+            else if (normalizedValue >= 0.61f && normalizedValue <= 0.80f)
+            {
+                variantenMultiplList[v][3]++;
+            }
+            else
+            {
+                variantenMultiplList[v][4]++;
+            }
         }
+    }
+
+    public void EndSimulation()
+    {
+        //extract variantenMultiplList as a txt file and get the resulting picture from python to unity
+
     }
 
     private void ValueTransferToPython()
