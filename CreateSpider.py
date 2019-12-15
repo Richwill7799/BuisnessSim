@@ -1,17 +1,41 @@
 # -*- coding: utf-8 -*-
 # Libraries
+import glob, os, numpy
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
- 
+
+#1,2,3,
+#0,0,0,
+#0,0,0,
+#26,22,21,
+#18,26,23,
+#24,20,24,
+
+dirname, filename = os.path.split(os.path.abspath(__file__))
+file = open('star.x')
+fileInput = file.read().splitlines()
+group=fileInput[0][:-1].split(',')
+var1=fileInput[1][:-1].split(',')
+var1= [int(i) for i in var1]
+var2=fileInput[2][:-1].split(',')
+var2= [int(i) for i in var2]
+var3=fileInput[3][:-1].split(',')
+var3= [int(i) for i in var3]
+var4=fileInput[4][:-1].split(',')
+var4= [int(i) for i in var4]
+var5=fileInput[5][:-1].split(',')
+var5= [int(i) for i in var5]
+
+#print(var1)
 # Set data
 df = pd.DataFrame({
-'group': ['A','B','C','D'],
-'var1': [38, 1.5, 30, 4],
-'var2': [29, 10, 9, 34],
-'var3': [8, 39, 23, 24],
-'var4': [7, 31, 33, 14],
-'var5': [28, 15, 32, 14]
+'group': group,
+'var1': var1,
+'var2': var2,
+'var3': var3,
+'var4': var4,
+'var5': var5
 })
  
 # ------- PART 1: Define a function that do a plot for one line of the dataset!
@@ -38,8 +62,8 @@ def make_spider( row, title, color):
      
     # Draw ylabels
     ax.set_rlabel_position(0)
-    plt.yticks([10,20,30], ["10","20","30"], color="grey", size=7)
-    plt.ylim(0,40)
+    plt.yticks([20,40,60], ["20","40","60"], color="grey", size=7)
+    plt.ylim(0,80)
      
     # Ind1
     values=df.loc[row].drop('group').values.flatten().tolist()
@@ -60,4 +84,5 @@ my_palette = plt.cm.get_cmap("Set2", len(df.index))
      
 # Loop to plot
 for row in range(0, len(df.index)):
-    make_spider(row=row, title='Farmer '+df['group'][row], color=my_palette(row))
+    make_spider(row=row, title='Variante '+df['group'][row], color=my_palette(row))
+plt.savefig(dirname + '\Assets\spider.png')

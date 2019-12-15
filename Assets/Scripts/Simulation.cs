@@ -76,7 +76,8 @@ public class Simulation : MonoBehaviour
         int buffer = 0;
         if (Input.GetKeyDown("space"))
         {
-            if (years == 0) {
+            if (years == 0)
+            {
                 EndSimulation();
             }
             else if (years > 10)
@@ -84,7 +85,8 @@ public class Simulation : MonoBehaviour
                 buffer = 10;
                 years = years - 10;
             }
-            else {
+            else
+            {
                 buffer = years;
                 years = 0;
             }
@@ -183,7 +185,30 @@ public class Simulation : MonoBehaviour
     {
         //extract variantenMultiplList as a txt file and get the resulting picture from python to unity
 
+        int variants = countFarmers / 2;
+        string fileName = "star.x";
+        using (StreamWriter writer = new StreamWriter(fileName, false)) //delete existing files and safe a new one
+        {
+            for (int i = 1; i <= variants; i++)
+            {
+                writer.Write(i + ",");
+            }
+            writer.WriteLine("");
+            for (int i = 0; i < 5; i++)
+            {
+                foreach (KeyValuePair<int, List<float>> kvp in variantenMultiplList)
+                {
 
+                    //insert all harvest into the file
+                    writer.Write(kvp.Value[i].ToString() + ",");
+                }
+                writer.WriteLine("");
+            }
+        }
+
+
+        //File.WriteAllText(Environment.CurrentDirectory + "\\json", text);
+        //UnityEngine.Debug.Log(variantenMultiplList);
 
         SceneManager.LoadScene(4);
     }
@@ -192,7 +217,7 @@ public class Simulation : MonoBehaviour
     {
         //delete existing txt files. 
         string workingDirectory = Environment.CurrentDirectory;
-        UnityEngine.Debug.Log(workingDirectory);
+        //UnityEngine.Debug.Log(workingDirectory);
         string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\", "*.txt");
 
         foreach (string file in files)
