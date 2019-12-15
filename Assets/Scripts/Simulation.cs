@@ -7,11 +7,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Diagnostics;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Simulation : MonoBehaviour
 {
     //private variables
-    private int year;
+    private int year = 0;
+    private int years;
     private int countFarmers;
     private List<Field> fields;
     private List<Farmer> farmers;
@@ -32,7 +34,7 @@ public class Simulation : MonoBehaviour
     void Start()
     {
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
-        year = userInput.GetComponent<HandleInput>().getYears();
+        years = userInput.GetComponent<HandleInput>().getYears();
         fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
 
@@ -71,9 +73,22 @@ public class Simulation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int buffer = 0;
         if (Input.GetKeyDown("space"))
         {
-            for (int i = 0; i < 10; i++)
+            if (years == 0) {
+                EndSimulation();
+            }
+            else if (years > 10)
+            {
+                buffer = 10;
+                years = years - 10;
+            }
+            else {
+                buffer = years;
+                years = 0;
+            }
+            for (int i = 0; i < buffer; i++)
             {
                 PassYear();
                 year++;
@@ -130,7 +145,7 @@ public class Simulation : MonoBehaviour
         for (int v = 1; v <= farmers.Count() / 2; v++)
         {
             float multiplier = UnityEngine.Random.Range(0.6f, 1.5f); //changed the range 
-            UnityEngine.Debug.Log(multiplier);
+            //UnityEngine.Debug.Log(multiplier);
             foreach (Farmer farmer in farmers)
             {
                 if (farmer.GetField().GetVariant() == v)
@@ -168,10 +183,22 @@ public class Simulation : MonoBehaviour
     {
         //extract variantenMultiplList as a txt file and get the resulting picture from python to unity
 
+
+
+        SceneManager.LoadScene(4);
     }
 
     private void ValueTransferToPython()
     {
+        //delete existing txt files. 
+        string workingDirectory = Environment.CurrentDirectory;
+        UnityEngine.Debug.Log(workingDirectory);
+        string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\", "*.txt");
+
+        foreach (string file in files)
+        {
+            System.IO.File.Delete(file);
+        }
         foreach (Farmer f in farmers)
         {
             if (f.HasNoCollabFarmer()) //get all farmers who doesn't collab
