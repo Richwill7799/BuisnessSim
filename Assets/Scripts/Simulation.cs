@@ -266,10 +266,13 @@ public class Simulation : MonoBehaviour
         {
             FileName = Path.Combine(cmd),//cmd is full path to python.exe
             Arguments = Path.Combine(args),//args is path to .py file and any cmd line args
+            CreateNoWindow = true,
             UseShellExecute = false,
             RedirectStandardOutput = true
         };
         Process process = Process.Start(start);
+        process.WaitForExit();
+
     }
 }
 //TODO: add again the corn visualization
