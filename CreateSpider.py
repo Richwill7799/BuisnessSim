@@ -31,11 +31,11 @@ var5= [int(i) for i in var5]
 # Set data
 df = pd.DataFrame({
 'group': group,
-'var1': var1,
-'var2': var2,
-'var3': var3,
-'var4': var4,
-'var5': var5
+'Goblinattac': var1,
+'Storm': var2,
+'Rain': var3,
+'Cloudy': var4,
+'Sun': var5
 })
  
 # ------- PART 1: Define a function that do a plot for one line of the dataset!
