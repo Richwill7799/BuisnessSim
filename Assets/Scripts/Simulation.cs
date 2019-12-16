@@ -156,7 +156,7 @@ public class Simulation : MonoBehaviour
                 }
             }
             //Map die multiplier auf 0-1 im abstand von weatherCount
-            float normalizedValue = multiplier / 1.5f;
+            float normalizedValue = (multiplier - 0.6f) / (1.5f - 0.6f);
             //je nach bereich dann [v][0,...,1] += multiplier rechnen
             if (normalizedValue >= 0 && normalizedValue <= 0.20f)
             {
