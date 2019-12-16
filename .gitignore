@@ -1,4 +1,4 @@
-/[Ll]ibrary/
+﻿/[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
@@ -38,4 +38,3 @@ Assets/TextMesh Pro/
 *.txt
 python - Verknüpfung.lnk
 .idea/
-*.meta
