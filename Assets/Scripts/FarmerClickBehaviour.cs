@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FarmerClickBehaviour : MonoBehaviour
 {
     public GameObject field;
-    public GameObject panel;
     private List<Farmer> farmers = new List<Farmer>();
 
     // Start is called before the first frame update
@@ -14,21 +13,17 @@ public class FarmerClickBehaviour : MonoBehaviour
     {
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
-        
     }
 
     void OnMouseDown()
     {   
-        if (panel.activeSelf)
+        if (field.activeSelf)
         {
-            //field.SetActive(false);
-            panel.SetActive(false);
-
+            field.SetActive(false);
         }
         else
         {
-            //field.SetActive(true);
-            panel.SetActive(false);
+            field.SetActive(true);
         }
     }
 
