@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {fileID: 3275584310616064788, guid: 4fd8b36a012c9784a868a1bd3e3fe5e5, type: 3}
+  panel: {fileID: 5271117309702997189, guid: a1f6d449b9eefcc4584d5d76d63656dd, type: 3}
 --- !u!1 &3487213267484024498
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {fileID: 3275584310616064788, guid: 4fd8b36a012c9784a868a1bd3e3fe5e5, type: 3}
+  panel: {fileID: 0}
 --- !u!1 &3491240086667453747
 GameObject:
   m_ObjectHideFlags: 0
