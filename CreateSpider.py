@@ -31,7 +31,7 @@ var5= [int(i) for i in var5]
 # Set data
 df = pd.DataFrame({
 'group': group,
-'Goblinattac': var1,
+'Goblinattack': var1,
 'Storm': var2,
 'Rain': var3,
 'Cloudy': var4,
@@ -47,7 +47,7 @@ def make_spider( row, title, color):
     N = len(categories)
      
     # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
-    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles = [n / float(N) * 2 * pi + 0.65 for n in range(N)]
     angles += angles[:1]
      
     # Initialise the spider plot
