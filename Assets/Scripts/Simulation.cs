@@ -71,33 +71,33 @@ public class Simulation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateSimulation()
     {
         int buffer = 0;
-        if (Input.GetKeyDown("space"))
+        //if (Input.GetKeyDown("space"))
+        //{
+        if (years == 0)
         {
-            if (years == 0)
-            {
-                EndSimulation();
-            }
-            else if (years > 10)
-            {
-                buffer = 10;
-                years = years - 10;
-            }
-            else
-            {
-                buffer = years;
-                years = 0;
-            }
-            for (int i = 0; i < buffer; i++)
-            {
-                PassYear();
-                year++;
-                Year.text = "Year " + year;
-            }
-            ValueTransferToPython();
+            EndSimulation();
         }
+        else if (years > 10)
+        {
+            buffer = 10;
+            years = years - 10;
+        }
+        else
+        {
+            buffer = years;
+            years = 0;
+        }
+        for (int i = 0; i < buffer; i++)
+        {
+            PassYear();
+            year++;
+            Year.text = "Year " + year;
+        }
+        ValueTransferToPython();
+        //}
     }
 
     private void PassYear()
