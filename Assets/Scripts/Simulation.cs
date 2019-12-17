@@ -271,7 +271,7 @@ public class Simulation : MonoBehaviour
             RedirectStandardOutput = true
         };
         Process process = Process.Start(start);
-        process.WaitForExit();
+        //process.WaitForExit();
 
     }
 }
