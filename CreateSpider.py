@@ -62,8 +62,8 @@ def make_spider( row, title, color):
      
     # Draw ylabels
     ax.set_rlabel_position(0)
-    plt.yticks([20,40,60], ["20","40","60"], color="grey", size=7)
-    plt.ylim(0,80)
+    plt.yticks([0,20,40], ["0","20","40"], color="grey", size=7)
+    plt.ylim(0,60)
      
     # Ind1
     values=df.loc[row].drop('group').values.flatten().tolist()
