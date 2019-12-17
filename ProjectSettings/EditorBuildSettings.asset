@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 71c7b7bbd023f8540aaa81caa5a5d26d
   - enabled: 1
-    path: Assets/Scenes/Prototype.unity
+    path: Assets/Scenes/MainGame.unity
     guid: 77e01df109404004bb6d7ba057b1a948
   - enabled: 1
     path: Assets/Scenes/Analysis.unity
@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Comparison.unity
     guid: f0c1c1f2d98921945a23f7c4827cd9b5
-  - enabled: 1
-    path: Assets/Scenes/UserInputSzene.unity
-    guid: b35efdccbc6fb5646bfc2afbd2f1f7fe
   m_configObjects: {}
