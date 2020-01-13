@@ -15,7 +15,7 @@ public class StartGroupFarmers : MonoBehaviour
         btn.onClick.AddListener(ClickToJoinAndLeftTeam);
     }
 
-
+    // TODO
     private void ClickToJoinAndLeftTeam()
     {
         clicked++;
@@ -23,17 +23,19 @@ public class StartGroupFarmers : MonoBehaviour
         if (clicked % 2 == 0)
         {
             isInTeam = false;
-            ColorBlock cb = btn.colors;
-            cb.normalColor = Color.white;
-            btn.colors = cb;
+            btn.image.color = Color.white;
+            //  ColorBlock cb = btn.colors;
+            //  cb.normalColor = Color.white;
+            //  btn.colors = cb;
         }
         //selected button
         else
         {
             isInTeam = true;
-            ColorBlock cb = btn.colors;
-            cb.normalColor = Color.gray;
-            btn.colors = cb;
+            btn.image.color = Color.gray; 
+            // ColorBlock cb = btn.colors;
+            // cb.normalColor = Color.gray;
+            // btn.colors = cb;
         }
     }
 }
