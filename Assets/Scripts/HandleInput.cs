@@ -22,8 +22,8 @@ public class HandleInput : MonoBehaviour
     private int currentVariant = 0;
     private int bauernname = 1;
     private int farmerCount = 4;
-    private int offsetDown = 35;
-    private int firstOffset = 35;
+    private int offsetDown = 70;
+    private int firstOffset = 70;
 
     //Lists
     private List<Field> fields = new List<Field>();
@@ -107,19 +107,19 @@ public class HandleInput : MonoBehaviour
     public void AddFarmers()
     {
         // TODO: Correct Position
-        //farmer 3 (187.7 , 104.76 , 0)
-        //farmer 4 (329.2 , 104.76 , 0)
+        //farmer 3 (436 , 333 , 0)
+        //farmer 4 (707 , 333 , 0)
 
         currentVariant++;
         farmerCount++;
 
-        Button temp = Instantiate(sinFarmPrefab, new Vector3(187.7f, 104.76f - offsetDown, 0), Quaternion.identity);
+        Button temp = Instantiate(sinFarmPrefab, new Vector3(436f, 333f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
         temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         farmerCount++;
-        temp = Instantiate(coopFarmPrefab, new Vector3(329.2f, 104.76f - offsetDown, 0), Quaternion.identity);
+        temp = Instantiate(coopFarmPrefab, new Vector3(707f, 333f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
         temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
