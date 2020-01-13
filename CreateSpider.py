@@ -80,7 +80,7 @@ my_dpi=96
 plt.figure(figsize=(1000/my_dpi, 1000/my_dpi), dpi=my_dpi)
      
 # Create a color palette:
-my_palette = plt.cm.get_cmap("Set2", len(df.index))
+my_palette = plt.cm.get_cmap("Dark2", len(df.index))
      
 # Loop to plot
 for row in range(0, len(df.index)):
