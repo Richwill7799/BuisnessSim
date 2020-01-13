@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class FarmerClickBehaviour : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class FarmerClickBehaviour : MonoBehaviour
     }
 
     void OnMouseDown()
-    {   
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (field.activeSelf)
         {
             field.SetActive(false);
@@ -30,6 +33,6 @@ public class FarmerClickBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
