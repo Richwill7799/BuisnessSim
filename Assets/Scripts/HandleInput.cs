@@ -13,7 +13,7 @@ public class HandleInput : MonoBehaviour
     public Button sinFarmPrefab;
 
     public Slider yearSlider;
-    public Canvas canvas;
+    public GameObject canvas;
 
     //private Variables
     private int numFarmers = 4;
