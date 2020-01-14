@@ -27,6 +27,7 @@ public class Simulation : MonoBehaviour
     //public variables
     public Text Year;
     public Transform farmerPrefab;
+    //public Sprite farmerSprite;
     public Transform teamZone;
 
 
@@ -59,6 +60,11 @@ public class Simulation : MonoBehaviour
         //Moving Bois creation
         for (int i = 0; i < farmers.Count; i++)
         {
+            //Would have been easy to change the Sprites color here, but I can't access the Sprite "Farmer" and then the SpriteRenderer
+            //Changing colour from a sketch ain't that easy => which data must be changed?
+            //Could access SpriteRenderer, if script would be attached to the Sprite "Farmer"
+            //SpriteRenderer renderer = farmerPrefab.GetComponent<SpriteRenderer>();
+            //renderer.material.SetColor("_Color", Color.red);
             walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(0, 0), Quaternion.identity).transform);
             if (!farmers[i].HasNoCollabFarmer())
             {

@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 3487213267484024500}
   - component: {fileID: 2142149482111673255}
   - component: {fileID: 8284156635379810455}
+  - component: {fileID: 4263112894896988187}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -383,6 +384,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {fileID: 0}
+--- !u!114 &4263112894896988187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487213267484024498}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ee41fb07fb05d4a8affe0c625e7708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3491240086667453747
 GameObject:
   m_ObjectHideFlags: 0
