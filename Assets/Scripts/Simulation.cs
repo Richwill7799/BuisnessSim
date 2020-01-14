@@ -164,25 +164,25 @@ public class Simulation : MonoBehaviour
             //Map die multiplier auf 0-1 im abstand von weatherCount
             float normalizedValue = (multiplier - 0.6f) / (1.5f - 0.6f);
             //je nach bereich dann [v][0,...,1] += multiplier rechnen
-            if (normalizedValue >= 0 && normalizedValue <= 0.20f)
+            if (normalizedValue >= 0 && normalizedValue <= 0.20f) //goblinattac
             {
                 variantenMultiplList[v][0]++;
             }
-            else if (normalizedValue >= 0.21f && normalizedValue <= 0.40f)
+            else if (normalizedValue >= 0.21f && normalizedValue <= 0.40f) //Storm
             {
                 variantenMultiplList[v][1]++;
             }
-            else if (normalizedValue >= 0.41f && normalizedValue <= 0.60f)
+            else if (normalizedValue >= 0.41f && normalizedValue <= 0.60f) //Rain
             {
                 variantenMultiplList[v][2]++;
             }
-            else if (normalizedValue >= 0.61f && normalizedValue <= 0.80f)
+            else if (normalizedValue >= 0.61f && normalizedValue <= 0.80f) //cloudy
             {
                 variantenMultiplList[v][3]++;
             }
             else
             {
-                variantenMultiplList[v][4]++;
+                variantenMultiplList[v][4]++; //Sun
             }
         }
     }
