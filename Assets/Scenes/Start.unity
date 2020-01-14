@@ -232,7 +232,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 307063d714d1df0448eceb0d81ea272f, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
 --- !u!222 &41533538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -514,6 +514,22 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e2428de0fd9f0a47abb9767d675b0cc,
+        type: 3}
+    - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3da35f2893e6e4c9909b88b74db43b, type: 3}
 --- !u!224 &321330210 stripped
@@ -634,7 +650,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 307063d714d1df0448eceb0d81ea272f, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -642,7 +658,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
 --- !u!222 &395709594
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1188,6 +1204,22 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e2428de0fd9f0a47abb9767d675b0cc,
+        type: 3}
+    - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01800b86c553b34380bfc625928863f, type: 3}
 --- !u!224 &1051429720 stripped
@@ -1307,8 +1339,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4673a0ffaf34fa64888e7001abde85ff, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 307063d714d1df0448eceb0d81ea272f, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1316,7 +1348,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
 --- !u!222 &1420425239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1625,6 +1657,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Farmer1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e2428de0fd9f0a47abb9767d675b0cc,
+        type: 3}
+    - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01800b86c553b34380bfc625928863f, type: 3}
@@ -2132,6 +2180,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Farmer2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e2428de0fd9f0a47abb9767d675b0cc,
+        type: 3}
+    - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3da35f2893e6e4c9909b88b74db43b, type: 3}
