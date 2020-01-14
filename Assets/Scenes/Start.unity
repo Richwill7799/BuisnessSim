@@ -371,7 +371,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 87ec494f11c309b499b6093e665cb5e0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- Delete'
+  m_Text: Delete
 --- !u!222 &211765311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -961,7 +961,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 87ec494f11c309b499b6093e665cb5e0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -973,7 +973,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: + Add
+  m_Text: Add
 --- !u!222 &569694164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2301,6 +2301,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2393024484900568437, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_Text
+      value: Farmer1
+      objectReference: {fileID: 0}
     - target: {fileID: 2393024485247549276, guid: e01800b86c553b34380bfc625928863f,
         type: 3}
       propertyPath: m_Sprite
@@ -2316,11 +2321,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2393024484900568437, guid: e01800b86c553b34380bfc625928863f,
-        type: 3}
-      propertyPath: m_Text
-      value: Farmer1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01800b86c553b34380bfc625928863f, type: 3}
@@ -2821,6 +2821,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6190824042088269806, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190824040952605211, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Text
+      value: Farmer2
+      objectReference: {fileID: 0}
     - target: {fileID: 6190824042088269807, guid: 0f3da35f2893e6e4c9909b88b74db43b,
         type: 3}
       propertyPath: m_Sprite
@@ -2836,16 +2846,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6190824042088269806, guid: 0f3da35f2893e6e4c9909b88b74db43b,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6190824040952605211, guid: 0f3da35f2893e6e4c9909b88b74db43b,
-        type: 3}
-      propertyPath: m_Text
-      value: Farmer2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3da35f2893e6e4c9909b88b74db43b, type: 3}
