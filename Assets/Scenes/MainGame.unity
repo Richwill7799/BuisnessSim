@@ -255,6 +255,7 @@ MonoBehaviour:
   Year: {fileID: 1508381243}
   farmerPrefab: {fileID: 3487213267363305590, guid: 8ba0b06126221ee458c19fa6fe37286b,
     type: 3}
+  graph: {fileID: 1382424975}
   teamZone: {fileID: 52055100}
 --- !u!114 &287449511
 MonoBehaviour:
@@ -988,7 +989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6fb0c80258a5b864682dda905c7fdeb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 311de3fe54851754f82d875646ec76f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

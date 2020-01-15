@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using System.Diagnostics;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class Simulation : MonoBehaviour
 {
@@ -20,13 +21,14 @@ public class Simulation : MonoBehaviour
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
     private List<Transform> walkingFarmers = new List<Transform>();
-
+    private Image graphImage;
     private int weatherCount;
     private SortedList<int, List<float>> variantenMultiplList = new SortedList<int, List<float>>();
 
     //public variables
     public Text Year;
     public Transform farmerPrefab;
+    public GameObject graph;
     //public Sprite farmerSprite;
     public Transform teamZone;
 
@@ -38,7 +40,7 @@ public class Simulation : MonoBehaviour
         years = userInput.GetComponent<HandleInput>().getYears();
         fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
-
+        graphImage = graph.GetComponent<Image>();
 
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
 
@@ -104,6 +106,9 @@ public class Simulation : MonoBehaviour
         }
         ValueTransferToPython();
         //}
+        Image img = Resources.Load<Image>("graph.png");
+        graphImage = img; 
+        //Canvas.ForceUpdateCanvases();
     }
 
     private void PassYear()
@@ -190,10 +195,10 @@ public class Simulation : MonoBehaviour
     public void EndSimulation()
     {
         //extract variantenMultiplList as a txt file and get the resulting picture from python to unity
-
+        string workingDirectory = Environment.CurrentDirectory;
         int variants = countFarmers / 2;
         string fileName = "star.x";
-        using (StreamWriter writer = new StreamWriter(fileName, false)) //delete existing files and safe a new one
+        using (StreamWriter writer = new StreamWriter(workingDirectory + "\\Assets\\Resources\\" + fileName, false)) //delete existing files and safe a new one
         {
             for (int i = 1; i <= variants; i++)
             {
@@ -211,6 +216,8 @@ public class Simulation : MonoBehaviour
                 writer.WriteLine("");
             }
         }
+        //AssetDatabase.ImportAsset(fileName);
+
         Run_cmd(@"python.exe", "CreateSpider.py");
 
         //File.WriteAllText(Environment.CurrentDirectory + "\\json", text);
@@ -224,7 +231,7 @@ public class Simulation : MonoBehaviour
         //delete existing txt files. 
         string workingDirectory = Environment.CurrentDirectory;
         //UnityEngine.Debug.Log(workingDirectory);
-        string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\", "*.txt");
+        string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\Assets\\Resources\\", "*.txt");
 
         foreach (string file in files)
         {
@@ -236,24 +243,27 @@ public class Simulation : MonoBehaviour
             {
                 //create new textfile with name of farmer as name
                 string fileName = f.name + ".txt";
-                using (StreamWriter writer = new StreamWriter(fileName, false)) //delete existing files and safe a new one
+                using (StreamWriter writer = new StreamWriter(workingDirectory+ "\\Assets\\Resources\\" + fileName, false)) //delete existing files and safe a new one
                 {
                     foreach (float h in f.GetField().allHarvest)
                     {
                         //insert all harvest into the file
                         writer.WriteLine(h);
                     }
+                   
                 }
+                //AssetDatabase.ImportAsset(fileName);
             }
         }
         //create new textfield for the collabHarvest -> TODO edit it for multiple collabFarmers, or userinput collab farmers to change the collab (?)
         string fileNamee = "collabFarmers.txt";
-        using (StreamWriter writer = new StreamWriter(fileNamee, false)) //delete existing files and safe a new one
+        using (StreamWriter writer = new StreamWriter(workingDirectory +"\\Assets\\Resources\\" + fileNamee, false)) //delete existing files and safe a new one
             foreach (float h in allCollabHarvest)
             {
                 //insert all harvest into the file
                 writer.WriteLine(h);
             }
+        //AssetDatabase.ImportAsset(fileNamee);
 
         //do the python script call
         Run_cmd(@"python.exe", "CreateGraph.py");

@@ -30,4 +30,8 @@ public class ButtonBehaviour : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
