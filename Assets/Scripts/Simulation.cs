@@ -17,7 +17,7 @@ public class Simulation : MonoBehaviour
     private int years;
     private int countFarmers;
     private List<Field> fields;
-    private List<Farmer> farmers;
+    public List<Farmer> farmers;
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
     private List<Transform> walkingFarmers = new List<Transform>();
@@ -68,11 +68,15 @@ public class Simulation : MonoBehaviour
             //SpriteRenderer renderer = farmerPrefab.GetComponent<SpriteRenderer>();
             //renderer.material.SetColor("_Color", Color.red);
             walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(0, 0), Quaternion.identity).transform);
+            // assing id of the farmer to farmer
+            walkingFarmers[i].GetComponent<FarmerMovementScript>().id = i;
+            walkingFarmers[i].GetComponent<FarmerMovementScript>().s = this;
             if (!farmers[i].HasNoCollabFarmer())
             {
                 walkingFarmers[i].tag = "1";
                 walkingFarmers[i].GetComponent<FarmerMovementScript>().team = 1;
                 walkingFarmers[i].GetComponent<FarmerMovementScript>().teamTransform = teamZone;
+            
                 walkingFarmers[i].GetComponent<FarmerMovementScript>().SetTowardsTeam(true);
             }
         }
