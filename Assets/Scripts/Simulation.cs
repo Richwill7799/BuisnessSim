@@ -21,7 +21,7 @@ public class Simulation : MonoBehaviour
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
     private List<Transform> walkingFarmers = new List<Transform>();
-    private Image graphImage;
+    private Sprite graphImg;
     private int weatherCount;
     private SortedList<int, List<float>> variantenMultiplList = new SortedList<int, List<float>>();
 
@@ -40,7 +40,7 @@ public class Simulation : MonoBehaviour
         years = userInput.GetComponent<HandleInput>().getYears();
         fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
-        graphImage = graph.GetComponent<Image>();
+        graphImg = graph.GetComponent<Image>().sprite;
 
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
 
@@ -106,9 +106,41 @@ public class Simulation : MonoBehaviour
         }
         ValueTransferToPython();
         //}
-        Image img = Resources.Load<Image>("graph.png");
-        graphImage = img; 
+        //Image img = Load(Application.streamingAssetsPath +"\\graph.png");
+
+
+        DirectoryInfo directoryInfo = new DirectoryInfo(Application.streamingAssetsPath);
+        FileInfo[] allFiles = directoryInfo.GetFiles("*.png");
+        foreach (FileInfo file in allFiles)
+        {
+            if (file.Name.Contains("graph"))
+            {
+                StartCoroutine("LoadGraphImage", file);
+            }
+        }
+         
         //Canvas.ForceUpdateCanvases();
+    }
+
+    IEnumerator LoadGraphImage(FileInfo graphImage)
+    {
+        //1
+        if (graphImage.Name.Contains("meta"))
+        {
+            yield break;
+        }
+        //2
+        else
+        {
+            string graphWithoutExtension = Path.GetFileNameWithoutExtension(graphImage.ToString());
+            string[] playerNameData = graphWithoutExtension.Split(" "[0]);
+            //3
+            string wwwPlayerFilePath = "file://" + graphImage.FullName.ToString();
+            WWW www = new WWW(wwwPlayerFilePath);
+            yield return www;
+            //4
+            graphImg = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f,0.5f));
+        }
     }
 
     private void PassYear()
@@ -198,7 +230,7 @@ public class Simulation : MonoBehaviour
         string workingDirectory = Environment.CurrentDirectory;
         int variants = countFarmers / 2;
         string fileName = "star.x";
-        using (StreamWriter writer = new StreamWriter(workingDirectory + "\\Assets\\Resources\\" + fileName, false)) //delete existing files and safe a new one
+        using (StreamWriter writer = new StreamWriter(workingDirectory + "\\Assets\\StreamingAssets\\" + fileName, false)) //delete existing files and safe a new one
         {
             for (int i = 1; i <= variants; i++)
             {
@@ -216,7 +248,7 @@ public class Simulation : MonoBehaviour
                 writer.WriteLine("");
             }
         }
-        //AssetDatabase.ImportAsset(fileName);
+        //AssetDatabase.ImportAsset("Assets\\Resources\\" + fileName);
 
         Run_cmd(@"python.exe", "CreateSpider.py");
 
@@ -231,7 +263,7 @@ public class Simulation : MonoBehaviour
         //delete existing txt files. 
         string workingDirectory = Environment.CurrentDirectory;
         //UnityEngine.Debug.Log(workingDirectory);
-        string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\Assets\\Resources\\", "*.txt");
+        string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\Assets\\StreamingAssets\\", "*.txt");
 
         foreach (string file in files)
         {
@@ -243,7 +275,7 @@ public class Simulation : MonoBehaviour
             {
                 //create new textfile with name of farmer as name
                 string fileName = f.name + ".txt";
-                using (StreamWriter writer = new StreamWriter(workingDirectory+ "\\Assets\\Resources\\" + fileName, false)) //delete existing files and safe a new one
+                using (StreamWriter writer = new StreamWriter(workingDirectory+ "\\Assets\\StreamingAssets\\" + fileName, false)) //delete existing files and safe a new one
                 {
                     foreach (float h in f.GetField().allHarvest)
                     {
@@ -252,18 +284,18 @@ public class Simulation : MonoBehaviour
                     }
                    
                 }
-                //AssetDatabase.ImportAsset(fileName);
+                //AssetDatabase.ImportAsset("Assets\\Resources\\" +  fileName);
             }
         }
         //create new textfield for the collabHarvest -> TODO edit it for multiple collabFarmers, or userinput collab farmers to change the collab (?)
         string fileNamee = "collabFarmers.txt";
-        using (StreamWriter writer = new StreamWriter(workingDirectory +"\\Assets\\Resources\\" + fileNamee, false)) //delete existing files and safe a new one
+        using (StreamWriter writer = new StreamWriter(workingDirectory + "\\Assets\\StreamingAssets\\" + fileNamee, false)) //delete existing files and safe a new one
             foreach (float h in allCollabHarvest)
             {
                 //insert all harvest into the file
                 writer.WriteLine(h);
             }
-        //AssetDatabase.ImportAsset(fileNamee);
+        //AssetDatabase.ImportAsset("Assets\\Resources\\" + fileNamee);
 
         //do the python script call
         Run_cmd(@"python.exe", "CreateGraph.py");
