@@ -6,8 +6,14 @@ using UnityEngine.UI;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    public void StartLoad()
-    {
+    public void StartLoad(){
+        Destroy(GameObject.Find("GameManagerObj"));
+        Destroy(GameObject.Find("SceneInfoObj"));
+
+
+        //foreach (DontDestroyOnLoad gameobj in GameObject.FindObjectsOfType<DontDestroyOnLoad>()) {
+        //    Destroy(gameobj);
+        //}
         SceneManager.LoadScene(0);
     }
 
