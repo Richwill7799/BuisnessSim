@@ -13,6 +13,7 @@ public class StartGroupFarmers : MonoBehaviour
     {
         btn = gameObject.GetComponent<Button>();
         btn.onClick.AddListener(ClickToJoinAndLeftTeam);
+        ClickToJoinAndLeftTeam();
     }
 
     // TODO
