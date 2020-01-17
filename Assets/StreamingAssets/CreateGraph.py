@@ -13,7 +13,7 @@ colormap = matplotlib.cm.Dark2.colors
 #print(dirname)
 #print(filename)
 i = 0
-for filename in glob.glob(dirname + '\Assets\StreamingAssets\*.txt'): #get every file that's has .txt in the folder
+for filename in glob.glob(dirname + '/*.txt'): #get every file that's has .txt in the folder
     xValue = 1;
     file = open(filename)
     fileInput = file.read().splitlines()
@@ -32,7 +32,7 @@ for filename in glob.glob(dirname + '\Assets\StreamingAssets\*.txt'): #get every
     i=i+1
 plt.legend(filenames)
 #print(dirname)
-plt.savefig('C:\Users\sakob\Desktop\Test\BuisnessSim_Data\StreamingAssets')
+plt.savefig(dirname + '/graph.png')
 #plt.savefig(dirname + '\Assets\StreamingAssets\graph.png')
 #print("Current working dir : %s" % os.getcwd())
 #print("end")
