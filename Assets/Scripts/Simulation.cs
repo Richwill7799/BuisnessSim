@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using Random = UnityEngine.Random;
 
 public class Simulation : MonoBehaviour
 {
@@ -66,8 +67,8 @@ public class Simulation : MonoBehaviour
             //Could access SpriteRenderer, if script would be attached to the Sprite "Farmer"
             //SpriteRenderer renderer = farmerPrefab.GetComponent<SpriteRenderer>();
             //renderer.material.SetColor("_Color", Color.red);
-            walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(0, 0), Quaternion.identity).transform);
-            // assing id of the farmer to farmer
+            walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(Random.Range(-10,10), Random.Range(-5,5)), Quaternion.identity).transform);
+            // assign id of the farmer to farmer
             walkingFarmers[i].GetComponent<FarmerMovementScript>().id = i;
             walkingFarmers[i].GetComponent<FarmerMovementScript>().s = this;
             if (!farmers[i].HasNoCollabFarmer())
