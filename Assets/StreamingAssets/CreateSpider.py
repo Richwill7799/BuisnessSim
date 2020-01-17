@@ -13,7 +13,7 @@ from math import pi
 #24,20,24,
 
 dirname, filename = os.path.split(os.path.abspath(__file__))
-file = open(dirname + '\Assets\Resources\star.x')
+file = open(dirname + '\star.x')
 fileInput = file.read().splitlines()
 group=fileInput[0][:-1].split(',')
 var1=fileInput[1][:-1].split(',')
@@ -85,4 +85,4 @@ my_palette = plt.cm.get_cmap("Dark2", len(df.index))
 # Loop to plot
 for row in range(0, len(df.index)):
     make_spider(row=row, title='Variante '+df['group'][row], color=my_palette(row))
-plt.savefig(dirname + '\Assets\Resources\spider.png')
+plt.savefig(dirname + '/spider.png')

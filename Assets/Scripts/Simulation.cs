@@ -21,14 +21,15 @@ public class Simulation : MonoBehaviour
     private List<int> variants = new List<int>();
     private List<float> allCollabHarvest = new List<float>();
     private List<Transform> walkingFarmers = new List<Transform>();
-    private Image graphImage;
     private int weatherCount;
     private SortedList<int, List<float>> variantenMultiplList = new SortedList<int, List<float>>();
+    private string folderPath;
+    private string[] filePaths;
 
     //public variables
     public Text Year;
     public Transform farmerPrefab;
-    public GameObject graph;
+    public Image graph;
     //public Sprite farmerSprite;
     public Transform teamZone;
 
@@ -40,8 +41,6 @@ public class Simulation : MonoBehaviour
         years = userInput.GetComponent<HandleInput>().getYears();
         fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
-        graphImage = graph.GetComponent<Image>();
-
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
 
 
@@ -86,8 +85,7 @@ public class Simulation : MonoBehaviour
     public void UpdateSimulation()
     {
         int buffer = 0;
-        //if (Input.GetKeyDown("space"))
-        //{
+
         if (years == 0)
         {
             EndSimulation();
@@ -109,11 +107,51 @@ public class Simulation : MonoBehaviour
             Year.text = "Year " + year;
         }
         ValueTransferToPython();
-        //}
-        Image img = Resources.Load<Image>("graph.png");
-        graphImage = img; 
-        //Canvas.ForceUpdateCanvases();
+
+        ImageLoader();
     }
+    void ImageLoader()
+    {
+        //Create an array of file paths from which to choose
+        folderPath = Application.streamingAssetsPath;  //Get path of folder
+        filePaths = Directory.GetFiles(folderPath, "*.png"); // Get all files of type .png in this folder
+
+        //Converts desired path into byte array
+
+        byte[] pngBytes = System.IO.File.ReadAllBytes(filePaths[0]);
+
+        //Creates texture and loads byte array data to create image
+        Texture2D tex = new Texture2D(2, 2);
+        tex.LoadImage(pngBytes);
+
+        //Creates a new Sprite based on the Texture2D
+        Sprite fromTex = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+
+
+        //Assigns the UI sprite
+        graph.sprite = fromTex;
+    }
+
+    //IEnumerator LoadGraphImage(FileInfo graphImage)
+    //{
+    //    //1
+    //    if (graphImage.Name.Contains("meta"))
+    //    {
+    //        yield break;
+    //    }
+    //    //2
+    //    else
+    //    {
+    //        string graphWithoutExtension = Path.GetFileNameWithoutExtension(graphImage.ToString());
+    //        string[] playerNameData = graphWithoutExtension.Split(" "[0]);
+    //        //3
+    //        string wwwPlayerFilePath = "file://" + graphImage.FullName.ToString();
+    //        WWW www = new WWW(wwwPlayerFilePath);
+    //        yield return www;
+    //        //4
+    //        graphImg = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f,0.5f));
+    //    }
+    //}
 
     private void PassYear()
     {
@@ -202,7 +240,7 @@ public class Simulation : MonoBehaviour
         string workingDirectory = Environment.CurrentDirectory;
         int variants = countFarmers / 2;
         string fileName = "star.x";
-        using (StreamWriter writer = new StreamWriter(workingDirectory + "\\Assets\\Resources\\" + fileName, false)) //delete existing files and safe a new one
+        using (StreamWriter writer = new StreamWriter(Application.streamingAssetsPath + "\\"+ fileName, false)) //delete existing files and safe a new one
         {
             for (int i = 1; i <= variants; i++)
             {
@@ -220,14 +258,14 @@ public class Simulation : MonoBehaviour
                 writer.WriteLine("");
             }
         }
-        //AssetDatabase.ImportAsset(fileName);
+        //AssetDatabase.ImportAsset("Assets\\Resources\\" + fileName);
 
-        Run_cmd(@"python.exe", "CreateSpider.py");
-
-        //File.WriteAllText(Environment.CurrentDirectory + "\\json", text);
+        Run_cmd(@"python.exe", Application.streamingAssetsPath + "\\CreateSpider.py");
+        //ImageLoader(1);
         //UnityEngine.Debug.Log(variantenMultiplList);
 
         SceneManager.LoadScene(4);
+
     }
 
     private void ValueTransferToPython()
@@ -235,7 +273,7 @@ public class Simulation : MonoBehaviour
         //delete existing txt files. 
         string workingDirectory = Environment.CurrentDirectory;
         //UnityEngine.Debug.Log(workingDirectory);
-        string[] files = System.IO.Directory.GetFiles(workingDirectory + "\\Assets\\Resources\\", "*.txt");
+        string[] files = System.IO.Directory.GetFiles(Application.streamingAssetsPath + "\\" , "*.txt");
 
         foreach (string file in files)
         {
@@ -247,37 +285,31 @@ public class Simulation : MonoBehaviour
             {
                 //create new textfile with name of farmer as name
                 string fileName = f.name + ".txt";
-                using (StreamWriter writer = new StreamWriter(workingDirectory+ "\\Assets\\Resources\\" + fileName, false)) //delete existing files and safe a new one
+                using (StreamWriter writer = new StreamWriter(Application.streamingAssetsPath +"\\"+ fileName, false)) //delete existing files and safe a new one
                 {
                     foreach (float h in f.GetField().allHarvest)
                     {
                         //insert all harvest into the file
                         writer.WriteLine(h);
                     }
-                   
+
                 }
-                //AssetDatabase.ImportAsset(fileName);
+                //AssetDatabase.ImportAsset("Assets\\Resources\\" +  fileName);
             }
         }
         //create new textfield for the collabHarvest -> TODO edit it for multiple collabFarmers, or userinput collab farmers to change the collab (?)
         string fileNamee = "collabFarmers.txt";
-        using (StreamWriter writer = new StreamWriter(workingDirectory +"\\Assets\\Resources\\" + fileNamee, false)) //delete existing files and safe a new one
+        using (StreamWriter writer = new StreamWriter(Application.streamingAssetsPath + "\\"  + fileNamee, false)) //delete existing files and safe a new one
             foreach (float h in allCollabHarvest)
             {
                 //insert all harvest into the file
                 writer.WriteLine(h);
             }
-        //AssetDatabase.ImportAsset(fileNamee);
+        //AssetDatabase.ImportAsset("Assets\\Resources\\" + fileNamee);
 
         //do the python script call
-        Run_cmd(@"python.exe", "CreateGraph.py");
-        //VisualizeGraph();
-    }
+        Run_cmd(@"python.exe", Application.streamingAssetsPath + "\\CreateGraph.py");
 
-    private void VisualizeGraph()
-    {
-        //get the graph picture and update it in game (=
-        //this not necessary at moment, but improvement is wanted due to it's loading so long
     }
 
     private void Run_cmd(string cmd, string args)
@@ -295,31 +327,3 @@ public class Simulation : MonoBehaviour
 
     }
 }
-//TODO: add again the corn visualization
-
-//Debug.Log("Corn: " + corn[0] + " | " + corn[1] + " | " + corn[2] + " | " + corn[3] + " with multipliers: " + multiplier[0] + " | " + multiplier[1]);
-//for (int i = 0; i < 4; i++)
-//{
-//    Scores[i].text = "Score " + (i + 1) + ": " + corn[i];
-//}
-//Mults[0].text = "Multiplier: " + multiplier[0];
-//Mults[1].text = "Multiplier: " + multiplier[1];
-
-//float scaling = 0.25f;
-//float tempCorn = 1;
-//for (int i = 0; i < 4; i++)
-//{
-//    tempCorn = corn[i];
-//    while (tempCorn > 11)
-//    {
-//        scaling += 0.5f;
-//        tempCorn /= 10;
-//    }
-//    cornPrefab.transform.localScale *= Mathf.Min(scaling, 2);
-//    for (int j = 0; j < tempCorn; j++)
-//    {
-//        Instantiate(cornPrefab, feldpos[i].position + new Vector3(Random.Range(-2f, 2f), Random.Range(-1f, 1f), 1), Quaternion.identity);
-//    }
-//    cornPrefab.transform.localScale = new Vector3(1, 1, 1);
-//    scaling = 0.25f;
-//}
