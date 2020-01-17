@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class FarmerMovementScript : MonoBehaviour
 {
-
+    public Simulation s;
     public float speed, dodgeSpeed;
     public float minDistance, maxDistance; 
 
@@ -15,7 +15,7 @@ public class FarmerMovementScript : MonoBehaviour
     public int team; //0 for no team, >=1 for a team
     public Transform teamTransform;
     public int radius;
-    
+    public int id;
 
     //TODO delete after it all works, debug
     public Transform helper;
