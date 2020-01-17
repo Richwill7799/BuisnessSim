@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
+[System.Serializable]
 public class FarmerMovementScript : MonoBehaviour
 {
+
     public Simulation s;
     public float speed, dodgeSpeed;
     public float minDistance, maxDistance; 
