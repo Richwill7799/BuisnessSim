@@ -773,6 +773,11 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1226569617587256601, guid: 8ba0b06126221ee458c19fa6fe37286b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba0b06126221ee458c19fa6fe37286b, type: 3}
 --- !u!1001 &4963371182870554187
