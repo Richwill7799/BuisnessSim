@@ -70,7 +70,7 @@ public class Simulation : MonoBehaviour
             walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(Random.Range(-10,10), Random.Range(-5,5)), Quaternion.identity).transform);
             // assign id of the farmer to farmer
             walkingFarmers[i].GetComponent<FarmerMovementScript>().id = i;
-            walkingFarmers[i].GetComponent<FarmerMovementScript>().s = this;
+            //walkingFarmers[i].GetComponent<FarmerMovementScript>().s = this;
             if (!farmers[i].HasNoCollabFarmer())
             {
                 walkingFarmers[i].tag = "1";
@@ -204,11 +204,14 @@ public class Simulation : MonoBehaviour
             {
                 if (farmer.GetField().GetVariant() == v)
                 {
-                    farmer.GetField().SetMultiplier(multiplier);
+                    if (!farmer.GetField().IsWeatherChangedByUser())
+                    {
+                        farmer.GetField().SetMultiplier(multiplier);
+                    }
                 }
             }
             //Map die multiplier auf 0-1 im abstand von weatherCount
-            float normalizedValue = (multiplier - 0.6f) / (1.5f - 0.6f);
+            float normalizedValue = (farmers.First(x => x.GetField().GetVariant() == v).GetField().GetMultiplier() - 0.6f) / (1.5f - 0.6f);
             //je nach bereich dann [v][0,...,1] += multiplier rechnen
             if (normalizedValue >= 0 && normalizedValue <= 0.20f) //goblinattac
             {

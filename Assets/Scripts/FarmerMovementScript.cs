@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class FarmerMovementScript : MonoBehaviour
 {
     
-    public Simulation s;
+    //public Simulation s;
     public float speed, dodgeSpeed;
     public float minDistance, maxDistance; 
 

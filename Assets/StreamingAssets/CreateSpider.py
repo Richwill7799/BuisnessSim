@@ -23,7 +23,7 @@ var5= [int(i) for i in var5]
 # Set data
 df = pd.DataFrame({
 'group': group,
-'Goblinattack': var1,
+'Deerattac': var1,
 'Storm': var2,
 'Rain': var3,
 'Cloudy': var4,

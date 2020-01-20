@@ -13,6 +13,7 @@ public class Field : MonoBehaviour
     private float startValue;
     private float multiplier; //changes every year
     private int variant;
+    private bool weatherChangedByUser;
 
     public List<float> allHarvest = new List<float>();
 
@@ -21,6 +22,7 @@ public class Field : MonoBehaviour
         harvest = 0;
         startValue = 0;
         multiplier = 0;
+        weatherChangedByUser = false;
         this.variant = variant; //this is the variant of the field. means: every two fields are different, so we have variant 0 and variant 1 e.g. four fields, where each two are equivalent, so we have 2 fields with variant 0 and two fields with variant 1 
     }
 
@@ -64,5 +66,13 @@ public class Field : MonoBehaviour
     public int GetVariant()
     {
         return variant;
+    }
+
+    public bool IsWeatherChangedByUser() {
+        return weatherChangedByUser;
+    }
+
+    public void SetWeatherChangeByUser(bool weatherChanged) {
+        weatherChangedByUser = weatherChanged;
     }
 }
