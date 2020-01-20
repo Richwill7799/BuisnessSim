@@ -156,7 +156,7 @@ public class Simulation : MonoBehaviour
 
     private void PassYear()
     {
-        SetMultiplier(); //set multiplier each year - to be edited with weather ect
+        SetMultiplier(); //set multiplier each year
         foreach (Farmer farmer in farmers)
         {
             farmer.GetField().SimulateField();
@@ -165,12 +165,10 @@ public class Simulation : MonoBehaviour
         Collaboration();
 
         //Debug 
-        foreach (Farmer f in farmers)
-        {
-            UnityEngine.Debug.Log(f.name + ": " + f.GetField().GetHarvest());
-        }
-
-
+        //foreach (Farmer f in farmers)
+        //{
+        //    UnityEngine.Debug.Log(f.name + ": " + f.GetField().GetHarvest());
+        //}
     }
 
     private void Collaboration()

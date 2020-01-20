@@ -5,13 +5,10 @@ import matplotlib
 import os
 import matplotlib.pyplot as plt
 
-filenames = []
-
-#script = os.path.realpath(__file__)  
-dirname, filename = os.path.split(os.path.abspath(__file__))
+filenames = [] #naming for the graph
+dirname, filename = os.path.split(os.path.abspath(__file__)) #get the relative path
 colormap = matplotlib.cm.Dark2.colors
-#print(dirname)
-#print(filename)
+
 i = 0
 for filename in glob.glob(dirname + '/*.txt'): #get every file that's has .txt in the folder
     xValue = 1;
@@ -20,19 +17,23 @@ for filename in glob.glob(dirname + '/*.txt'): #get every file that's has .txt i
     yValues = []
     xValues = []
     for line in fileInput:
-        #plotgraph, each line is one y - value *** todo
+        #plotgraph, each line is one y - value
         
         xValues.append(xValue)
         yValue = float(line.replace(',','.'))
         yValues.append(yValue)
         xValue += 1
-    plt.plot(xValues, yValues, color = colormap[i])
+    plt.plot(xValues, yValues, color = colormap[i]) #plot one line in a specific color
     base = os.path.basename(filename)
     filenames.append(os.path.splitext(base)[0])
     i=i+1
 plt.legend(filenames)
-#print(dirname)
 plt.savefig(dirname + '/graph.png')
+
 #plt.savefig(dirname + '\Assets\StreamingAssets\graph.png')
 #print("Current working dir : %s" % os.getcwd())
 #print("end")
+#print(dirname)
+#script = os.path.realpath(__file__)
+#print(filename)
+#print(dirname)
