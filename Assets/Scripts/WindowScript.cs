@@ -37,7 +37,7 @@ public class WindowScript : MonoBehaviour
         int id = mv.id;
         Farmer farmer = farmers[id];
         Field f = farmer.GetField();
-        UnityEngine.Debug.Log("bauer mit id " + id + "geklickt ");
+        //UnityEngine.Debug.Log("bauer mit id " + id + "geklickt ");
         switch (type)
         {
             case 1:
