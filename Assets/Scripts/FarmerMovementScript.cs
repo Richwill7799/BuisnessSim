@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 //[System.Serializable]
 public class FarmerMovementScript : MonoBehaviour
@@ -17,7 +18,7 @@ public class FarmerMovementScript : MonoBehaviour
     public Transform teamTransform;
     public int radius;
     public int id;
-
+    public GameObject nameMe;
     //TODO delete after it all works, debug
     public Transform helper;
 
@@ -30,13 +31,17 @@ public class FarmerMovementScript : MonoBehaviour
     
     private Rigidbody2D rigidbody2d;
 
+    private List<Farmer> farmers;
+
     // Start is called before the first frame update
     void Start()
     {
         waitEndTime = 0f;
         rigidbody2d = GetComponent<Rigidbody2D>();
         pickGoal(false);
-        
+        GameObject userInput = GameObject.FindGameObjectWithTag("Information");
+        farmers = userInput.GetComponent<HandleInput>().GetFarmers();
+        nameMe.GetComponent<TextMesh>().text = farmers[id].name;
     }
 
     public void SetTowardsTeam(bool towardsTeamNew){
@@ -73,8 +78,9 @@ public class FarmerMovementScript : MonoBehaviour
 
         //TODO delete later, debug
         helper.position = goal+transform.position;
+        nameMe.transform.position = transform.position + new Vector3(-0.3f,1f,0f);
     }
-
+  
     private void pickGoal(bool waiting){
         //pick a new goal direction at random and determine how long to walk
         float x = Random.Range(-1f,1f);

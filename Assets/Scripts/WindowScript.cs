@@ -24,6 +24,7 @@ public class WindowScript : MonoBehaviour
 
     private void Update()
     {
+        
         if (this.isActiveAndEnabled)
         {
             int id = mv.id;
@@ -45,22 +46,22 @@ public class WindowScript : MonoBehaviour
                 f.SetWeatherChangeByUser(true);
                 break;
             case 2:
-                f.SetMultiplier(0.78f);
+                f.SetMultiplier(0.79f);
                 f.SetWeatherChangeByUser(true);
                 //storm
                 break;
             case 3:
-                f.SetMultiplier(0.96f);
+                f.SetMultiplier(0.97f);
                 f.SetWeatherChangeByUser(true);
                 //rain
                 break;
             case 4:
-                f.SetMultiplier(1.14f);
+                f.SetMultiplier(1.15f);
                 f.SetWeatherChangeByUser(true);
                 //cloud
                 break;
             case 5:
-                f.SetMultiplier(1.32f);
+                f.SetMultiplier(1.33f);
                 f.SetWeatherChangeByUser(true);
                 //sun
                 break;
@@ -98,7 +99,7 @@ public class WindowScript : MonoBehaviour
             weather.sprite = Resources.Load<Sprite>("skybox_clouds");
             //rain
         }
-        else if (weatherCondition >= 1.4 && weatherCondition < 1.32)
+        else if (weatherCondition >= 1.14 && weatherCondition < 1.32)
         {
             field.sprite = Resources.Load<Sprite>("field_full_clean");
             weather.sprite = Resources.Load<Sprite>("skybox_clouds");
