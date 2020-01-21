@@ -98,7 +98,7 @@ public class WindowScript : MonoBehaviour
         else if (weatherCondition >= 0.96 && weatherCondition < 1.14)
         {
             field.sprite = Resources.Load<Sprite>("field_sowed_clean");
-            weather.sprite = Resources.Load<Sprite>("skybox_clouds");
+            weather.sprite = Resources.Load<Sprite>("skybox_rain");
             //rain
         }
         else if (weatherCondition >= 1.14 && weatherCondition < 1.32)
