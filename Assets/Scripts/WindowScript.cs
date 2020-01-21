@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class WindowScript : MonoBehaviour
 {
     public FarmerMovementScript mv;
-
+    public Text name;
     public Image field;
     public Image weather;
 
@@ -18,19 +18,21 @@ public class WindowScript : MonoBehaviour
         this.gameObject.SetActive(false);
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
+        
     }
 
 
 
     private void Update()
     {
-        
+        int id = mv.id;
+        Farmer farmer = farmers[id];
         if (this.isActiveAndEnabled)
         {
-            int id = mv.id;
-            Farmer farmer = farmers[id];
+            
             LoadImageOfField(farmer.GetField().GetMultiplier(), farmer);
         }
+        name.text ="Name: "+ farmer.name;
     }
     public void EditWeather(int type)
     {
