@@ -191,10 +191,10 @@ public class HandleInput : MonoBehaviour
         }
 
         Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
-        for (int i = 0; i < farmers.Count; i++)
+        /*for (int i = 0; i < farmers.Count; i++)
         {
             Debug.Log(farmers[i].name);
-        }
+        }*/
 
         //adjust vaiables
         offsetDown -= firstOffset;

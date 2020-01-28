@@ -20,6 +20,7 @@ public class FarmerMovementScript : MonoBehaviour
     public int id;
     public GameObject nameMe;
     public GameObject myCoat; //The color of the coat
+    //public GameObject makeItStop; //Where is my Animation?
     //TODO delete after it all works, debug
     public Transform helper;
 
@@ -90,6 +91,23 @@ public class FarmerMovementScript : MonoBehaviour
         //TODO delete later, debug
         helper.position = goal+transform.position;
         nameMe.transform.position = transform.position + new Vector3(-0.3f,1f,0f);
+
+        //TODO Make it stop! Don't forget to delete the = in the second if!
+
+        if((goal+transform.position).x < transform.position.x && myCoat.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            //makeItStop.GetComponent<Animation>().Play();
+            myCoat.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if((goal + transform.position).x >= transform.position.x && myCoat.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            //makeItStop.GetComponent<Animation>().Play();
+            myCoat.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        /*else if((goal + transform.position).x == transform.position.x)
+        {
+            makeItStop.GetComponent<Animation>().Stop();
+        }*/
     }
   
     private void pickGoal(bool waiting){
