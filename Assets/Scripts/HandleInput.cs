@@ -20,7 +20,7 @@ public class HandleInput : MonoBehaviour
     private int years;
     private int teamCount = 2;
     private int currentVariant = 0;
-    private int bauernname = 1;
+    private int bauernname = 0;
     private int farmerCount = 4;
     private int offsetDown = 70;
     private int firstOffset = 70;
@@ -73,9 +73,9 @@ public class HandleInput : MonoBehaviour
                 Field field = new Field(currentVariant);
                 fields.Add(field);
 
+                bauernname++;
                 Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant]);
                 farmers.Add(farmer);
-                bauernname++;
 
             }
 
@@ -152,10 +152,10 @@ public class HandleInput : MonoBehaviour
             fields.Add(field);
 
             //create 2 farmers each time Add is pressed
+            bauernname++;
             Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant]);
 
             farmers.Add(farmer);
-            bauernname++;
 
         }
 
@@ -184,12 +184,17 @@ public class HandleInput : MonoBehaviour
         {
             //Remove button in scene & List
             Destroy(buttons[buttons.Count - 1].gameObject);
-            buttons.Remove(buttons[buttons.Count - 1]);
-            farmers.Remove(farmers[farmers.Count - 1]); // First remove Farmer that his field
-            fields.Remove(fields[fields.Count - 1]);
+            buttons.RemoveAt(buttons.Count - 1);
+            farmers.RemoveAt(farmers.Count - 1); // First remove Farmer that his field
+            fields.RemoveAt(fields.Count - 1);
+            bauernname--;
         }
 
         Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
+        for (int i = 0; i < farmers.Count; i++)
+        {
+            Debug.Log(farmers[i].name);
+        }
 
         //adjust vaiables
         offsetDown -= firstOffset;
