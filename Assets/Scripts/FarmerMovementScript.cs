@@ -34,10 +34,11 @@ public class FarmerMovementScript : MonoBehaviour
     private Rigidbody2D rigidbody2d;
 
     private List<Farmer> farmers;
+    private Animator animator;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        animator = GetComponentInChildren<Animator>();
         waitEndTime = 0f;
         rigidbody2d = GetComponent<Rigidbody2D>();
         pickGoal(false);
@@ -108,6 +109,7 @@ public class FarmerMovementScript : MonoBehaviour
         {
             makeItStop.GetComponent<Animation>().Stop();
         }*/
+        animator.SetBool("walk",Time.time>waitEndTime);
     }
   
     private void pickGoal(bool waiting){
@@ -153,7 +155,8 @@ public class FarmerMovementScript : MonoBehaviour
 
     
         //change direction when another farmer comes too close
-        pickGoal(false);
+        waitEndTime = Time.time+Random.Range(0f, 2f);
+        pickGoal(true);
         if (other.gameObject.tag.Equals("Wall")) {
             goal -= transform.position/10;
         }
@@ -168,7 +171,8 @@ public class FarmerMovementScript : MonoBehaviour
             return;
         if (other.gameObject.tag.Equals(team + "out")) {
             //left team zone, reorient
-            pickGoal(false);
+            waitEndTime = Time.time+Random.Range(0f,2f);
+            pickGoal(true);
             goal += other.transform.position - transform.position;
             goal = Vector3.Normalize(goal);
         }
