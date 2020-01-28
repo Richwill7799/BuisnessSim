@@ -530,6 +530,11 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6190824040952605211, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Text
+      value: Farmer 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3da35f2893e6e4c9909b88b74db43b, type: 3}
 --- !u!224 &321330210 stripped
@@ -1368,6 +1373,11 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2393024484900568437, guid: e01800b86c553b34380bfc625928863f,
+        type: 3}
+      propertyPath: m_Text
+      value: Farmer 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01800b86c553b34380bfc625928863f, type: 3}
 --- !u!224 &1051429720 stripped
@@ -1863,7 +1873,7 @@ PrefabInstance:
     - target: {fileID: 2393024484900568437, guid: e01800b86c553b34380bfc625928863f,
         type: 3}
       propertyPath: m_Text
-      value: Farmer1
+      value: Farmer 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01800b86c553b34380bfc625928863f, type: 3}
@@ -2385,7 +2395,7 @@ PrefabInstance:
     - target: {fileID: 6190824040952605211, guid: 0f3da35f2893e6e4c9909b88b74db43b,
         type: 3}
       propertyPath: m_Text
-      value: Farmer2
+      value: Farmer 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3da35f2893e6e4c9909b88b74db43b, type: 3}
@@ -2443,6 +2453,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 387850345922726589, guid: 2544b4cdbd86d934e92645f4e032d78a,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 722606666}
+    - target: {fileID: 387850345922726589, guid: 2544b4cdbd86d934e92645f4e032d78a,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 494711570}
     - target: {fileID: 387850345922726586, guid: 2544b4cdbd86d934e92645f4e032d78a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2498,16 +2518,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 387850345922726589, guid: 2544b4cdbd86d934e92645f4e032d78a,
-        type: 3}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 722606666}
-    - target: {fileID: 387850345922726589, guid: 2544b4cdbd86d934e92645f4e032d78a,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 494711570}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2544b4cdbd86d934e92645f4e032d78a, type: 3}
 --- !u!1001 &893242481413515005

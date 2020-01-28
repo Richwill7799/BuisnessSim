@@ -63,7 +63,6 @@ plt.figure(figsize=(1000/my_dpi, 1000/my_dpi), dpi=my_dpi)
      
 # Create a color palette:
 my_palette = plt.cm.get_cmap("Dark2", len(df.index))
-     
 # Loop to plot
 for row in range(0, len(df.index)):
     make_spider(row=row, title='Variante '+df['group'][row], color=my_palette(row))

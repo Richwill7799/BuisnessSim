@@ -19,6 +19,8 @@ public class FarmerMovementScript : MonoBehaviour
     public int radius;
     public int id;
     public GameObject nameMe;
+    public GameObject myCoat; //The color of the coat
+    //public GameObject makeItStop; //Where is my Animation?
     //TODO delete after it all works, debug
     public Transform helper;
 
@@ -42,6 +44,16 @@ public class FarmerMovementScript : MonoBehaviour
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
         nameMe.GetComponent<TextMesh>().text = farmers[id].name;
+        //Maybe here finally coloring
+        if (team == 0)
+        {
+            nameMe.GetComponent<TextMesh>().color = farmers[id].color;
+        }
+        else
+        {
+            nameMe.GetComponent<TextMesh>().color = new Color(0.116f, 0.624f, 0.467f);
+        }
+        myCoat.GetComponent<SpriteRenderer>().color = farmers[id].color;
     }
 
     public void SetTowardsTeam(bool towardsTeamNew){
@@ -79,6 +91,23 @@ public class FarmerMovementScript : MonoBehaviour
         //TODO delete later, debug
         helper.position = goal+transform.position;
         nameMe.transform.position = transform.position + new Vector3(-0.3f,1f,0f);
+
+        //TODO Make it stop! Don't forget to delete the = in the second if!
+
+        if((goal+transform.position).x < transform.position.x && myCoat.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            //makeItStop.GetComponent<Animation>().Play();
+            myCoat.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if((goal + transform.position).x >= transform.position.x && myCoat.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            //makeItStop.GetComponent<Animation>().Play();
+            myCoat.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        /*else if((goal + transform.position).x == transform.position.x)
+        {
+            makeItStop.GetComponent<Animation>().Stop();
+        }*/
     }
   
     private void pickGoal(bool waiting){
