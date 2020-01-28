@@ -9,12 +9,14 @@ public class Farmer : MonoBehaviour
     private Field field; //his own field
     private List<Farmer> collabFarmer = new List<Farmer>();
     public string name;
+    public Color color;
 
-    public Farmer(Field field, int startValue, string name)
+    public Farmer(Field field, int startValue, string name, Color color)
     {
         this.field = field;
         this.field.SetStartValue(startValue);
         this.name = name;
+        this.color = color;
     }
 
     public List<Farmer> GetCollabFarmer()

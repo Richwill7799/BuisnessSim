@@ -19,6 +19,7 @@ public class FarmerMovementScript : MonoBehaviour
     public int radius;
     public int id;
     public GameObject nameMe;
+    public GameObject myCoat; //The color of the coat
     //TODO delete after it all works, debug
     public Transform helper;
 
@@ -42,6 +43,16 @@ public class FarmerMovementScript : MonoBehaviour
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
         nameMe.GetComponent<TextMesh>().text = farmers[id].name;
+        //Maybe here finally coloring
+        if (team == 0)
+        {
+            nameMe.GetComponent<TextMesh>().color = farmers[id].color;
+        }
+        else
+        {
+            nameMe.GetComponent<TextMesh>().color = new Color(0.116f, 0.624f, 0.467f);
+        }
+        myCoat.GetComponent<SpriteRenderer>().color = farmers[id].color;
     }
 
     public void SetTowardsTeam(bool towardsTeamNew){

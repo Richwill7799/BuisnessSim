@@ -31,6 +31,7 @@ public class HandleInput : MonoBehaviour
     private List<Button> buttons = new List<Button>();
 
     private List<Farmer> collabFarmer = new List<Farmer>();
+    private List<Color> color = new List<Color>(); //Hard coded colors
 
     //GameObjects
     private GameObject addButton;
@@ -46,6 +47,22 @@ public class HandleInput : MonoBehaviour
         addButton.GetComponent<Button>().interactable = true;
         deleteButton.GetComponent<Button>().interactable = false;
 
+        //Setting hard coded colors
+        //We need to get them from Python - in the graph farmer11 follows directly under farmer1 -> shift in colors
+        //Colors are from MatPlotLib, how do I access this?
+        color.Add(new Color(0.116f, 0.624f, 0.467f)); //1 mintgrün - collab
+        color.Add(new Color(0.851f, 0.373f, 0.008f)); //2 ziegelorange - 1&2
+        color.Add(new Color(0.459f, 0.439f, 0.702f)); //3 lavender - 3&4
+        color.Add(new Color(0.906f, 0.161f, 0.541f)); //4 magenta - 5&6
+        color.Add(new Color(0.400f, 0.651f, 0.118f)); //5 grün - 7&8
+        color.Add(new Color(0.902f, 0.671f, 0.008f)); //6 ocker - 9&10
+        color.Add(new Color(0.651f, 0.463f, 0.114f)); //7 braun - 11&12
+        color.Add(new Color(0.400f, 0.400f, 0.400f)); //8 grau - 13&14
+        //Additional ones for full functionality
+        color.Add(new Color(0.553f, 0.627f, 0.796f)); //9 blau - 15&16
+        color.Add(new Color(0.906f, 0.541f, 0.765f)); //10 rosa - 17&18
+        color.Add(new Color(0.651f, 0.847f, 0.329f)); //11 limette - 19&20
+
         //create 4 Farmers and fields (Constant)
         for (int i = 0; i < 2; i++)
         {
@@ -56,7 +73,7 @@ public class HandleInput : MonoBehaviour
                 Field field = new Field(currentVariant);
                 fields.Add(field);
 
-                Farmer farmer = new Farmer(field, 1, "Farmer" + bauernname);
+                Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant]);
                 farmers.Add(farmer);
                 bauernname++;
 
@@ -113,28 +130,30 @@ public class HandleInput : MonoBehaviour
         currentVariant++;
         farmerCount++;
 
+        //This is just for the buttons in the start screen
         Button temp = Instantiate(sinFarmPrefab, new Vector3(436f, 333f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
-        temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
+        temp.GetComponentInChildren<Text>().text = "Farmer " + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         farmerCount++;
         temp = Instantiate(coopFarmPrefab, new Vector3(707f, 333f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
-        temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
+        temp.GetComponentInChildren<Text>().text = "Farmer " + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         offsetDown += firstOffset;
 
+        //In this loop we create the farmers, so colours should be set here
         //create 2 fields each time Add is pressed
-
         for (int j = 0; j < 2; j++)
         {
             Field field = new Field(currentVariant); //Must be 3 first time 
             fields.Add(field);
 
             //create 2 farmers each time Add is pressed
-            Farmer farmer = new Farmer(field, 1, "Farmer" + bauernname);
+            Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant]);
+
             farmers.Add(farmer);
             bauernname++;
 
@@ -210,6 +229,5 @@ public class HandleInput : MonoBehaviour
     public List<Field> GetFields() { return fields; }
     public List<Farmer> GetFarmers() { return farmers; }
     public List<Button> GetButtons() { return buttons; }
-
 
 }
