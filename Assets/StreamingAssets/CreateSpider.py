@@ -59,8 +59,9 @@ def make_spider( row, title, color):
 # ------- PART 2: Apply to all individuals
 # initialize the figure
 my_dpi=96
+
 plt.figure(figsize=(600/my_dpi, 2000/my_dpi), dpi=my_dpi)
-plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9, wspace=0, hspace=1)
+plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9, wspace=0.2, hspace=1)
 
 # Create a color palette:
 my_palette = plt.cm.get_cmap("Dark2", len(df.index))
