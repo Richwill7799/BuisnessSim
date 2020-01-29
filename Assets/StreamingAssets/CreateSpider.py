@@ -39,7 +39,7 @@ def make_spider( row, title, color):
     angles = [n / float(N) * 2 * pi + 0.65 for n in range(N)]
     angles += angles[:1]
     # Initialise the spider plot
-    ax = plt.subplot(2,2,row+1, polar=True, )  
+    ax = plt.subplot(len(group),2,row+1, polar=True, )  
     # If you want the first axis to be on top:
     ax.set_theta_offset(pi / 2)
     ax.set_theta_direction(-1)  
@@ -59,8 +59,9 @@ def make_spider( row, title, color):
 # ------- PART 2: Apply to all individuals
 # initialize the figure
 my_dpi=96
-plt.figure(figsize=(1000/my_dpi, 1000/my_dpi), dpi=my_dpi)
-     
+plt.figure(figsize=(1000/my_dpi, 2000/my_dpi), dpi=my_dpi)
+plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9, wspace=0, hspace=1)
+
 # Create a color palette:
 my_palette = plt.cm.get_cmap("Dark2", len(df.index))
 # Loop to plot
