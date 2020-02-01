@@ -10,7 +10,7 @@ dirname, filename = os.path.split(os.path.abspath(__file__)) #get the relative p
 colormap = matplotlib.cm.tab20.colors
 
 i = 0 #the index for the colormap
-for filename in glob.glob(dirname + '/*.txt'): #get every file that's has .txt in the folder
+for filename in sorted(glob.glob(dirname + '/*.txt'),key = len): #get every file that's has .txt in the folder
     xValue = 1;
     file = open(filename)
     fileInput = file.read().splitlines()
@@ -23,14 +23,14 @@ for filename in glob.glob(dirname + '/*.txt'): #get every file that's has .txt i
         yValue = float(line.replace(',','.'))
         yValues.append(yValue)
         xValue += 1
-        plt.plot(xValues, yValues, color = colormap[i]) #plot one line in a specific color
+    plt.plot(xValues, yValues, color = colormap[i]) #plot one line in a specific color
     base = os.path.basename(filename)
     filenames.append(os.path.splitext(base)[0])
     i = i+1
     #filenames.sort(key=len)
 
 plt.legend(filenames, loc ='upper left', bbox_to_anchor = (1.05,1), borderaxespad=0.)
-plt.savefig(dirname + '/graph.png')
+plt.savefig(dirname + '/graph.png', bbox_inches = "tight")
 
 #plt.savefig(dirname + '\Assets\StreamingAssets\graph.png')
 #print("Current working dir : %s" % os.getcwd())
