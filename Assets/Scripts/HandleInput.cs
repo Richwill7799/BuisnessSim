@@ -105,7 +105,7 @@ public class HandleInput : MonoBehaviour
                     string text = button.GetComponentInChildren<Text>().text;
                     //get the farmer, which name's ending is the same as the button [so farmer5(button) == farmer5 (name)]
                     //I check the number in the End, to avoid Rechschreibfehler oder abweichende namen
-                    collabFarmer.Add(farmers.First(x => x.name[x.name.Length - 1].Equals(text[text.Length - 1])));
+                    collabFarmer.Add(farmers.First(x => x.name.Equals(text)));
                 }
             }
         }
