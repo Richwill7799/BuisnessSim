@@ -45,15 +45,8 @@ public class FarmerMovementScript : MonoBehaviour
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
         nameMe.GetComponent<TextMesh>().text = farmers[id].name;
-        //Maybe here finally coloring
-        if (team == 0)
-        {
-            nameMe.GetComponent<TextMesh>().color = farmers[id].color;
-        }
-        else
-        {
-            nameMe.GetComponent<TextMesh>().color = new Color(0.116f, 0.624f, 0.467f);
-        }
+
+        nameMe.GetComponent<TextMesh>().color = farmers[id].nameColor;
         myCoat.GetComponent<SpriteRenderer>().color = farmers[id].color;
     }
 

@@ -10,6 +10,7 @@ public class Farmer : MonoBehaviour
     private List<Farmer> collabFarmer = new List<Farmer>();
     public string name;
     public Color color;
+    public Color nameColor;
 
     public Farmer(Field field, int startValue, string name, Color color)
     {
@@ -30,6 +31,11 @@ public class Farmer : MonoBehaviour
     public void SetCollabFarmer(Farmer farmer)
     {
         collabFarmer.Add(farmer);
+    }
+
+    public void SetNameColor(Color color)
+    {
+        nameColor = color;
     }
 
     public bool HasNoCollabFarmer()

@@ -32,6 +32,7 @@ public class HandleInput : MonoBehaviour
 
     private List<Farmer> collabFarmer = new List<Farmer>();
     private List<Color> color = new List<Color>(); //Hard coded colors
+    private List<Color> name = new List<Color>();
 
     //GameObjects
     private GameObject addButton;
@@ -48,25 +49,35 @@ public class HandleInput : MonoBehaviour
         deleteButton.GetComponent<Button>().interactable = false;
 
         //Setting hard coded colors
-        //We need to get them from Python - in the graph farmer11 follows directly under farmer1 -> shift in colors
+        //We could get them from Python?
         //Colors are from MatPlotLib, how do I access this?
-        color.Add(new Color(0.116f, 0.624f, 0.467f)); //1 mintgrün - collab
-        color.Add(new Color(0.851f, 0.373f, 0.008f)); //2 ziegelorange - 1&2
-        color.Add(new Color(0.459f, 0.439f, 0.702f)); //3 lavender - 3&4
-        color.Add(new Color(0.906f, 0.161f, 0.541f)); //4 magenta - 5&6
-        color.Add(new Color(0.400f, 0.651f, 0.118f)); //5 grün - 7&8
-        color.Add(new Color(0.902f, 0.671f, 0.008f)); //6 ocker - 9&10
-        color.Add(new Color(0.651f, 0.463f, 0.114f)); //7 braun - 11&12
-        color.Add(new Color(0.400f, 0.400f, 0.400f)); //8 grau - 13&14
-        //Additional ones for full functionality
-        color.Add(new Color(0.553f, 0.627f, 0.796f)); //9 blau - 15&16
-        color.Add(new Color(0.906f, 0.541f, 0.765f)); //10 rosa - 17&18
-        color.Add(new Color(0.651f, 0.847f, 0.329f)); //11 limette - 19&20
+
+        //Using tab20
+        color.Add(new Color(0.122f, 0.467f, 0.706f)); //1 dblau
+        color.Add(new Color(0.682f, 0.780f, 0.910f)); //2 hblau
+        color.Add(new Color(1.000f, 0.498f, 0.055f)); //3 dorange
+        color.Add(new Color(1.000f, 0.733f, 0.471f)); //4 horange
+        color.Add(new Color(0.173f, 0.627f, 0.173f)); //5 dgrün
+        color.Add(new Color(0.596f, 0.875f, 0.541f)); //6 hgrün
+        color.Add(new Color(0.839f, 0.153f, 0.157f)); //7 drot
+        color.Add(new Color(1.000f, 0.596f, 0.588f)); //8 hrot
+        color.Add(new Color(0.580f, 0.404f, 0.741f)); //9 dlila
+        color.Add(new Color(0.773f, 0.690f, 0.835f)); //10 hlila
+        color.Add(new Color(0.549f, 0.337f, 0.294f)); //11 dbraun
+        color.Add(new Color(0.769f, 0.612f, 0.580f)); //12 hbraun
+        color.Add(new Color(0.890f, 0.467f, 0.761f)); //13 drosa
+        color.Add(new Color(0.969f, 0.714f, 0.824f)); //14 hrosa
+        color.Add(new Color(0.498f, 0.498f, 0.498f)); //15 dgrau
+        color.Add(new Color(0.780f, 0.780f, 0.780f)); //16 hgrau
+        color.Add(new Color(0.737f, 0.741f, 0.133f)); //17 dlime
+        color.Add(new Color(0.859f, 0.859f, 0.553f)); //18 hlime
+        color.Add(new Color(0.090f, 0.745f, 0.812f)); //19 dcyan
+        color.Add(new Color(0.620f, 0.855f, 0.898f)); //20 hcyan
 
         //create 4 Farmers and fields (Constant)
         for (int i = 0; i < 2; i++)
         {
-            currentVariant++;
+            currentVariant++; //Arrays start at 1 ;P
 
             for (int j = 0; j < 2; j++)
             {
@@ -74,11 +85,10 @@ public class HandleInput : MonoBehaviour
                 fields.Add(field);
 
                 bauernname++;
-                Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant]);
+                Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant - 1]);
                 farmers.Add(farmer);
 
             }
-
         }
 
         Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
@@ -91,6 +101,7 @@ public class HandleInput : MonoBehaviour
 
         years = (int)yearSlider.value;
         JoinFarmers();
+        ColorNames();
 
         SceneManager.LoadScene(1);
     }
@@ -120,6 +131,25 @@ public class HandleInput : MonoBehaviour
             }
         }
     }
+
+    private void ColorNames()
+    {
+        int n = 0;
+        for(int i = 0; i < farmers.Count; i++)
+        {
+            if (farmers[i].HasNoCollabFarmer())
+            {
+                farmers[i].SetNameColor(color[n]);
+                n++;
+            }
+            else
+            {
+                //Should be the latest color in the list
+                farmers[i].SetNameColor(color[farmers.Count - collabFarmer.Count]);
+            }
+        }
+    }
+
     // if AddButton is pressed
     public void AddFarmers()
     {
@@ -153,7 +183,7 @@ public class HandleInput : MonoBehaviour
 
             //create 2 farmers each time Add is pressed
             bauernname++;
-            Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant]);
+            Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant - 1]);
 
             farmers.Add(farmer);
 
