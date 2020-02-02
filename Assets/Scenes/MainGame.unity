@@ -1118,19 +1118,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160042162}
   m_CullTransparentMesh: 0
---- !u!1 &1227595524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7067314935229182814, guid: d09b396184edcd54f84786c910c47b73,
+--- !u!114 &1227595525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73,
     type: 3}
   m_PrefabInstance: {fileID: 2048976614}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1227595525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227595524}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 086c0059bb75f4149b9907c33cc0a249, type: 3}
@@ -2126,5 +2120,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
+      propertyPath: graph
+      value: 
+      objectReference: {fileID: 1382424977}
+    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 2045986338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d09b396184edcd54f84786c910c47b73, type: 3}
