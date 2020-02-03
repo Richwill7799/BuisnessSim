@@ -855,7 +855,7 @@ SpriteRenderer:
   m_Size: {x: 26.07, y: 22.352987}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &968294073
@@ -1811,7 +1811,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d:
     sentences:
-    - whatever u wanna explain here
+    - This is a turn-based simulation everytime you press play another 25 years pass
+      by.
+    - In the top-left corner you can se a diagram depicting how well each farmer did.
+    - If you want to adjust the odds for one of the farmers just klick on him and
+      you will open another menue where you can maipulate this turns weather for the
+      farmer.
+    - The odds for a good harvest per weather decrease from left to right.
     name: 
 --- !u!1 &1711039317
 GameObject:
@@ -2247,6 +2253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoBehaviour
       objectReference: {fileID: 0}
+    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
+      propertyPath: graph
+      value: 
+      objectReference: {fileID: 1382424977}
+    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 2045986338}
     - target: {fileID: 7067314935229182752, guid: d09b396184edcd54f84786c910c47b73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2302,14 +2316,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
-      propertyPath: graph
-      value: 
-      objectReference: {fileID: 1382424977}
-    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
-      propertyPath: button
-      value: 
-      objectReference: {fileID: 2045986338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d09b396184edcd54f84786c910c47b73, type: 3}
 --- !u!1001 &2087834087
