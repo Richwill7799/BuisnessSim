@@ -19,7 +19,17 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(Dialogue dialogue)
     {
-        animator = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("DialougeBox"));
+
+        if (GameObject.Find("FarmerCanvas"))
+        {
+            animator = GameObject.Find("FarmerCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("DialougeBoxFarmer"));
+        }
+        else
+        {
+
+            animator = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("DialougeBox"));
+        }
+
 
         animator.SetBool("IsOpen", true);
         Debug.Log("Starting tutorial");
@@ -33,7 +43,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartOptions(Dialogue dialogue)
     {
-        animatorOptions =  GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x=>x.name.Equals("OpionsBox"));
+        animatorOptions = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("OpionsBox"));
         animatorOptions.SetBool("IsOpen", true);
         Debug.Log("OpenOptions");
         sentences.Clear();

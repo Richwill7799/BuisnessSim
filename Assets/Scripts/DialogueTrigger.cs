@@ -7,12 +7,26 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue d;
     public void triggerDialogue()
     {
-        GameObject.Find("DialogueManager").GetComponent<DialogueManager>().StartDialogue(d);
+        if (GameObject.Find("FarmerCanvas"))
+        {
+            GameObject.Find("DialogueManagerFarmer").GetComponent<DialogueManager>().StartDialogue(d);
+        }
+        else
+        {
+            GameObject.Find("DialogueManager").GetComponent<DialogueManager>().StartDialogue(d);
+        }
         //<DialogueManager>().StartDialogue(d);
     }
     public void triggerOptions()
     {
-        GameObject.Find("DialogueManager").GetComponent<DialogueManager>().StartOptions(d);
+        if (GameObject.Find("FarmerCanvas"))
+        {
+            GameObject.Find("DialogueManagerFarmer").GetComponent<DialogueManager>().StartOptions(d);
+        }
+        else
+        {
+            GameObject.Find("DialogueManager").GetComponent<DialogueManager>().StartOptions(d);
+        }
         //FindObjectOfType<DialogueManager>().StartOptions(d);
     }
 }

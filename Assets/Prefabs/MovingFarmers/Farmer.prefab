@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 8667783209643322176}
   - component: {fileID: 2728086710163140153}
   m_Layer: 0
-  m_Name: DialogueManager
+  m_Name: DialogueManagerFarmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 5870306486261397771}
   - component: {fileID: 6758822713174800858}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: FarmerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2549,7 +2549,7 @@ PrefabInstance:
     - target: {fileID: 3151479059295245990, guid: 9928f074b8515a24d85bf6566cfc5806,
         type: 3}
       propertyPath: m_Name
-      value: DialougeBox
+      value: DialougeBoxFarmer
       objectReference: {fileID: 0}
     - target: {fileID: 3151479059295245991, guid: 9928f074b8515a24d85bf6566cfc5806,
         type: 3}
