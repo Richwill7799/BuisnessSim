@@ -688,6 +688,7 @@ MonoBehaviour:
     type: 3}
   graph: {fileID: 1382424977}
   teamZone: {fileID: 52055100}
+  circle: {fileID: 968294071}
 --- !u!114 &287449511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,7 +847,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f19fa8a1b2ef73f41bb7c5fe8e31920d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01a9d83348155a54d808b298c7289f68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
