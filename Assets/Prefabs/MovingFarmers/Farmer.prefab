@@ -346,7 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 2575676611379900530}
   animator: {fileID: 2575676612158298410}
-  animatorOptions: {fileID: 0}
+  animatorOptions: {fileID: 704284001069134388, guid: 956bfbc98a29aac4a9f983d63bdc4dc0,
+    type: 3}
 --- !u!1 &2120152491061534950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1191,7 @@ SpriteRenderer:
   m_Size: {x: 0.69, y: 1.09}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &2142149482111673255
