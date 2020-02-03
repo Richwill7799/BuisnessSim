@@ -9,4 +9,8 @@ public class DialogueTrigger : MonoBehaviour
     {
         FindObjectOfType<DialogueManager>().StartDialogue(d);
     }
+    public void triggerOptions()
+    {
+        FindObjectOfType<DialogueManager>().StartOptions(d);
+    }
 }

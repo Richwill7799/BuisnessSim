@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     // public Text mainText;
     public Text dialogueText;
     public Animator animator;
+    public Animator animatorOptions;
     //https://www.youtube.com/watch?v=_nRzoTzeyxU
     public Queue<string> sentences;
     // Start is called before the first frame update
@@ -20,6 +21,18 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", true);
         Debug.Log("Starting tutorial");
+        sentences.Clear();
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+
+        }
+        DisplayNextSentence();
+    }
+    public void StartOptions(Dialogue dialogue)
+    {
+        animatorOptions.SetBool("IsOpen", true);
+        Debug.Log("OpenOptions");
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
         {
@@ -44,5 +57,9 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
         // Debug.Log("End of tutorial");
     }
-
+    public void EndOptions()
+    {
+        animatorOptions.SetBool("IsOpen", false);
+        // Debug.Log("End of tutorial");
+    }
 }
