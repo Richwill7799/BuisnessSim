@@ -2387,15 +2387,15 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6190824042088269806, guid: 0f3da35f2893e6e4c9909b88b74db43b,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6190824040952605211, guid: 0f3da35f2893e6e4c9909b88b74db43b,
         type: 3}
       propertyPath: m_Text
       value: Farmer 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190824042088269806, guid: 0f3da35f2893e6e4c9909b88b74db43b,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3da35f2893e6e4c9909b88b74db43b, type: 3}
@@ -2766,6 +2766,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 518176459}
+    - target: {fileID: 1336931126827290075, guid: 9928f074b8515a24d85bf6566cfc5806,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 518176459}
+    - target: {fileID: 1336931126827290075, guid: 9928f074b8515a24d85bf6566cfc5806,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndDialogue
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9928f074b8515a24d85bf6566cfc5806, type: 3}
 --- !u!1001 &6294000561293830938
