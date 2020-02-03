@@ -12,6 +12,7 @@ TagManager:
   - 1out
   - 1
   - Wall
+  - FCanvas
   layers:
   - Default
   - TransparentFX
