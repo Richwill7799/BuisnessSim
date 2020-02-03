@@ -264,5 +264,6 @@ public class HandleInput : MonoBehaviour
     public List<Field> GetFields() { return fields; }
     public List<Farmer> GetFarmers() { return farmers; }
     public List<Button> GetButtons() { return buttons; }
+    public Color GetLastColor() { return color[farmers.Count - collabFarmer.Count]; }
 
 }

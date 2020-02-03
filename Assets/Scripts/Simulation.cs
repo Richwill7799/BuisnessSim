@@ -26,6 +26,7 @@ public class Simulation : MonoBehaviour
     private SortedList<int, List<float>> variantenMultiplList = new SortedList<int, List<float>>();
     private string folderPath;
     private string[] filePaths;
+    private Color lastColor;
 
     //public variables
     public Text Year;
@@ -33,6 +34,7 @@ public class Simulation : MonoBehaviour
     public Image graph;
     //public Sprite farmerSprite;
     public Transform teamZone;
+    public GameObject circle;
 
 
     // Start is called before the first frame update
@@ -43,6 +45,7 @@ public class Simulation : MonoBehaviour
         fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
         countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
+        lastColor = userInput.GetComponent<HandleInput>().GetLastColor();
 
 
         weatherCount = 5; //todo: This has to be specified in the next meeting :)
@@ -57,6 +60,8 @@ public class Simulation : MonoBehaviour
             }
             variantenMultiplList.Add(i, weather);
             //UnityEngine.Debug.Log(i);
+
+            circle.GetComponent<SpriteRenderer>().color = lastColor; //Circle color
         }
 
         //Moving Bois creation
