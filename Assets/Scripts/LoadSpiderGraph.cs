@@ -26,7 +26,7 @@ public class LoadSpiderGraph : MonoBehaviour
         byte[] pngBytes = System.IO.File.ReadAllBytes(filePaths[1]);
 
         //Creates texture and loads byte array data to create image
-        Texture2D tex = new Texture2D(2, 2);
+        Texture2D tex = new Texture2D(200, 200);
         tex.LoadImage(pngBytes);
 
         //Creates a new Sprite based on the Texture2D
@@ -34,6 +34,7 @@ public class LoadSpiderGraph : MonoBehaviour
 
 
         //Assigns the UI sprite
+        //spider.rectTransform.sizeDelta = fromTex.bounds.size;
         spider.sprite = fromTex;
     }
 

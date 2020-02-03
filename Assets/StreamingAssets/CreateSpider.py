@@ -39,7 +39,7 @@ def make_spider( row, title, color):
     angles = [n / float(N) * 2 * pi + 0.65 for n in range(N)]
     angles += angles[:1]
     # Initialise the spider plot
-    ax = plt.subplot(2,2,row+1, polar=True, )  
+    ax = plt.subplot(len(group),3,row+1, polar=True, )  
     # If you want the first axis to be on top:
     ax.set_theta_offset(pi / 2)
     ax.set_theta_direction(-1)  
@@ -55,16 +55,32 @@ def make_spider( row, title, color):
     ax.plot(angles, values, color=color, linewidth=2, linestyle='solid')
     ax.fill(angles, values, color=color, alpha=0.4)   
     # Add a title
-    plt.title(title, size=11, color=color, y=1.1)    
+    plt.title(title, size=11, color=color, y=1.2)    
 # ------- PART 2: Apply to all individuals
 # initialize the figure
 my_dpi=96
-plt.figure(figsize=(1000/my_dpi, 1000/my_dpi), dpi=my_dpi)
-     
+
+countSubplots = len(group)
+if countSubplots <= 3:
+    plt.figure(figsize=(600/my_dpi, 400/my_dpi), dpi=my_dpi)
+elif countSubplots <= 6:
+    plt.figure(figsize=(600/my_dpi, 800/my_dpi), dpi=my_dpi)
+elif countSubplots <= 9:
+    plt.figure(figsize=(600/my_dpi, 1200/my_dpi), dpi=my_dpi)
+else:
+    plt.figure(figsize=(600/my_dpi, 1600/my_dpi), dpi=my_dpi)
 # Create a color palette:
-my_palette = plt.cm.get_cmap("Dark2", len(df.index))
-     
+my_palette = plt.cm.get_cmap("tab20b", len(df.index))
 # Loop to plot
+i = 1
 for row in range(0, len(df.index)):
-    make_spider(row=row, title='Variante '+df['group'][row], color=my_palette(row))
-plt.savefig(dirname + '/spider.png')
+    j=i+1
+    make_spider(row=row, title='Farmer '+ str(i) + " + Farmer " + str(j) , color=my_palette(row))
+    i = i+2
+
+#plt.figure(figsize=(600/my_dpi, 2000/my_dpi), dpi=my_dpi)
+plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=1, wspace=0.6, hspace=1)
+    
+#for row in range(0, len(df.index)):
+#    make_spider(row=row, title='Variante '+df['group'][row], color=my_palette(row))
+plt.savefig(dirname + '/spider.png',bbox_inches='tight')

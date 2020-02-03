@@ -62,12 +62,7 @@ public class Simulation : MonoBehaviour
         //Moving Bois creation
         for (int i = 0; i < farmers.Count; i++)
         {
-            //Would have been easy to change the Sprites color here, but I can't access the Sprite "Farmer" and then the SpriteRenderer
-            //Changing colour from a sketch ain't that easy => which data must be changed?
-            //Could access SpriteRenderer, if script would be attached to the Sprite "Farmer"
-            //SpriteRenderer renderer = farmerPrefab.GetComponent<SpriteRenderer>();
-            //renderer.material.SetColor("_Color", Color.red);
-            walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(Random.Range(-10,10), Random.Range(-5,5)), Quaternion.identity).transform);
+            walkingFarmers.Insert(i, Instantiate(farmerPrefab, new Vector3(Random.Range(0,10), Random.Range(-5,5)), Quaternion.identity).transform);
             // assign id of the farmer to farmer
             walkingFarmers[i].GetComponent<FarmerMovementScript>().id = i;
             //walkingFarmers[i].GetComponent<FarmerMovementScript>().s = this;

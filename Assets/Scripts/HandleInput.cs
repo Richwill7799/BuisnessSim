@@ -20,7 +20,7 @@ public class HandleInput : MonoBehaviour
     private int years;
     private int teamCount = 2;
     private int currentVariant = 0;
-    private int bauernname = 1;
+    private int bauernname = 0;
     private int farmerCount = 4;
     private int offsetDown = 70;
     private int firstOffset = 70;
@@ -31,6 +31,8 @@ public class HandleInput : MonoBehaviour
     private List<Button> buttons = new List<Button>();
 
     private List<Farmer> collabFarmer = new List<Farmer>();
+    private List<Color> color = new List<Color>(); //Hard coded colors
+    private List<Color> name = new List<Color>();
 
     //GameObjects
     private GameObject addButton;
@@ -46,22 +48,47 @@ public class HandleInput : MonoBehaviour
         addButton.GetComponent<Button>().interactable = true;
         deleteButton.GetComponent<Button>().interactable = false;
 
+        //Setting hard coded colors
+        //We could get them from Python?
+        //Colors are from MatPlotLib, how do I access this?
+
+        //Using tab20
+        color.Add(new Color(0.122f, 0.467f, 0.706f)); //1 dblau
+        color.Add(new Color(0.682f, 0.780f, 0.910f)); //2 hblau
+        color.Add(new Color(1.000f, 0.498f, 0.055f)); //3 dorange
+        color.Add(new Color(1.000f, 0.733f, 0.471f)); //4 horange
+        color.Add(new Color(0.173f, 0.627f, 0.173f)); //5 dgrün
+        color.Add(new Color(0.596f, 0.875f, 0.541f)); //6 hgrün
+        color.Add(new Color(0.839f, 0.153f, 0.157f)); //7 drot
+        color.Add(new Color(1.000f, 0.596f, 0.588f)); //8 hrot
+        color.Add(new Color(0.580f, 0.404f, 0.741f)); //9 dlila
+        color.Add(new Color(0.773f, 0.690f, 0.835f)); //10 hlila
+        color.Add(new Color(0.549f, 0.337f, 0.294f)); //11 dbraun
+        color.Add(new Color(0.769f, 0.612f, 0.580f)); //12 hbraun
+        color.Add(new Color(0.890f, 0.467f, 0.761f)); //13 drosa
+        color.Add(new Color(0.969f, 0.714f, 0.824f)); //14 hrosa
+        color.Add(new Color(0.498f, 0.498f, 0.498f)); //15 dgrau
+        color.Add(new Color(0.780f, 0.780f, 0.780f)); //16 hgrau
+        color.Add(new Color(0.737f, 0.741f, 0.133f)); //17 dlime
+        color.Add(new Color(0.859f, 0.859f, 0.553f)); //18 hlime
+        color.Add(new Color(0.090f, 0.745f, 0.812f)); //19 dcyan
+        color.Add(new Color(0.620f, 0.855f, 0.898f)); //20 hcyan
+
         //create 4 Farmers and fields (Constant)
         for (int i = 0; i < 2; i++)
         {
-            currentVariant++;
+            currentVariant++; //Arrays start at 1 ;P
 
             for (int j = 0; j < 2; j++)
             {
                 Field field = new Field(currentVariant);
                 fields.Add(field);
 
-                Farmer farmer = new Farmer(field, 1, "Farmer" + bauernname);
-                farmers.Add(farmer);
                 bauernname++;
+                Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant - 1]);
+                farmers.Add(farmer);
 
             }
-
         }
 
         Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
@@ -74,6 +101,7 @@ public class HandleInput : MonoBehaviour
 
         years = (int)yearSlider.value;
         JoinFarmers();
+        ColorNames();
 
         SceneManager.LoadScene(1);
     }
@@ -88,7 +116,7 @@ public class HandleInput : MonoBehaviour
                     string text = button.GetComponentInChildren<Text>().text;
                     //get the farmer, which name's ending is the same as the button [so farmer5(button) == farmer5 (name)]
                     //I check the number in the End, to avoid Rechschreibfehler oder abweichende namen
-                    collabFarmer.Add(farmers.First(x => x.name[x.name.Length - 1].Equals(text[text.Length - 1])));
+                    collabFarmer.Add(farmers.First(x => x.name.Equals(text)));
                 }
             }
         }
@@ -103,6 +131,25 @@ public class HandleInput : MonoBehaviour
             }
         }
     }
+
+    private void ColorNames()
+    {
+        int n = 0;
+        for(int i = 0; i < farmers.Count; i++)
+        {
+            if (farmers[i].HasNoCollabFarmer())
+            {
+                farmers[i].SetNameColor(color[n]);
+                n++;
+            }
+            else
+            {
+                //Should be the latest color in the list
+                farmers[i].SetNameColor(color[farmers.Count - collabFarmer.Count]);
+            }
+        }
+    }
+
     // if AddButton is pressed
     public void AddFarmers()
     {
@@ -113,30 +160,32 @@ public class HandleInput : MonoBehaviour
         currentVariant++;
         farmerCount++;
 
+        //This is just for the buttons in the start screen
         Button temp = Instantiate(sinFarmPrefab, new Vector3(436f, 333f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
-        temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
+        temp.GetComponentInChildren<Text>().text = "Farmer " + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         farmerCount++;
         temp = Instantiate(coopFarmPrefab, new Vector3(707f, 333f - offsetDown, 0), Quaternion.identity);
         buttons.Add(temp);
-        temp.GetComponentInChildren<Text>().text = "Farmer" + farmerCount;
+        temp.GetComponentInChildren<Text>().text = "Farmer " + farmerCount;
         temp.transform.SetParent(canvas.transform, false);
 
         offsetDown += firstOffset;
 
+        //In this loop we create the farmers, so colours should be set here
         //create 2 fields each time Add is pressed
-
         for (int j = 0; j < 2; j++)
         {
             Field field = new Field(currentVariant); //Must be 3 first time 
             fields.Add(field);
 
             //create 2 farmers each time Add is pressed
-            Farmer farmer = new Farmer(field, 1, "Farmer" + bauernname);
-            farmers.Add(farmer);
             bauernname++;
+            Farmer farmer = new Farmer(field, 1, "Farmer " + bauernname, color[currentVariant - 1]);
+
+            farmers.Add(farmer);
 
         }
 
@@ -165,12 +214,17 @@ public class HandleInput : MonoBehaviour
         {
             //Remove button in scene & List
             Destroy(buttons[buttons.Count - 1].gameObject);
-            buttons.Remove(buttons[buttons.Count - 1]);
-            farmers.Remove(farmers[farmers.Count - 1]); // First remove Farmer that his field
-            fields.Remove(fields[fields.Count - 1]);
+            buttons.RemoveAt(buttons.Count - 1);
+            farmers.RemoveAt(farmers.Count - 1); // First remove Farmer that his field
+            fields.RemoveAt(fields.Count - 1);
+            bauernname--;
         }
 
         Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
+        /*for (int i = 0; i < farmers.Count; i++)
+        {
+            Debug.Log(farmers[i].name);
+        }*/
 
         //adjust vaiables
         offsetDown -= firstOffset;
@@ -210,6 +264,5 @@ public class HandleInput : MonoBehaviour
     public List<Field> GetFields() { return fields; }
     public List<Farmer> GetFarmers() { return farmers; }
     public List<Button> GetButtons() { return buttons; }
-
 
 }

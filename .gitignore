@@ -1,4 +1,4 @@
-﻿/[Ll]ibrary/
+/[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
@@ -46,3 +46,6 @@ python - Verknüpfung.lnk
 .idea/
 
 star.x
+*.JPEG.meta
+graph.png
+star.png

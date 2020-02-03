@@ -760,7 +760,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 87ec494f11c309b499b6093e665cb5e0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -799,7 +799,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 1
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 87ec494f11c309b499b6093e665cb5e0, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4279855629
@@ -994,6 +994,7 @@ MonoBehaviour:
   radius: 0
   id: 0
   nameMe: {fileID: 2668999522015477096}
+  myCoat: {fileID: 3487213267484024498}
   helper: {fileID: 1279413412657782150}
 --- !u!50 &3487213267363305593
 Rigidbody2D:
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1956447663604711251
 Animator:
   serializedVersion: 3
