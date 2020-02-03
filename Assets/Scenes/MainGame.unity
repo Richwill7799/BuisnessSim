@@ -474,11 +474,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerDialogueButton
       objectReference: {fileID: 0}
-    - target: {fileID: 6294000560294869522, guid: 0f9571c6178d7294a923ca346b69aab5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6294000560294869523, guid: 0f9571c6178d7294a923ca346b69aab5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -584,18 +579,7 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6294000560294869521, guid: 0f9571c6178d7294a923ca346b69aab5,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: triggerOptions
-      objectReference: {fileID: 0}
-    - target: {fileID: 6294000560294869521, guid: 0f9571c6178d7294a923ca346b69aab5,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 79510282}
-    m_RemovedComponents:
-    - {fileID: 6294000560294869520, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
 --- !u!224 &79510280 stripped
 RectTransform:
@@ -603,28 +587,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 79510279}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &79510281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6294000560294869522, guid: 0f9571c6178d7294a923ca346b69aab5,
-    type: 3}
-  m_PrefabInstance: {fileID: 79510279}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &79510282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79510281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ef838581f02664e915c1d34702fee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  d:
-    sentences:
-    - What do you want to know more about?
-    name: 
 --- !u!1 &287449507
 GameObject:
   m_ObjectHideFlags: 0

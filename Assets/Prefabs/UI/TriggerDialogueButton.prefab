@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6294000560294869527}
   - component: {fileID: 6294000560294869526}
   - component: {fileID: 6294000560294869521}
-  - component: {fileID: 6294000560294869520}
+  - component: {fileID: 79510282}
   m_Layer: 5
   m_Name: TriggerDialogueButton
   m_TagString: Untagged
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6294000560294869520}
-        m_MethodName: triggerDialogue
+      - m_Target: {fileID: 79510282}
+        m_MethodName: triggerOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6294000560294869520
+--- !u!114 &79510282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,12 +221,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d:
     sentences:
-    - Welcome! The Ylsung people need you, the farmers' lives are in your hands.
-    - 'First you need to give new hope, select individuals to tend to the fields.
-
-      Then have them team up, to increase their odds of success.'
-    - Next you will watch them, hoping for good harvests. You will be able to make
-      some of their hopes reality (in the next implementation, that is.)
-    - And in the end you can see how it went, what the years brought for your faithful
-      farmers. Do your best to save the Ylsung!
+    - What do you want to know more about?
     name: 
