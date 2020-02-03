@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartOptions(Dialogue dialogue)
     {
+        animatorOptions =  GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x=>x.name.Equals("OpionsBox"));
         animatorOptions.SetBool("IsOpen", true);
         Debug.Log("OpenOptions");
         sentences.Clear();
