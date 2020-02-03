@@ -16,18 +16,22 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
     }
-    public void StartDialogue(Dialogue dialogue) {
-        animator.SetBool("IsOpen",true);
+    public void StartDialogue(Dialogue dialogue)
+    {
+        animator.SetBool("IsOpen", true);
         Debug.Log("Starting tutorial");
         sentences.Clear();
-        foreach (string sentence in dialogue.sentences) {
+        foreach (string sentence in dialogue.sentences)
+        {
             sentences.Enqueue(sentence);
 
         }
         DisplayNextSentence();
     }
-    public void DisplayNextSentence() {
-        if (sentences.Count==0) {
+    public void DisplayNextSentence()
+    {
+        if (sentences.Count == 0)
+        {
             EndDialogue();
             return;
         }
@@ -35,9 +39,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
         Debug.Log(sentence);
     }
-        public void EndDialogue() {
+    public void EndDialogue()
+    {
         animator.SetBool("IsOpen", false);
-       // Debug.Log("End of tutorial");
-        }
-    
+        // Debug.Log("End of tutorial");
+    }
+
 }
