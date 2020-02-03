@@ -63,7 +63,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 819d19c7a433c6141a9ee2d8ad657d0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ed09d9d4eb43d34cada4500d6f99b63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -460,11 +460,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3151479059295245991}
     m_Modifications:
-    - target: {fileID: 5320485568305141499, guid: 9dbf73b83737c564ab43e5defac79f21,
-        type: 3}
-      propertyPath: m_Name
-      value: exitButton
-      objectReference: {fileID: 0}
     - target: {fileID: 4165713115826803581, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -569,6 +564,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320485568305141499, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Name
+      value: exitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dbf73b83737c564ab43e5defac79f21, type: 3}
