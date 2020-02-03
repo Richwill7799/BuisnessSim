@@ -771,7 +771,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <
+  m_Text: '>'
 --- !u!222 &817510827
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1320,6 +1320,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 817510825}
+  - {fileID: 2045986337}
   m_Father: {fileID: 1711039321}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1915,7 +1916,6 @@ RectTransform:
   - {fileID: 1382424976}
   - {fileID: 1248196382}
   - {fileID: 79510280}
-  - {fileID: 2045986337}
   - {fileID: 77464932}
   - {fileID: 2087834088}
   m_Father: {fileID: 0}
@@ -2143,12 +2143,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1319555579}
-  m_Father: {fileID: 1711039321}
-  m_RootOrder: 6
+  m_Father: {fileID: 1248196382}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -328.0003, y: 101.6}
+  m_AnchoredPosition: {x: 591.99963, y: -398.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045986338
@@ -2253,14 +2253,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoBehaviour
       objectReference: {fileID: 0}
-    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
-      propertyPath: graph
-      value: 
-      objectReference: {fileID: 1382424977}
-    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
-      propertyPath: button
-      value: 
-      objectReference: {fileID: 2045986338}
     - target: {fileID: 7067314935229182752, guid: d09b396184edcd54f84786c910c47b73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2316,6 +2308,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
+      propertyPath: graph
+      value: 
+      objectReference: {fileID: 1382424977}
+    - target: {fileID: 1227595525, guid: d09b396184edcd54f84786c910c47b73, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 2045986338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d09b396184edcd54f84786c910c47b73, type: 3}
 --- !u!1001 &2087834087

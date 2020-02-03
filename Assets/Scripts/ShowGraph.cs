@@ -7,7 +7,10 @@ public class ShowGraph : MonoBehaviour
 {
     public GameObject graph;
     public Text text;
-   
+    private void Start()
+    {
+        graph.SetActive(false);
+    }
     public void PressShowHide() {
       
         graph.SetActive(!graph.activeSelf);
