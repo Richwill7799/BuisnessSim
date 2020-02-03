@@ -19,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(Dialogue dialogue)
     {
+        animator = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("DialougeBox"));
+
         animator.SetBool("IsOpen", true);
         Debug.Log("Starting tutorial");
         sentences.Clear();
