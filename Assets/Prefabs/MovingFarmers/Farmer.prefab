@@ -2531,6 +2531,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: triggerDialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[1]
+      value: 'One is able to change those weather conditions for the farmers and either
+        help them thrive or destroy their harvest. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[2]
+      value: Keep in mind, that always two farmers have the same weather conditions,
+        this is visible via the colors.
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[3]
+      value: The weather can be selected randomized, so that one can lean back and
+        just watch the simulation run through.
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[0]
+      value: 'The weather conditions have different effects on the farming. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[4]
+      value: As soon you have selected one weather condition, it stays like this until
+        you change it again.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
 --- !u!224 &5984712876012426817 stripped

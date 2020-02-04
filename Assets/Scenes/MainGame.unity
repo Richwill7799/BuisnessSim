@@ -854,14 +854,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d:
     sentences:
-    - Welcome! The Ylsung people need you, the farmers' lives are in your hands.
-    - 'First you need to give new hope, select individuals to tend to the fields.
-
-      Then have them team up, to increase their odds of success.'
-    - Next you will watch them, hoping for good harvests. You will be able to make
-      some of their hopes reality (in the next implementation, that is.)
-    - And in the end you can see how it went, what the years brought for your faithful
-      farmers. Do your best to save the Ylsung!
+    - "The Farmers Fable is an economical concept woven into the story of Marc Elsberg\u2019s
+      book \u201CGier\u201D. "
+    - "In Marc\u2019s story, four farmers have to decide whether they are going to
+      cooperate and share the earnings of their farming, or whether they don\u2019t
+      want to cooperate and every farmer keeps their whole earnings. "
+    - "It is important to consider that the farmers fable takes up a span of several
+      years. If one would only take one or two years into account, they might not
+      discover any significant advantages either way. \r"
+    - "Having originally four farmers, two of them namely farmer A and B have the
+      same weather and harvest conditions, so do farmer C and D. Farmer A and C agree
+      to cooperate. Farmer B and D decide they will be better on their own. \r"
+    - "Cooperating for Farmer A and C means that each of them will farm on their own
+      land for one whole year. At the end of this year, they will meet up and split
+      their earnings evenly. Everybody starts the next year with the same amount of
+      crops. \r"
+    - The advantage of cooperating lies in this concept of not risking everything
+      you own.
+    - You always have somebody to rely on if the times are not suitable. Even though
+      you might have to give away a lot of your earnings, over time the profit will
+      be larger at the end.
+    - "Whereas if you never share, you might make high profits for a couple of years,
+      but if anything bad happens, you are at stake to lose everything you worked
+      so hard for. \r"
+    - Of course, one can extend this concept to more farmers and fields and adjust
+      various parameter sets.
     name: 
 --- !u!1001 &1046475846
 PrefabInstance:
@@ -1774,13 +1791,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d:
     sentences:
-    - This is a turn-based simulation everytime you press play another 25 years pass
-      by.
-    - In the top-left corner you can se a diagram depicting how well each farmer did.
-    - If you want to adjust the odds for one of the farmers just klick on him and
-      you will open another menue where you can maipulate this turns weather for the
-      farmer.
-    - The odds for a good harvest per weather decrease from left to right.
+    - 'Starting the game, one can choose between four and 20 farmers that either should
+      cooperate or work by themselves. The maximum amount of collaborations is ten. '
+    - Another adjustable factor is depicted by the timeline. Possibilities range from
+      ten to 250 years. The most effect is achieved over a larger time period, one
+      should make sure to try several parameter sets.
+    - 'While the Business Simulation Game runs through, one can watch the farmers
+      running around their fields. '
+    - 'Meanwhile a line graph is depicted in the top left corner, which shows how
+      much profit each farmer, respectively each collaboration of farmers make. '
+    - This is really useful to grasp the idea of the business concept in real time.
+      Changing the parameter sets, while influencing the weather, might change the
+      line graph drastically.
+    - "To get a more elaborate explanation, the player receives spider graphs when
+      the simulation is completed. These explain the different parameter sets that
+      act upon the profits of the farmers simultaneously.\r"
     name: 
 --- !u!1 &1711039317
 GameObject:
