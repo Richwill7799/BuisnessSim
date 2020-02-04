@@ -2902,27 +2902,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
       propertyPath: d.sentences.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
       propertyPath: d.sentences.Array.data[1]
-      value: 'First you need to give new hope, select individuals to tend to the fields.
-
-        Then have them team up, to increase their odds of success.'
+      value: "These young adults are\r travelling to an island far away, since everything
+        they currently own is a ship in the harbor that was\r not destroyed by the
+        volcano."
       objectReference: {fileID: 0}
     - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
       propertyPath: d.sentences.Array.data[2]
-      value: "Next you will watch them, hoping for good harvests. You will be able
-        to make\r some of their hopes reality (in the next implementation, that is.)"
+      value: "Everyone of this collective has to decide if they want to manage themselves
+        or\r work together in a group to share the drawback of risks but as well the
+        positive outcome of good\r harvests."
       objectReference: {fileID: 0}
     - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
       propertyPath: d.sentences.Array.data[3]
-      value: "And in the end you can see how it went, what the years brought for your
-        faithful\r farmers. Do your best to save the Ylsung!"
+      value: Next you will watch them, hoping for good harvests. You will be able
+        to make some of their hopes reality.
       objectReference: {fileID: 0}
     - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
       propertyPath: d.sentences.Array.data[0]
-      value: Welcome! The Ylsung people need you, the farmers' lives are in your hands.
+      value: "Welcome! The Ylsung people need you, the farmers' lives are in your
+        hands. Their homeland got destroyed by a volcano eruption,\r but due to fortuitously
+        circumstances they survived the catastrophe."
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[4]
+      value: Will you help them to survive?
+      objectReference: {fileID: 0}
+    - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
+      propertyPath: d.sentences.Array.data[5]
+      value: "And in the end you can see how it went, what the years brought for your
+        faithful\r farmers. Do your best to save the Ylsung!"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
