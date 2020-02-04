@@ -137,12 +137,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 87ec494f11c309b499b6093e665cb5e0, type: 3}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: 0686be566136bd945ba9056bbd47853f, type: 3}
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -311,12 +311,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 87ec494f11c309b499b6093e665cb5e0, type: 3}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: 0686be566136bd945ba9056bbd47853f, type: 3}
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 40
+    m_MaxSize: 70
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -460,11 +460,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3151479059295245991}
     m_Modifications:
-    - target: {fileID: 5320485568305141499, guid: 9dbf73b83737c564ab43e5defac79f21,
-        type: 3}
-      propertyPath: m_Name
-      value: exitButton
-      objectReference: {fileID: 0}
     - target: {fileID: 4165713115826803581, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -523,12 +518,12 @@ PrefabInstance:
     - target: {fileID: 4165713115826803581, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -52
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 4165713115826803581, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -42.700012
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4165713115826803581, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}
@@ -569,6 +564,58 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320485568305141499, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Name
+      value: exitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 101641162828339599, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 307063d714d1df0448eceb0d81ea272f,
+        type: 3}
+    - target: {fileID: 101641162828339599, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 101641162828339599, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101641162828339599, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101641162828339599, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990961520345829580, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 0686be566136bd945ba9056bbd47853f,
+        type: 3}
+    - target: {fileID: 4990961520345829580, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990961520345829580, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990961520345829580, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dbf73b83737c564ab43e5defac79f21, type: 3}
