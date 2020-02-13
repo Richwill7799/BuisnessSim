@@ -36,6 +36,8 @@ public class LoadSpiderGraph : MonoBehaviour
         //Assigns the UI sprite
         //spider.rectTransform.sizeDelta = fromTex.bounds.size;
         spider.sprite = fromTex;
+        spider.preserveAspect = true;
+        
     }
 
 }
