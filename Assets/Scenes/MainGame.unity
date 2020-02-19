@@ -441,6 +441,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EndDialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 3151479058051950683, guid: 9928f074b8515a24d85bf6566cfc5806,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb37ae0fca6b2ba4ba6249266287eb62,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9928f074b8515a24d85bf6566cfc5806, type: 3}
 --- !u!95 &77464931 stripped
@@ -2757,6 +2763,12 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 704284000160812245, guid: 956bfbc98a29aac4a9f983d63bdc4dc0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d50c032434723734bb8e79ef7896647a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956bfbc98a29aac4a9f983d63bdc4dc0, type: 3}
 --- !u!224 &2087834088 stripped
