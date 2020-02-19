@@ -17,8 +17,8 @@ public class ResizeGraph : MonoBehaviour
     {
         normalSizeButton = button.GetComponent<RectTransform>().anchoredPosition;
         normalSizeImage = graph.rectTransform.anchoredPosition;
-        bigSizeImage = new Vector3(565,-456,0);
-        bigSizeButton = new Vector3(234f, -353.28f, 0);
+        bigSizeImage = new Vector3(713,-453,0);
+        bigSizeButton = new Vector3(276, -211.7f, 0);
     }
 
     public void Resize()

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameObject panel;
     // public Text mainText;
     public Text dialogueText;
     public Animator animator;
@@ -19,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(Dialogue dialogue)
     {
+        panel.SetActive(true);
 
         if (GameObject.Find("FarmerCanvas"))
         {
@@ -43,8 +45,11 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartOptions(Dialogue dialogue)
     {
+
         animatorOptions = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("OpionsBox"));
         animatorOptions.SetBool("IsOpen", true);
+        panel.SetActive(true);
+
         Debug.Log("OpenOptions");
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
@@ -67,11 +72,15 @@ public class DialogueManager : MonoBehaviour
     }
     public void EndDialogue()
     {
+        panel.SetActive(false);
+
         animator.SetBool("IsOpen", false);
         // Debug.Log("End of tutorial");
     }
     public void EndOptions()
     {
+        panel.SetActive(false);
+
         animatorOptions.SetBool("IsOpen", false);
         // Debug.Log("End of tutorial");
     }
