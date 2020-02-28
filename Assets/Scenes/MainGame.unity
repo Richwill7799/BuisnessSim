@@ -590,6 +590,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6294000560294869521, guid: 0f9571c6178d7294a923ca346b69aab5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerOptions
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
 --- !u!224 &79510280 stripped
@@ -2551,7 +2556,7 @@ PrefabInstance:
     - target: {fileID: 704284001508483174, guid: 956bfbc98a29aac4a9f983d63bdc4dc0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: triggerDialogue
+      value: TriggerDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 704284001508483174, guid: 956bfbc98a29aac4a9f983d63bdc4dc0,
         type: 3}
@@ -2612,7 +2617,7 @@ PrefabInstance:
     - target: {fileID: 2657224700182514539, guid: 956bfbc98a29aac4a9f983d63bdc4dc0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: triggerDialogue
+      value: TriggerDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 2657224700182514539, guid: 956bfbc98a29aac4a9f983d63bdc4dc0,
         type: 3}

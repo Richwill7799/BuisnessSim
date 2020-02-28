@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject panel;
-    // public Text mainText;
     public Text dialogueText;
     public Animator animator;
     public Animator animatorOptions;
@@ -28,10 +27,8 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-
             animator = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("DialougeBox"));
         }
-
 
         animator.SetBool("IsOpen", true);
         Debug.Log("Starting tutorial");
@@ -45,7 +42,6 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartOptions(Dialogue dialogue)
     {
-
         animatorOptions = GameObject.Find("MainCanvas").GetComponentsInChildren<Animator>().First(x => x.name.Equals("OpionsBox"));
         animatorOptions.SetBool("IsOpen", true);
         panel.SetActive(true);
@@ -75,13 +71,11 @@ public class DialogueManager : MonoBehaviour
         panel.SetActive(false);
 
         animator.SetBool("IsOpen", false);
-        // Debug.Log("End of tutorial");
     }
     public void EndOptions()
     {
         panel.SetActive(false);
 
         animatorOptions.SetBool("IsOpen", false);
-        // Debug.Log("End of tutorial");
     }
 }

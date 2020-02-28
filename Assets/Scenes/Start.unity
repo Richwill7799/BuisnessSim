@@ -3117,7 +3117,7 @@ PrefabInstance:
     - target: {fileID: 6294000560294869521, guid: 0f9571c6178d7294a923ca346b69aab5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: triggerDialogue
+      value: TriggerDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 79510282, guid: 0f9571c6178d7294a923ca346b69aab5, type: 3}
       propertyPath: d.sentences.Array.size
@@ -3228,8 +3228,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7067314935229182815, guid: d09b396184edcd54f84786c910c47b73,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: field
       value: 
       objectReference: {fileID: 0}

@@ -16,27 +16,22 @@ public class HandleInput : MonoBehaviour
     public GameObject canvas;
 
     //private Variables
-    private int numFarmers = 4;
     private int years;
-    private int teamCount = 2;
     private int currentVariant = 0;
     private int bauernname = 0;
     private int farmerCount = 4;
     private int offsetDown = 70;
     private int firstOffset = 70;
+    private GameObject addButton;
+    private GameObject deleteButton;
 
     //Lists
     private List<Field> fields = new List<Field>();
     private List<Farmer> farmers = new List<Farmer>();
     private List<Button> buttons = new List<Button>();
-
     private List<Farmer> collabFarmer = new List<Farmer>();
     private List<Color> color = new List<Color>(); //Hard coded colors
-    private List<Color> name = new List<Color>();
 
-    //GameObjects
-    private GameObject addButton;
-    private GameObject deleteButton;
 
     public void Start()
     {
@@ -47,10 +42,6 @@ public class HandleInput : MonoBehaviour
 
         addButton.GetComponent<Button>().interactable = true;
         deleteButton.GetComponent<Button>().interactable = false;
-
-        //Setting hard coded colors
-        //We could get them from Python?
-        //Colors are from MatPlotLib, how do I access this?
 
         //Using tab20
         color.Add(new Color(0.122f, 0.467f, 0.706f)); //1 dblau
@@ -90,9 +81,7 @@ public class HandleInput : MonoBehaviour
 
             }
         }
-
-        Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
-
+        //Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
     }
 
     public void StartWithData()  // start simulation
@@ -105,11 +94,12 @@ public class HandleInput : MonoBehaviour
 
         SceneManager.LoadScene(1);
     }
+
     private void JoinFarmers()
     {
         foreach (Button button in buttons)
         {
-            if (button.tag == "CoopButton")
+            if (button.CompareTag("CoopButton"))
             {
                 if (button.GetComponent<StartGroupFarmers>().isInTeam)
                 {
@@ -135,7 +125,7 @@ public class HandleInput : MonoBehaviour
     private void ColorNames()
     {
         int n = 0;
-        for(int i = 0; i < farmers.Count; i++)
+        for (int i = 0; i < farmers.Count; i++)
         {
             if (farmers[i].HasNoCollabFarmer())
             {
@@ -153,10 +143,6 @@ public class HandleInput : MonoBehaviour
     // if AddButton is pressed
     public void AddFarmers()
     {
-        // TODO: Correct Position
-        //farmer 3 (436 , 333 , 0)
-        //farmer 4 (707 , 333 , 0)
-
         currentVariant++;
         farmerCount++;
 
@@ -189,14 +175,11 @@ public class HandleInput : MonoBehaviour
 
         }
 
-        Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
-
-        numFarmers = numFarmers + 2;
-
+        
         deleteButton.GetComponent<Button>().interactable = true;
 
 
-        if (numFarmers == 20)
+        if (farmerCount == 20)
         {
             addButton.GetComponent<Button>().interactable = false;
         }
@@ -205,7 +188,7 @@ public class HandleInput : MonoBehaviour
 
     public void DeleteFarmers()
     {
-        if (numFarmers == 6) // farmers.Count == 6 ,; if there are only 4 farmers the delete button should be disabled
+        if (farmerCount == 6) // farmers.Count == 6 ,; if there are only 4 farmers the delete button should be disabled
         {
             deleteButton.GetComponent<Button>().interactable = false;
         }
@@ -220,17 +203,10 @@ public class HandleInput : MonoBehaviour
             bauernname--;
         }
 
-        Debug.Log("FamersCount:" + farmers.Count + "    fields:" + fields.Count);
-        /*for (int i = 0; i < farmers.Count; i++)
-        {
-            Debug.Log(farmers[i].name);
-        }*/
-
         //adjust vaiables
         offsetDown -= firstOffset;
-        numFarmers = numFarmers - 2;
         currentVariant--;
-        farmerCount = farmerCount - 2;
+        farmerCount -= 2;
 
         // Debug.Log("DELETEvar" + currentVariant);
 
@@ -245,17 +221,17 @@ public class HandleInput : MonoBehaviour
         return 0;
     }
 
-    public void randomTeams()
+    public void RandomTeams()
     {
         // random valid team Values
     }
 
-    public int getNumFarmers()
+    public int GetNumFarmers()
     {
-        return numFarmers;
+        return farmerCount;
     }
 
-    public int getYears()
+    public int GetYears()
     {
         return years;
 

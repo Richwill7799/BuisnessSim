@@ -29,10 +29,4 @@ public class FarmerClickBehaviour : MonoBehaviour
             field.SetActive(true);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

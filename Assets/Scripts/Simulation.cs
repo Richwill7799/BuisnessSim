@@ -41,10 +41,10 @@ public class Simulation : MonoBehaviour
     void Start()
     {
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
-        years = userInput.GetComponent<HandleInput>().getYears();
+        years = userInput.GetComponent<HandleInput>().GetYears();
         fields = userInput.GetComponent<HandleInput>().GetFields();
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
-        countFarmers = userInput.GetComponent<HandleInput>().getNumFarmers();
+        countFarmers = userInput.GetComponent<HandleInput>().GetNumFarmers();
         lastColor = userInput.GetComponent<HandleInput>().GetLastColor();
 
 
@@ -266,7 +266,7 @@ public class Simulation : MonoBehaviour
         //ImageLoader(1);
         //UnityEngine.Debug.Log(variantenMultiplList);
 
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
 
     }
 

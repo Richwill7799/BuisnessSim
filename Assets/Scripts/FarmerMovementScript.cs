@@ -7,11 +7,8 @@ using Random = UnityEngine.Random;
 //[System.Serializable]
 public class FarmerMovementScript : MonoBehaviour
 {
-
-    //public Simulation s;
     public float speed, dodgeSpeed;
     public float minDistance, maxDistance;
-
     public float minWaitTime, maxWaitTime;
 
     public int team; //0 for no team, >=1 for a team
@@ -20,19 +17,14 @@ public class FarmerMovementScript : MonoBehaviour
     public int id;
     public GameObject nameMe;
     public GameObject myCoat; //The color of the coat
-    //public GameObject makeItStop; //Where is my Animation?
-    //TODO delete after it all works, debug
+
     public Transform helper;
 
     private Vector3 goal;
     private float walkUntil;
-
     private float waitEndTime;
-
     private bool towardsTeam;
-
     private Rigidbody2D rigidbody2d;
-
     private List<Farmer> farmers;
     private Animator animator;
 
@@ -42,7 +34,7 @@ public class FarmerMovementScript : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         waitEndTime = 0f;
         rigidbody2d = GetComponent<Rigidbody2D>();
-        pickGoal(false);
+        PickGoal(false);
         GameObject userInput = GameObject.FindGameObjectWithTag("Information");
         farmers = userInput.GetComponent<HandleInput>().GetFarmers();
         nameMe.GetComponent<TextMesh>().text = farmers[id].name;
@@ -83,7 +75,7 @@ public class FarmerMovementScript : MonoBehaviour
             if (walkUntil < Time.time)
             {
                 waitEndTime = Time.time + Random.Range(minWaitTime, maxWaitTime);
-                pickGoal(true);
+                PickGoal(true);
             }
         }
 
@@ -103,14 +95,10 @@ public class FarmerMovementScript : MonoBehaviour
             //makeItStop.GetComponent<Animation>().Play();
             myCoat.GetComponent<SpriteRenderer>().flipX = false;
         }
-        /*else if((goal + transform.position).x == transform.position.x)
-        {
-            makeItStop.GetComponent<Animation>().Stop();
-        }*/
         animator.SetBool("walk", Time.time > waitEndTime);
     }
 
-    private void pickGoal(bool waiting)
+    private void PickGoal(bool waiting)
     {
         //pick a new goal direction at random and determine how long to walk
         float x = Random.Range(-1f, 1f);
@@ -132,12 +120,12 @@ public class FarmerMovementScript : MonoBehaviour
     public void OnTriggerStay2D(Collider2D other)
     {
         //return if the collider is of the own team
-        if (team != 0 && (other.gameObject.tag.Equals(team + "in") || other.gameObject.tag.Equals(team + "out") || other.gameObject.tag.Equals(team.ToString())))
+        if (team != 0 && (other.gameObject.CompareTag(team + "in") || other.gameObject.CompareTag(team + "out") || other.gameObject.CompareTag(team.ToString())))
         {
             return;
         }
 
-        if (other.tag.Equals("Wall"))
+        if (other.CompareTag("Wall"))
         {
             goal += (dodgeSpeed) * (1 / transform.position.magnitude) * Time.deltaTime * (-transform.position);
             return;
@@ -149,20 +137,20 @@ public class FarmerMovementScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         //return if the collider is of the own team
-        if (team != 0 && other.gameObject.tag.Equals(team + "in"))
+        if (team != 0 && other.gameObject.CompareTag(team + "in"))
         {
             towardsTeam = false;
             return;
         }
 
-        if (team != 0 && (other.gameObject.tag.Equals(team + "out") || other.gameObject.tag.Equals(team.ToString())))
+        if (team != 0 && (other.gameObject.CompareTag(team + "out") || other.gameObject.CompareTag(team.ToString())))
             return;
 
 
         //change direction when another farmer comes too close
         waitEndTime = Time.time + Random.Range(0f, 2f);
-        pickGoal(true);
-        if (other.gameObject.tag.Equals("Wall"))
+        PickGoal(true);
+        if (other.gameObject.CompareTag("Wall"))
         {
             goal -= transform.position / 10;
         }
@@ -176,16 +164,16 @@ public class FarmerMovementScript : MonoBehaviour
     {
         if (team == 0)
             return;
-        if (other.gameObject.tag.Equals(team + "out"))
+        if (other.gameObject.CompareTag(team + "out"))
         {
             //left team zone, reorient
             waitEndTime = Time.time + Random.Range(0f, 2f);
-            pickGoal(true);
+            PickGoal(true);
             goal += other.transform.position - transform.position;
             goal = Vector3.Normalize(goal);
         }
 
-        if (other.gameObject.tag.Equals(team + "in"))
+        if (other.gameObject.CompareTag(team + "in"))
         {
             //approaching team zone end, soft direction change
             towardsTeam = true;
