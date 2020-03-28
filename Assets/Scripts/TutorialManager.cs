@@ -7,11 +7,23 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
 
     private int popUpIndex = 0;
-    private bool wantTutorial = true;
+    private HandleInput hi;
 
+    private void Start()
+    {
+        hi = GameObject.FindWithTag("Information").GetComponent<HandleInput>();
+    }
     private void Update()
     {
-        if (wantTutorial)
+
+        if (!hi.tutorial)
+        {
+            foreach (GameObject popUp in popUps)
+            {
+                popUp.SetActive(false);
+            }
+        }
+        if (hi.tutorial)
         {
             ////Debug.Log(popUps[popUpIndex].name);
             for (int i = 0; i < popUps.Length; i++)
@@ -26,6 +38,8 @@ public class TutorialManager : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     private void CloseTutorial()
@@ -39,13 +53,13 @@ public class TutorialManager : MonoBehaviour
     //button functions
     public void WantTutorial()
     {
-        wantTutorial = true;
+        hi.tutorial = true;
         ClosePopUp();
     }
 
     public void DontWantTutorial()
     {
-        wantTutorial = false;
+        hi.tutorial = false;
         CloseTutorial();
     }
 
@@ -55,4 +69,7 @@ public class TutorialManager : MonoBehaviour
         popUpIndex++;
     }
 
+    public void CloseWeather() {
+        GameObject.FindWithTag("WeatherTut").GetComponent<Canvas>().enabled = false; 
+    }
 }

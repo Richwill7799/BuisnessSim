@@ -7,15 +7,16 @@ using UnityEngine.EventSystems;
 public class FarmerClickBehaviour : MonoBehaviour
 {
     public GameObject field;
-    private List<Farmer> farmers = new List<Farmer>();
+    private GameObject WeatherTut;
+    private HandleInput hi;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        GameObject userInput = GameObject.FindGameObjectWithTag("Information");
-        farmers = userInput.GetComponent<HandleInput>().GetFarmers();
-    }
+        hi = GameObject.FindWithTag("Information").GetComponent<HandleInput>();
 
+        WeatherTut = GameObject.FindWithTag("WeatherTut");
+        WeatherTut.GetComponent<Canvas>().enabled = false;
+    }
     void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -27,6 +28,15 @@ public class FarmerClickBehaviour : MonoBehaviour
         else
         {
             field.SetActive(true);
+            if (hi.tutorial)
+            {
+                if (!WeatherTut.GetComponent<ActivatedWeatherTut>().activated)
+                {
+                    WeatherTut.GetComponent<Canvas>().enabled = true;
+                    WeatherTut.GetComponent<ActivatedWeatherTut>().activated = true;
+                }
+            }
         }
+
     }
 }

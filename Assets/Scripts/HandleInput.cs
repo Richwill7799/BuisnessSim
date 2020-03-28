@@ -15,6 +15,7 @@ public class HandleInput : MonoBehaviour
     public Slider yearSlider;
     public GameObject canvas;
 
+    public bool tutorial = true;
     //private Variables
     private int years;
     private int currentVariant = 0;
