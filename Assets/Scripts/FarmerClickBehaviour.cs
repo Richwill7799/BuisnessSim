@@ -21,7 +21,7 @@ public class FarmerClickBehaviour : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-        if (field.activeSelf)
+        else if (field.activeSelf)
         {
             field.SetActive(false);
         }

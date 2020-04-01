@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91764706, g: 0.91764706, b: 0.91764706, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &159721371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91764706, g: 0.91764706, b: 0.91764706, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &164261006
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1069,8 +1069,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This button is the 'simulate it'-button. This simulates 10 years each time
-    you press it until it reaches the simulation duration.
+  m_Text: This button is the 'simulate it'-button. It simulates 10 years each time
+    you press it until it reaches the end simulation duration.
 --- !u!222 &325282329
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &375015454
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &407254905
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &697342291
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &702329589
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1858,11 +1858,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d:
     sentences:
-    - "The Farmers Fable is an economical concept woven into the story of Marc Elsberg\u2019s
-      book \u201CGier\u201D. "
-    - "In Marc\u2019s story, four farmers have to decide whether they are going to
-      cooperate and share the earnings of their farming, or whether they don\u2019t
-      want to cooperate and every farmer keeps their whole earnings. "
+    - 'The Farmers Fable is an economical concept woven into the story of Marc Elsberg''s
+      thriller "Gier". '
+    - 'In Marc''s story, four farmers have to decide whether they are going to cooperate
+      and share the earnings of their farming, or whether they don''t want to cooperate
+      and every farmer keeps their whole earnings. '
     - "It is important to consider that the farmers fable takes up a span of several
       years. If one would only take one or two years into account, they might not
       discover any significant advantages either way. \r"
@@ -2705,7 +2705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2719,7 +2719,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &1325505167
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3049,8 +3049,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The collaborating farmers gather here! You recognize them with the same
-    color of their names and the circle.
+  m_Text: The collaborating farmers gather here! You recognize them since they have
+    the same color in their names as the circle.
 --- !u!222 &1413367545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3245,9 +3245,8 @@ MonoBehaviour:
       running around their fields. '
     - 'Meanwhile a line graph is depicted in the top left corner, which shows how
       much profit each farmer, respectively each collaboration of farmers make. '
-    - This is really useful to grasp the idea of the business concept in real time.
-      Changing the parameter sets, while influencing the weather, might change the
-      line graph drastically.
+    - This is useful to grasp the concept of ergodicity. Changing the parameter sets,
+      while influencing the weather, might change the line graph drastically.
     - "To get a more elaborate explanation, the player receives spider graphs when
       the simulation is completed. These explain the different parameter sets that
       act upon the profits of the farmers simultaneously.\r"
@@ -3988,10 +3987,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The weather conditions have different effects on the farming. Keep in mind,
+  m_Text: The weather conditions have different effects on the farming. Keep in mind
     that always two farmers have the same weather conditions, this is visible via
-    the colors. As soon you have selected one weather condition, it stays like this
-    until you change it again.
+    the colors. As soon as you have selected one weather condition, it stays like
+    this until you change it again.
 --- !u!222 &1825126093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4069,7 +4068,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Here you can watch the amount of harvest of each farmer. The collaborating
-    farmers only have one line due to they all have the same harvest.
+    farmers only have one line since they all have the same harvest.
 --- !u!222 &1888363207
 CanvasRenderer:
   m_ObjectHideFlags: 0

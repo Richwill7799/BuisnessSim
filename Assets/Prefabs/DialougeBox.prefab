@@ -281,8 +281,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175, y: -41}
-  m_SizeDelta: {x: 539.2, y: 421.9}
+  m_AnchoredPosition: {x: 175, y: 23.7}
+  m_SizeDelta: {x: 539.2, y: 551.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3151479059457687523
 CanvasRenderer:
@@ -460,6 +460,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3151479059295245991}
     m_Modifications:
+    - target: {fileID: 5320485568305141499, guid: 9dbf73b83737c564ab43e5defac79f21,
+        type: 3}
+      propertyPath: m_Name
+      value: exitButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4165713115826803581, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -564,11 +569,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5320485568305141499, guid: 9dbf73b83737c564ab43e5defac79f21,
-        type: 3}
-      propertyPath: m_Name
-      value: exitButton
       objectReference: {fileID: 0}
     - target: {fileID: 101641162828339599, guid: 9dbf73b83737c564ab43e5defac79f21,
         type: 3}

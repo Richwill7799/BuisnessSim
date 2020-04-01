@@ -237,8 +237,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 432.89996, y: -70.60001}
-  m_SizeDelta: {x: 652.5, y: 439.7}
+  m_AnchoredPosition: {x: 410.8, y: -29.4}
+  m_SizeDelta: {x: 693.6, y: 517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &137323540
 MonoBehaviour:
@@ -271,8 +271,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You see on how many days the different weather conditions appeared. Can
-    you see some coincidence with the harvest graph you saw before?
+  m_Text: The spider web graphs show how many days the different weather conditions
+    appeared. Can you distinguish some correlation with the harvest graph you saw
+    before?
 --- !u!222 &137323541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -638,7 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 0.392}
+  m_Color: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -652,7 +653,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 400
 --- !u!222 &558173861
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -695,8 +696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 422, y: -73}
-  m_SizeDelta: {x: 724.7, y: 463.8}
+  m_AnchoredPosition: {x: 399.2, y: -32.3}
+  m_SizeDelta: {x: 770.3, y: 545.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079668527
 MonoBehaviour:
